@@ -1,12 +1,6 @@
 set backspace=indent,eol,start
 set backspace=indent,eol,start
 
-filetype off
-filetype plugin indent off
-set runtimepath+=$GOROOT/misc/vim
-filetype plugin indent on
-syntax on
-
 set laststatus=2
 set statusline=%t       "tail of the filename
 set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
@@ -35,3 +29,12 @@ noremap  <Left> ""
 noremap! <Left> <Esc>
 noremap  <Right> ""
 noremap! <Right> <Esc>
+
+if exists("g:did_load_filetypes")
+  filetype off
+  filetype plugin indent off
+endif
+set runtimepath+=/usr/local/Cellar/go/1.2.2/libexec/misc/vim
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
+filetype plugin indent on
+syntax on
