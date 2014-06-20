@@ -34,7 +34,7 @@ if exists("g:did_load_filetypes")
   filetype off
   filetype plugin indent off
 endif
-set runtimepath+=/usr/local/Cellar/go/1.2.2/libexec/misc/vim
+set runtimepath+=/usr/local/go/misc/vim
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 filetype plugin indent on
 syntax on
