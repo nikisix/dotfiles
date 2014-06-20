@@ -22,14 +22,13 @@ source $ZSH/oh-my-zsh.sh
 ZLE_REMOVE_SUFFIX_CHARS=""
 
 # Customize to your needs...
-export GOROOT=`go env GOROOT`
-export GOPATH="$HOME/go"
-
 cabal="$HOME/.cabal/bin"
 go="$GOPATH/bin:/usr/local/go/bin:"
 homebrew="/usr/local/bin"
 rvm="$HOME/.rvm/bin"
 export PATH=$cabal:$go:$rvm:$homebrew:$PATH
+export GOROOT=`go env GOROOT`
+export GOPATH="$HOME/go"
 
 bindkey "^?" backward-delete-char
 
