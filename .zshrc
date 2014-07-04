@@ -22,22 +22,24 @@ source $ZSH/oh-my-zsh.sh
 ZLE_REMOVE_SUFFIX_CHARS=""
 
 # Customize to your needs...
+export EDITOR='vim'
 export GOPATH="$HOME/go"
 
 cabal="$HOME/.cabal/bin"
-go="$GOPATH/bin:/usr/local/go/bin:"
+go="$GOPATH/bin:/usr/local/go/bin"
 homebrew="/usr/local/bin"
 rvm="$HOME/.rvm/bin"
 export PATH=$cabal:$go:$rvm:$homebrew:$PATH
 
-bindkey "^?" backward-delete-char
+bindkey -v
+bindkey '^?' backward-delete-char
+bindkey '^H' backward-delete-char
+bindkey -a u undo
+bindkey -a '^R' redo
+bindkey -a 'gg' beginning-of-buffer-or-history
+bindkey -a 'g~' vi-oper-swap-case
+bindkey -a G end-of-buffer-or-history
 
-bindkey "\033[H" beginning-of-line
-bindkey "\033[F" end-of-line
-bindkey -M vicmd "\033[H" vi-beginning-of-line
-bindkey -M vicmd "\033[F" vi-end-of-line
-
-set -o vi
 
 alias ll="ls -AGohp"
 alias tree="tree -a"
