@@ -18,7 +18,7 @@
   autosetuprebase = always
 [core]
   autocrlf = input
-  editor = subl -w
+  editor = vim
 [credential]
   helper = osxkeychain
 [github]
