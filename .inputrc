@@ -1,5 +1,2 @@
 set editing-mode vi
 set keymap vi-insert
-
-'^?' backward-delete-char
-'^H' backward-delete-char
