@@ -14,7 +14,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew cabal cp gem git github golang osx pip python ruby rvm systemadmin vagrant zsh_reload)
+plugins=(brew cp gem git github golang osx pip python rbenv ruby systemadmin vagrant zsh_reload)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -24,12 +24,14 @@ ZLE_REMOVE_SUFFIX_CHARS=""
 # Customize to your needs...
 export EDITOR='vim'
 export GOPATH="$HOME/go"
+export RBENV_ROOT=/usr/local/var/rbenv
 
-cabal="$HOME/.cabal/bin"
 go="$GOPATH/bin:/usr/local/go/bin"
 homebrew="/usr/local/bin"
-rvm="$HOME/.rvm/bin"
-export PATH=$cabal:$go:$rvm:$homebrew:$PATH
+rbenv="$HOME/.rbenv/bin"
+export PATH=$go:$rbenv:$homebrew:$PATH
+
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 bindkey -v
 bindkey '^?' backward-delete-char
@@ -40,7 +42,6 @@ bindkey -a 'gg' beginning-of-buffer-or-history
 bindkey -a 'g~' vi-oper-swap-case
 bindkey -a G end-of-buffer-or-history
 
-
 alias ll="ls -AGohp"
 alias tree="tree -a"
 
@@ -50,6 +51,3 @@ alias mv='mv -i'
 
 alias ed='ed -pλ:'
 
-function hyrule {
-  source ~/.openstackrc/hyrule.sh
-}
