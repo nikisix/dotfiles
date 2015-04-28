@@ -1,20 +1,9 @@
 set expandtab " Tabs->Spaces
+set ignorecase
 set number
 set relativenumber
 set shiftwidth=2
 set tabstop=2
-
-set statusline=%t       "tail of the filename
-set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
-set statusline+=%{&ff}] "file format
-set statusline+=%h      "help file flag
-set statusline+=%m      "modified flag
-set statusline+=%r      "read only flag
-set statusline+=%y      "filetype
-set statusline+=%=      "left/right separator
-set statusline+=%c,     "cursor column
-set statusline+=%l/%L   "cursor line/total lines
-set statusline+=\ %P    "percent through file
 
 " Press space to clear search highlighting and any message already displayed.
 nnoremap <silent> <Space> :silent noh<Bar>echo<CR>
@@ -34,6 +23,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'bling/vim-airline'
 Plugin 'duythinht/vim-coffee'
 Plugin 'fatih/vim-go'
 Plugin 'majutsushi/tagbar'
