@@ -30,3 +30,5 @@
 [user]
   name = Jacob Hayes
   email = jacob.r.hayes@gmail.com
+[url "git@github.com:"]
+  pushInsteadOf = https://github.com/
