@@ -19,6 +19,7 @@ ZLE_REMOVE_SUFFIX_CHARS=""
 # Customize to your needs...
 export EDITOR='vim'
 export GOPATH="$HOME"
+export GOROOT="/usr/local/opt/go/libexec"
 export RBENV_ROOT=/usr/local/var/rbenv
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
@@ -26,7 +27,7 @@ export RBENV_ROOT=/usr/local/var/rbenv
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(brew cp gem git github golang osx pip python rbenv ruby systemadmin vagrant zsh_reload)
 
-go="$GOPATH/bin:/usr/local/go/bin"
+go="$GOPATH/bin:$GOROOT/bin"
 rbenv="$HOME/.rbenv/bin"
 export PATH=$go:$rbenv:$PATH
 
@@ -49,3 +50,6 @@ alias tree="tree -a"
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
+
+# Turn off special handling of ._* files in tar, etc.
+export COPYFILE_DISABLE=1
