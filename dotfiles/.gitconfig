@@ -8,12 +8,14 @@
   l   = log
   m   = merge
   pl  = pull
+  pr  = pull-request
   ps  = push
   r   = reset
   rb  = rebase
   rbi = rebase -i
   s   = status
   st  = stash
+  wt  = worktree
 [color]
   ui = auto
 [config]
@@ -30,5 +32,3 @@
 [user]
   name = Jacob Hayes
   email = jacob.r.hayes@gmail.com
-[url "git@github.com:"]
-  pushInsteadOf = https://github.com/

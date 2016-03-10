@@ -1,0 +1,16 @@
+1password
+alfred
+dropbox
+flux
+google-cloud-sdk
+iterm2
+karabiner
+limechat
+postico
+pycharm
+seil
+slack
+spectacle
+spotify
+sublime-test3
+virtualbox

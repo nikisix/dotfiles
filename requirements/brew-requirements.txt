@@ -1,0 +1,22 @@
+ctags
+curl
+docker
+docker-compose
+docker-machine
+git
+go
+hub
+lua
+luajit
+nvm
+openssl
+python
+python3
+readline
+reattach-to-user-namespace
+the_silver_searcher
+tmux
+tree
+vim --with-lua --with-luajit
+watch
+zsh
