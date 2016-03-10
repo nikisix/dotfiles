@@ -1,1 +1,2 @@
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# Note the sed: we must remove the `env zsh` so it doesn't block and stop the script until exiting that shell...
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed -e 's/env zsh//')"
