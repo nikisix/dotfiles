@@ -1,8 +1,5 @@
 set -o errexit
 
-echo "Copying dotfiles to ~/"
-cp -af ./dotfiles/. ~/
-
 echo "Installing homebrew"
 brew -h || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -45,5 +42,8 @@ read
 echo "Changing default shell to brew's zsh"
 sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
 chsh -s /usr/local/bin/zsh
+
+echo "Copying dotfiles to ~/"
+cp -af ./dotfiles/. ~/
 
 echo "Done!"
