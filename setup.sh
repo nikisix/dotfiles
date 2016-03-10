@@ -4,7 +4,7 @@ echo "Copying dotfiles to ~/"
 cp -af ./dotfiles/. ~/
 
 echo "Installing homebrew"
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew -h || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 echo "Installing brew packages"
 xargs brew install      < ./requirements/brew-requirements.txt
