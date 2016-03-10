@@ -10,6 +10,8 @@ echo "Installing brew packages"
 xargs brew install      < ./requirements/brew-requirements.txt
 echo "Installing brew cask apps"
 xargs brew cask install < ./requirements/cask-requirements.txt
+echo "Installing from commands"
+sh ./requirements/manual-requirements.sh
 
 echo "Setting up nvm"
 mkdir -p ~/.nvm # Setup nvm's working directory
