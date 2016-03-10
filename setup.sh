@@ -12,7 +12,7 @@ echo "Installing brew cask apps"
 xargs brew cask install < ./requirements/cask-requirements.txt
 
 echo "Setting up nvm"
-mkdir ~/.nvm # Setup nvm's working directory
+mkdir -p ~/.nvm # Setup nvm's working directory
 export NVM_DIR=~/.nvm
 set +o errexit # Something in there fails, but is ok.
 source $(brew --prefix nvm)/nvm.sh
