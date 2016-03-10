@@ -36,12 +36,12 @@ echo "Installing vim plugins..."
 vim +PluginInstall +qall
 
 echo "Installing TmuxPluginManager"
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-echo "Start tmux and run 'prefix-I' to install tmux plugins..."
+test -d ~/.tmux/plugins/tpm || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+echo "Start tmux and run 'prefix-I' to install tmux plugins... Press enter when done..."
 read
 
 echo "Changing default shell to brew's zsh"
-sudo echo "/usr/local/bin/zsh" >> /etc/shells
+sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
 chsh -s /usr/local/bin/zsh
 
 echo "Done!"
