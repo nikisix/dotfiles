@@ -28,10 +28,10 @@ echo "Installing pip packages"
 pip install -r ./requirements/pip-requirements.txt
 
 echo "Creating docker machine"
-docker-machine create -d virtualbox --virtualbox-memory "4096" --virtualbox-disk-size "102400" default # 4GB RAM, 100GB storage
+docker-machine status default || docker-machine create -d virtualbox --virtualbox-memory "4096" --virtualbox-disk-size "102400" default # 4GB RAM, 100GB storage
 
 echo "Installing Vundle"
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+test -d ~/.vim/bundle/Vundle.vim  || git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 echo "Installing vim plugins..."
 vim +PluginInstall +qall
 
