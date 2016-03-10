@@ -35,6 +35,8 @@ test -d ~/.vim/bundle/Vundle.vim  || git clone https://github.com/VundleVim/Vund
 echo "Installing vim plugins..."
 vim +PluginInstall +qall
 
+echo "Installing TmuxPluginManager"
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "Start tmux and run 'prefix-I' to install tmux plugins..."
 read
 
