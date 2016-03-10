@@ -1,5 +1,6 @@
 1password
 alfred
+caskroom/versions/sublime-text3
 dropbox
 flux
 google-cloud-sdk
@@ -12,5 +13,4 @@ seil
 slack
 spectacle
 spotify
-sublime-test3
 virtualbox
