@@ -46,4 +46,7 @@ chsh -s /usr/local/bin/zsh
 echo "Copying dotfiles to ~/"
 cp -af ./dotfiles/. ~/
 
+echo "Allowing repeated keypresses"
+defaults write -g ApplePressAndHoldEnabled -bool true
+
 echo "Done!"
