@@ -43,8 +43,9 @@ echo "Changing default shell to brew's zsh"
 sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
 chsh -s /usr/local/bin/zsh
 
-echo "Copying dotfiles to ~/"
-cp -af ./dotfiles/. ~/
+echo "Linking dotfiles to ~/"
+# Using the gnu version of cp from brew coreutils b/c it has the -s flag for symbolic links and works with directories
+gcp -srf ~/Documents/JacobHayes/dotfiles/dotfiles/.* ~/
 
 echo "Allowing repeated keypresses"
 defaults write -g ApplePressAndHoldEnabled -bool true
