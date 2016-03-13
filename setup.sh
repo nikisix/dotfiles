@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 set -o errexit
 
 echo "Installing homebrew"
@@ -45,7 +47,7 @@ chsh -s /usr/local/bin/zsh
 
 echo "Linking dotfiles to ~/"
 # Using the gnu version of cp from brew coreutils b/c it has the -s flag for symbolic links and works with directories
-gcp -srf ~/Documents/JacobHayes/dotfiles/dotfiles/.* ~/
+gcp -srf ~/Documents/JacobHayes/dotfiles/dotfiles/.[^.]* ~/
 
 echo "Allowing repeated keypresses"
 defaults write -g ApplePressAndHoldEnabled -bool true
