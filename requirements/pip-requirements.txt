@@ -1,3 +1,4 @@
 flake8
+git-up
 pylint
 pylint-django
