@@ -5,8 +5,13 @@ ZSH_THEME="lambda_custom"
 COMPLETION_WAITING_DOTS="true"
 ZLE_REMOVE_SUFFIX_CHARS="" # Fix space being removed when using '|' characters
 
-# (~/.oh-my-zsh/plugins/* and ~/.oh-my-zsh/custom/plugins/)
-plugins=(brew cp docker docker-compose git github golang osx pip python systemadmin zsh_reload)
+# Mostly used for autocompletion.
+plugins=(
+  brew
+  docker
+  docker-compose
+  golang
+)
 
 source $ZSH/oh-my-zsh.sh
 
