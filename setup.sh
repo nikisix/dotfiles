@@ -50,6 +50,6 @@ echo "Linking dotfiles to ~/"
 gcp -srf ~/Documents/JacobHayes/dotfiles/dotfiles/.[^.]* ~/
 
 echo "Allowing repeated keypresses"
-defaults write -g ApplePressAndHoldEnabled -bool true
+defaults write -g ApplePressAndHoldEnabled -bool false
 
 echo "Done!"
