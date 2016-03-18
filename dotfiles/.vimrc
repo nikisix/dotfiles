@@ -31,6 +31,7 @@ Plugin 'majutsushi/tagbar' " Shows ctags (ex for go-to definition)
 Plugin 'myint/syntastic-extras' " extra syntax checking stuff, such as json, yaml
 Plugin 'rking/ag.vim' " Uses ag to search files for a string
 Plugin 'scrooloose/nerdtree' " file explorer
+Plugin 'vim-airline/vim-airline-themes' " Use Solarized Light theme for statusline
 Plugin 'scrooloose/syntastic' " syntax checking
 Plugin 'terryma/vim-expand-region' " expand visual selection by repeating key hit
 Plugin 'tmux-plugins/vim-tmux' " tmux syntax highlighting and a few others
@@ -46,7 +47,7 @@ filetype plugin indent on
 "## Plugin Options ##"
 "####################"
 
-set background=dark
+set background=light
 colorscheme solarized
 
 " ## syntastic
