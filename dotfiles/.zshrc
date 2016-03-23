@@ -25,6 +25,7 @@ gobins="$GOPATH/bin"
 export PATH=$gobins:$PATH
 
 eval "$(docker-machine env default)"
+eval "$(hub alias -s)"
 source $(brew --prefix nvm)/nvm.sh
 source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
 source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
