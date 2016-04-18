@@ -6,3 +6,6 @@ docstring-min-length=10
 
 # Don't warn about classes without methods. If python had structs (or namedtuples were more common), wouldn't need
 min-public-methods=0
+
+[MESSAGES CONTROL]
+disable=C0103

@@ -6,6 +6,8 @@ docker-compose
 docker-machine
 git
 go
+homebrew/dupes/diffutils
+homebrew/dupes/gpatch
 hub
 lua
 luajit

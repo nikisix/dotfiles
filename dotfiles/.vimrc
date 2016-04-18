@@ -31,13 +31,14 @@ Plugin 'majutsushi/tagbar' " Shows ctags (ex for go-to definition)
 Plugin 'myint/syntastic-extras' " extra syntax checking stuff, such as json, yaml
 Plugin 'rking/ag.vim' " Uses ag to search files for a string
 Plugin 'scrooloose/nerdtree' " file explorer
-Plugin 'vim-airline/vim-airline-themes' " Use Solarized Light theme for statusline
 Plugin 'scrooloose/syntastic' " syntax checking
 Plugin 'terryma/vim-expand-region' " expand visual selection by repeating key hit
 Plugin 'tmux-plugins/vim-tmux' " tmux syntax highlighting and a few others
 Plugin 'tpope/vim-commentary' " Auto comment line (gcc) or visual block (gc)
 Plugin 'tpope/vim-repeat' " allows plugin actions to be repeated as a whole with '.' instad of last native action
 Plugin 'tpope/vim-sensible' " some sensible vim defaults, though I think most are overwritten below.
+Plugin 'tpope/vim-sleuth' " Auto detect space/indent
+Plugin 'vim-airline/vim-airline-themes' " Use Solarized Light theme for statusline
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -58,7 +59,8 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height = 3
+let g:syntastic_check_on_wq = 0 " don't check on exit
 
 " Uses pylint_django to ignore errors from django's metaprogramming
 let g:syntastic_python_pylint_args = "--load-plugins pylint_django --disable=F0401"
@@ -160,7 +162,6 @@ set clipboard=unnamed " Uses system clipboard
 set complete+=kspell " adds spell check hints to keyword completion with C-N/C-P
 set cursorline " highlight the line cursor is on
 set encoding=utf-8 " Default to utf-8
-set expandtab " Tabs->Spaces
 set foldmethod=indent " fold on indents
 set hlsearch " highlight matches, use noh to clear (set to comma)
 set ignorecase " Don't worry about case when searching
@@ -169,14 +170,16 @@ set matchtime=3 " Tenths of seconds to showmatch
 set modelines=0 " Modelines auto loads vim commands in files. Security vuln and don't need
 set mouse=a " Enables mouse in all modes, such as scroll and highlight
 set nofoldenable " disable folding by default
+set nojoinspaces " Don't use double spaces when joining lines ending with periods
 set number " Shows line numbers
 set relativenumber " as relative +/- to current line. With number, shows current line as absolute, and others as relative
 set scrolloff=5 " Minimum number of lines before/after cursor at top/bottom
 set shiftwidth=0 " Number of characters to insert with << or >>, with 0 it defaults to tabstop
 set showmatch " Jump to the corresponding enclosing char when inserting new ones (ex paren, bracket, etc)
 set smartcase " Ignores search case except when you use a caps
-set spelllang=en_us " language to use for spell checking
-set tabstop=4 " number of spaces a tab counts for
+set spell spelllang=en_us " enable spell checking w/ US English
+set textwidth=120 " Start new lines at 120 characters automatically or re-wrap to 120 with gq
+set visualbell " don't beep, ex when hitting escape in command mode
 set wildmenu " enable command line  completion
 
 autocmd BufRead,BufNewFile *.md setlocal spell " enable spell checking for md files
