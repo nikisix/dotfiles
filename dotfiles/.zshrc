@@ -30,9 +30,8 @@ source $(brew --prefix nvm)/nvm.sh
 source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
 source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 
-
 set -o vi
-bindkey '^?' backward-delete-char # Same, but I think works for os x. 
+bindkey '^?' backward-delete-char # Same, but I think works for os x.
 bindkey '^H' backward-delete-char # Delete characters after entering append/insert mode
 bindkey -a 'gg' beginning-of-buffer-or-history
 bindkey -a G end-of-buffer-or-history

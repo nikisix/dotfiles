@@ -48,7 +48,7 @@ filetype plugin indent on
 "## Plugin Options ##"
 "####################"
 
-set background=light
+set background=dark
 colorscheme solarized
 
 " ## syntastic
@@ -178,6 +178,7 @@ set shiftwidth=0 " Number of characters to insert with << or >>, with 0 it defau
 set showmatch " Jump to the corresponding enclosing char when inserting new ones (ex paren, bracket, etc)
 set smartcase " Ignores search case except when you use a caps
 set spell spelllang=en_us " enable spell checking w/ US English
+set tabstop=4 " Number of characters/spaces a tab appears as
 set textwidth=120 " Start new lines at 120 characters automatically or re-wrap to 120 with gq
 set visualbell " don't beep, ex when hitting escape in command mode
 set wildmenu " enable command line  completion
