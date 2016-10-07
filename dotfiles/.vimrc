@@ -48,7 +48,7 @@ filetype plugin indent on
 "## Plugin Options ##"
 "####################"
 
-set background=dark
+set background=light
 colorscheme solarized
 
 " ## syntastic
@@ -58,7 +58,6 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
 let g:syntastic_loc_list_height = 3
 let g:syntastic_check_on_wq = 0 " don't check on exit
 
@@ -133,18 +132,18 @@ call expand_region#custom_text_objects({
 
 " ## vim-go ##
 let g:go_fmt_command = "goimports"
-au FileType go nmap <Leader>s  <Plug>(go-implements)
-au FileType go nmap <Leader>i  <Plug>(go-info)
+au FileType go nmap <Leader>b  <Plug>(go-build)
+au FileType go nmap <Leader>d  <Plug>(go-def)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>e  <Plug>(go-rename)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>i  <Plug>(go-info)
 au FileType go nmap <Leader>r  <Plug>(go-run)
-au FileType go nmap <Leader>b  <Plug>(go-build)
+au FileType go nmap <Leader>s  <Plug>(go-implements)
 au FileType go nmap <Leader>t  <Plug>(go-test)
-au FileType go nmap <Leader>c  <Plug>(go-coverage)
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>dt <Plug>(go-def-tab)
-au FileType go nmap <Leader>e  <Plug>(go-rename)
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
@@ -240,3 +239,12 @@ function! s:tab_complete()
 endfunction
 " Use tab_complete to determine what to do with tabs in insert mode
 imap <silent><expr><TAB> <SID>tab_complete()
+
+" https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/.vimrc#L162
+" Shortcut for :s///g
+nmap S :%s//g<LEFT><LEFT>
+vmap S :Blockwise s//g<LEFT><LEFT>
+
+" Shortcut for :s/<last search>//g
+nmap <expr> M ':%s/' . @/ . '//g<LEFT><LEFT>'
+vmap <expr> M ':s/' . @/ . '//g<LEFT><LEFT>'

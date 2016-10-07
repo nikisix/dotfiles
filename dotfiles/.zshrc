@@ -16,19 +16,15 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 export COPYFILE_DISABLE=1 # Turn off special handling of ._* files in tar, etc.
-export DOCKER_HOST_IP="$(docker-machine ip default)"
 export EDITOR='vim'
 export GOPATH="$HOME"
-export NVM_DIR=~/.nvm
 
 gobins="$GOPATH/bin"
 export PATH=$gobins:$PATH
 
-eval "$(docker-machine env default)"
 eval "$(hub alias -s)"
-source $(brew --prefix nvm)/nvm.sh
-source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 
 set -o vi
 bindkey '^?' backward-delete-char # Same, but I think works for os x.
@@ -50,5 +46,8 @@ then
     source ~/.zshrc.override
 fi
 
-# Automatically use tmux - set in iTerm's command. Creates new and attaches to session, or attaches to existing in a new session (allows using different tmux windows in different terminals). When creating new that attaches to base, deletes extra session.
-#tmux new -s base || tmux new -t base | awk '{ gsub("\\)]", "", $4); print $4 }' | xargs tmux kill-session -t
+# Set dark title bar and automatically use tmux - set in iTerm's command. Echo special escape codes to change color.
+# Creates new and attaches to session, or attaches to existing in a new session (allows using different tmux windows in
+# different terminals). When creating new that attaches to base, deletes extra session.
+#
+# echo -e "\033]6;1;bg;red;brightness;0\a" && echo -e "\033]6;1;bg;green;brightness;0\a" && echo -e "\033]6;1;bg;blue;brightness;0\a" && tmux new -s base || tmux new -t base | awk '{ gsub("\\)]", "", $4); print $4 }' | xargs tmux kill-session -t
