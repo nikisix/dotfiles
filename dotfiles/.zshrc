@@ -16,6 +16,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 export COPYFILE_DISABLE=1 # Turn off special handling of ._* files in tar, etc.
+export PAGER="/usr/bin/less -S" # Don't wrap when paging, in eg: psql
 export EDITOR='vim'
 export GOPATH="$HOME"
 
