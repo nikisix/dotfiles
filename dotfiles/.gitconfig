@@ -5,6 +5,7 @@
   co  = checkout
   cp  = cherry-pick
   d   = diff
+  dt  = difftool
   l   = log
   m   = merge
   pl  = pull
@@ -15,6 +16,7 @@
   rbi = rebase -i
   s   = status
   st  = stash
+  up  = pull --rebase --autostash
   wt  = worktree
 [color]
   ui = auto
@@ -35,3 +37,7 @@
   email = jacob.r.hayes@gmail.com
 [url "git@github.com:"]
   pushInsteadOf = https://github.com/ # Use ssh keys, even if cloned with http
+[diff]
+  tool = vimdiff
+[difftool]
+  prompt = off
