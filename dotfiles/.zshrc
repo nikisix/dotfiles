@@ -47,6 +47,41 @@ then
     source ~/.zshrc.override
 fi
 
+set_iterm() {
+  profile="${1}"
+
+  iterm_cmd="\033]50;SetProfile=${profile}\a"
+  if [[ -n "${TMUX}" ]]; then
+    echo -e "\033Ptmux;\033${iterm_cmd}\033\\"
+  else
+    echo -e "${iterm_cmd}"
+  fi
+}
+
+set_vim() {
+  profile="${1}"
+
+  gsed -i "s#set background=.*#set background=${profile}#" ~/.vimrc
+}
+
+set_tmux() {
+  profile="${1}"
+
+  gsed -i "s#set -g @colors-solarized '.*'#set -g @colors-solarized '${profile}'#" ~/.tmux.conf
+  tmux source-file ~/.tmux.conf
+}
+
+set_profile() {
+  profile="${1}"
+
+  set_iterm "${profile}"
+  set_tmux "${profile}"
+  set_vim "${profile}"
+}
+
+alias dark="set_profile dark"
+alias light="set_profile light"
+
 # Set dark title bar and automatically use tmux - set in iTerm's command. Echo special escape codes to change color.
 # Creates new and attaches to session, or attaches to existing in a new session (allows using different tmux windows in
 # different terminals). When creating new that attaches to base, deletes extra session.
