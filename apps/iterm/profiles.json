@@ -1,0 +1,11 @@
+{
+  "Profiles": [
+    {
+      "Close Sessions On End" : true,
+      "Disable Window Resizing" : true,
+      "Initial Text" : "_iterm2_hook",
+      "Sync Title" : false,
+      "Unlimited Scrollback" : true
+    }
+  ]
+}
