@@ -1,25 +1,33 @@
+bash
 coreutils
 ctags
 curl
-docker
-docker-compose
-docker-machine
+diffutils
+findutils --with-default-names
+fish
+gawk
 git
+gnu-sed --with-default-names
+gnu-tar --with-default-names
+gnu-time --with-default-names
 go
-homebrew/dupes/diffutils
-homebrew/dupes/gpatch
+grep --with-default-names
+gzip
 hub
-lua
+jq
+less
 luajit
-nvm
+make --with-default-names
+openssh
 openssl
 python
 python3
 readline
 reattach-to-user-namespace
+recode
+shellcheck
 the_silver_searcher
 tmux
 tree
-vim --with-lua --with-luajit
+vim --with-luajit --with-override-system-vi --with-python3
 watch
-zsh

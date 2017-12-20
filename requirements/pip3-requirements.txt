@@ -1,0 +1,9 @@
+flake8
+git-up
+jedi
+mccabe
+pep8
+pycodestyle
+pyflakes
+pylint
+pylint-django
