@@ -95,7 +95,7 @@ defaults write at.eggerapps.Postico PreferTableListView -bool true
 
 echo "Don't forget to:"
 echo "- disable guest account"
-echo "- enable/verify filevault encryption
+echo "- enable/verify filevault encryption"
 echo ""
 echo "Waiting..."
-read
+read -r
