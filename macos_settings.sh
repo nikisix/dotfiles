@@ -25,8 +25,9 @@ sudo chmod -x /Applications/iTunes.app
 # drop them here.
 #
 # Set network name
-defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server ServerDescription
-defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName
+scutil --set HostName JacobHayes
+scutil --set LocalHostName JacobHayes
+scutil --set ComputerName JacobHayes
 # '-g' is short for the 'NSGlobalDomain' domain
 defaults delete -g NSUserDictionaryReplacementItems
 defaults write -g AppleActionOnDoubleClick -string 'Maximize'
