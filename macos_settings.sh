@@ -25,9 +25,9 @@ sudo chmod -x /Applications/iTunes.app
 # drop them here.
 #
 # Set network name
-scutil --set HostName JacobHayes
-scutil --set LocalHostName JacobHayes
-scutil --set ComputerName JacobHayes
+sudo scutil --set HostName JacobHayes
+sudo scutil --set LocalHostName JacobHayes
+sudo scutil --set ComputerName JacobHayes
 # '-g' is short for the 'NSGlobalDomain' domain
 defaults delete -g NSUserDictionaryReplacementItems
 defaults write -g AppleActionOnDoubleClick -string 'Maximize'
