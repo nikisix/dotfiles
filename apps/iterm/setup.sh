@@ -6,15 +6,14 @@ set -o pipefail
 
 # Add custom profiles
 ln -s "${PWD}/profiles.json" "${HOME}/Library/Application Support/iTerm2/DynamicProfiles/profiles.json"
-# Need to add download Solarized Light and Dark and add those as profiles. Add Dark as the default guid \/
-# Select the default profile
-defaults write com.googlecode.iterm2.plist "Default Bookmark Guid" -string "guid from profiles.json"
+# Set the 'dark' theme as the default
+defaults write com.googlecode.iterm2 "Default Bookmark Guid" -string "2AE2AB65-51BB-4654-9E04-B6876D3A57E5"
 # Generic display tweaks
-defaults write com.googlecode.iterm2.plist WindowNumber -bool False # Remove window number from title
-defaults write com.googlecode.iterm2.plist UseBorder -bool true # Fill gap from fixed-width font
-defaults write com.googlecode.iterm2.plist EnableDivisionView -bool false # Don't show line under status bar
+defaults write com.googlecode.iterm2 WindowNumber -bool False # Remove window number from title
+defaults write com.googlecode.iterm2 UseBorder -bool true # Fill gap from fixed-width font
+defaults write com.googlecode.iterm2 EnableDivisionView -bool false # Don't show line under status bar
 # Enable automatic updates and set to beta channel
-defaults write com.googlecode.iterm2.plist CheckTestRelease -bool true
-defaults write com.googlecode.iterm2.plist SUAutomaticallyUpdate -bool true
-defaults write com.googlecode.iterm2.plist SUEnableAutomaticChecks -bool true
-defaults write com.googlecode.iterm2.plist SUFeedURL -string "https://iterm2.com/appcasts/testing.xml?shard=22"
+defaults write com.googlecode.iterm2 CheckTestRelease -bool true
+defaults write com.googlecode.iterm2 SUAutomaticallyUpdate -bool true
+defaults write com.googlecode.iterm2 SUEnableAutomaticChecks -bool true
+defaults write com.googlecode.iterm2 SUFeedURL -string "https://iterm2.com/appcasts/testing.xml?shard=22"
