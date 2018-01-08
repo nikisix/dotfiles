@@ -43,6 +43,17 @@ alias tree="tree -a"
 # Disables changing directory w/o `cd`
 unsetopt AUTO_CD
 
+export_plist() {
+  name="${1}"
+  file="${2:-}" # Default to stdout
+  if [[ -n "${file}" ]]; then
+    defaults export "${name}" "${file}"
+    plutil -convert xml1 "${file}"
+  else
+    defaults export "${name}" - | less -S
+  fi
+}
+
 make() {
   (
     while [ "${PWD}" != '/' ] && [ ! -e 'Makefile' ]; do
