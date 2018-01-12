@@ -43,6 +43,20 @@ alias tree="tree -a"
 # Disables changing directory w/o `cd`
 unsetopt AUTO_CD
 
+# Move these to a backup bin folder that is last in PATH
+gsutil () {
+  if hash gsutil 2>/dev/null; then
+    command gsutil "${@}"
+  else
+    docker pull google/cloud-sdk > /dev/null
+    docker run -it -v /root/.config:/root/.config -v "${PWD}":/output --net=host --rm google/cloud-sdk gsutil "${@}"
+  fi
+}
+
+etcdctl () {
+  docker run --rm -i quay.io/coreos/etcd etcdctl "${@}"
+}
+
 make() {
   (
     while [ "${PWD}" != '/' ] && [ ! -e 'Makefile' ]; do
