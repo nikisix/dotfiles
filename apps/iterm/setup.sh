@@ -4,8 +4,9 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
+mkdir -p "${HOME}/Library/Application Support/iTerm2/DynamicProfiles"
 # Add custom profiles
-ln -s "${PWD}/profiles.json" "${HOME}/Library/Application Support/iTerm2/DynamicProfiles/profiles.json"
+ln -fs "${PWD}/profiles.json" "${HOME}/Library/Application Support/iTerm2/DynamicProfiles/profiles.json"
 # Set the 'dark' theme as the default
 defaults write com.googlecode.iterm2 "Default Bookmark Guid" -string "2AE2AB65-51BB-4654-9E04-B6876D3A57E5"
 # Generic display tweaks
