@@ -7,6 +7,7 @@
 # https://github.com/connorcimowsky/dotfiles/blob/master/defaults.sh
 # https://www.defaults-write.com/speed-up-macos-high-sierra/
 # https://github.com/herrbischoff/awesome-osx-command-line
+# https://gist.github.com/ryanpcmcquen/b2e608311f286a4ab3e1
 
 set -o errexit
 set -o nounset
@@ -19,8 +20,6 @@ open Inconsolata/Inconsolata-Regular.ttf
 for app in ./apps/*/; do
     "${app}"/setup.sh
 done
-# Disable iTunes
-sudo chmod -x /Applications/iTunes.app
 # Set preferred macOS and app settings. Probably worth looking at what the defaults are from the new computer so we can
 # drop them here.
 #
@@ -66,7 +65,6 @@ defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 defaults write com.apple.finder ShowRecentTags -bool false
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 defaults write com.apple.finder ShowSidebar -bool true
-defaults write com.apple.finder ShowTabView -bool false
 defaults write com.apple.finder ShowTabView -bool true
 # Battery Menubar
 defaults write com.apple.menuextra.battery ShowPercent -string 'YES'
@@ -97,6 +95,7 @@ defaults write at.eggerapps.Postico PreferTableListView -bool true
 echo "Don't forget to:"
 echo "- disable guest account"
 echo "- enable/verify filevault encryption"
+echo "- enable firewall"
 echo ""
 echo "Waiting..."
 read -r
