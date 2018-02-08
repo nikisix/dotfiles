@@ -9,14 +9,8 @@ if ! hash brew 2>/dev/null; then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-xcode-select --install
-echo "Press enter once Xcode Command Line Tools are installed..."
-read -r
-
-echo "Installing brew packages"
-xargs brew install      < ./requirements/brew-requirements.txt
-echo "Installing brew cask apps"
-xargs brew cask install < ./requirements/cask-requirements.txt
+echo "Installing brew and cask packages"
+brew bundle --file=requirements/Brewfile
 
 echo "Updating pip"
 pip2 install --upgrade pip setuptools
