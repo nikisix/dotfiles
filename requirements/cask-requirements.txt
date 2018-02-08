@@ -1,8 +1,0 @@
-alfred
-docker
-google-chrome
-google-cloud-sdk
-iterm2
-postico
-spectacle
-spotify
