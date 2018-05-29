@@ -1,6 +1,11 @@
 " Must set it before referenced since it gets expanded at use
 let mapleader = "\<Space>"
 
+" fish isn't posix compliant
+if &shell =~# 'fish$'
+  set shell=sh
+endif
+
 "#############"
 "## Plugins ##"
 "#############"
@@ -14,6 +19,7 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
+" Plugin 'https://github.com/easymotion/vim-easymotion' " Need to learn more, but it's like vimium's link following
 Plugin 'Shougo/neocomplete' " allows completion, such as words, methods, functions, etc.
 Plugin 'Shougo/neosnippet' " allows snippet completion
 Plugin 'Shougo/neosnippet-snippets' " actual snippets
@@ -21,10 +27,11 @@ Plugin 'altercation/vim-colors-solarized' " soloraized color scheme
 Plugin 'bling/vim-airline' " minimal status line
 Plugin 'chrisbra/Recover.vim' " allow diff from existing .swp files
 Plugin 'christoomey/vim-tmux-navigator' " use ctrl-(h/j/k/l) to seamlessly navigate vim splits or tmux panes
+Plugin 'dag/vim-fish' " Add fish syntax support
 Plugin 'davidhalter/jedi-vim' " python highlighting, goto, etc. Need to learn more and better utilize
 Plugin 'elzr/vim-json' " adds json specific highlighting (instead of just js)
 Plugin 'fatih/vim-go' " damn good go plugin
-" Plugin 'haya14busa/incsearch.vim' " improved incremental search, highlights all matches
+Plugin 'haya14busa/incsearch.vim' " improved incremental search, highlights all matches
 Plugin 'kana/vim-textobj-entire' " used for vim-expand-region config
 Plugin 'kana/vim-textobj-indent' " used for vim-expand-region config
 Plugin 'kana/vim-textobj-user'   " used for vim-expand-region config
@@ -54,6 +61,9 @@ syntax enable
 set background=dark
 colorscheme solarized
 
+" ## vim-fish
+autocmd FileType fish compiler fish
+
 " ## jedi-vim
 " let g:jedi#force_py_version=3
 let g:jedi#use_splits_not_buffers = "top"
@@ -64,8 +74,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0 " don't check on exit
 let g:syntastic_javascript_checkers = ['jshint', 'json_tool'] " from myint/syntastic-extras
 let g:syntastic_loc_list_height = 3
-let g:syntastic_python_pylint_args = "--load-plugins pylint_django -j 2"
-" let g:syntastic_python_python_exec = '/usr/local/bin/python3' " Use python3 for checks, etc
+let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'errcheck']
+let g:syntastic_python_python_exec = '/usr/local/bin/python3' " Use python3 for checks, etc
 let g:syntastic_yaml_checkers = ['pyyaml'] " from myint/syntastic-extras
 set statusline+=%#warningmsg#
 set statusline+=%*
@@ -85,14 +95,14 @@ map <C-n> :NERDTreeToggle<CR>
 
 " ## incsearch.vim
 " Replaces default searches to highlight all matches instead of just first
-" map /  <Plug>(incsearch-forward)
-" map ?  <Plug>(incsearch-backward)
-" map g/ <Plug>(incsearch-stay)
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
 
 " ## neocomplete
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
+  let g:neocomplete#sources#omni#input_patterns = {}
 endif
 
 " choose highlighted match without inserting newline
@@ -139,7 +149,6 @@ call expand_region#custom_text_objects({
 nnoremap U :UndotreeToggle<cr>
 
 " ## vim-go ##
-let g:go_fmt_command = "goimports"
 au FileType go nmap <Leader>b  <Plug>(go-build)
 au FileType go nmap <Leader>d  <Plug>(go-def)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
@@ -152,12 +161,15 @@ au FileType go nmap <Leader>i  <Plug>(go-info)
 au FileType go nmap <Leader>r  <Plug>(go-run)
 au FileType go nmap <Leader>s  <Plug>(go-implements)
 au FileType go nmap <Leader>t  <Plug>(go-test)
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_interfaces = 1
-let g:go_highlight_operators = 1
+let $GOPATH = $HOME
+let g:go_bin_path = $HOME.'/.vim/gopath/bin'
+let g:go_fmt_command = "goimports"
 let g:go_highlight_build_constraints = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
 
 "####################"
 "## Custom Options ##"
