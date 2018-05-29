@@ -1,5 +1,6 @@
 tap "homebrew/core"
 tap "homebrew/bundle"
+brew "aria2"
 brew "bash"
 brew "coreutils"
 brew "ctags"
@@ -23,8 +24,8 @@ brew "make", args: ["with-default-names"]
 brew "openssh"
 brew "openssl"
 brew "postgresql"
-brew "python"
-brew "python3"
+brew "python" # This is python3
+brew "python@2"
 brew "readline"
 brew "reattach-to-user-namespace"
 brew "recode"
