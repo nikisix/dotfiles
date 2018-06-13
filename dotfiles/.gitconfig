@@ -12,8 +12,8 @@
   pr  = pull-request
   ps  = push
   r   = reset
-  rb  = rebase
-  rbi = rebase -i
+  rb  = rebase --autostash
+  rbi = rebase -i --autostash
   s   = status
   st  = stash
   up  = pull --rebase --autostash
