@@ -3,6 +3,7 @@ set -x EDITOR 'vim'
 set -x GOPATH $HOME
 set -x PAGER "/usr/bin/less -S" # Don't wrap when paging, in eg: psql
 set PATH $GOPATH/bin $PATH
+set fish_greeting ""
 
 fish_vi_key_bindings
 
