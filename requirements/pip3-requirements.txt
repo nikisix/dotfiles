@@ -1,8 +1,8 @@
 flake8
-git-up
 jedi
 mccabe
 pep8
+pipenv
 pycodestyle
 pyflakes
 pylint
