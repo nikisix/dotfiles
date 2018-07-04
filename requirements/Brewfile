@@ -33,7 +33,7 @@ brew "shellcheck"
 brew "the_silver_searcher"
 brew "tmux"
 brew "tree"
-brew "vim", args: ["with-luajit", "with-override-system-vi", "with-python3"]
+brew "vim", args: ["with-luajit", "with-override-system-vi"]
 brew "watch"
 cask "alfred"
 cask "docker"
