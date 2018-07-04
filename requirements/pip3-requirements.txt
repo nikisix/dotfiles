@@ -6,4 +6,3 @@ pipenv
 pycodestyle
 pyflakes
 pylint
-pylint-django
