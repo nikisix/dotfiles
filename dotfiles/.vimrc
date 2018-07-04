@@ -26,6 +26,7 @@ Plugin 'Shougo/neosnippet-snippets' " actual snippets
 Plugin 'altercation/vim-colors-solarized' " soloraized color scheme
 Plugin 'bling/vim-airline' " minimal status line
 Plugin 'chrisbra/Recover.vim' " allow diff from existing .swp files
+Plugin 'chrisbra/csv.vim' " Fancy CSV viewing
 Plugin 'christoomey/vim-tmux-navigator' " use ctrl-(h/j/k/l) to seamlessly navigate vim splits or tmux panes
 Plugin 'dag/vim-fish' " Add fish syntax support
 Plugin 'davidhalter/jedi-vim' " python highlighting, goto, etc. Need to learn more and better utilize
