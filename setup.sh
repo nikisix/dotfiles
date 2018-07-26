@@ -15,8 +15,10 @@ brew bundle --file=requirements/Brewfile
 echo "Updating pip"
 pip2 install --upgrade pip setuptools
 pip3 install --upgrade pip setuptools
-echo "Installing pip3 packages"
-pip3 install -r ./requirements/pip3-requirements.txt
+echo "Installing python packages"
+pip2 install --upgrade -r ./requirements/python-requirements.txt
+pip3 install --upgrade -r ./requirements/python-requirements.txt
+
 
 echo "Linking dotfiles to ~/"
 # Using the gnu version of cp from brew coreutils b/c it has the -s flag for symbolic links and works with directories
