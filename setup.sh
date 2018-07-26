@@ -28,12 +28,6 @@ echo "Installing Fisherman"
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
 fisher
 
-echo "Installing Vundle"
-test -d ~/.vim/bundle/Vundle.vim  || git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-echo "Installing vim plugins..."
-# Need to echo "\n" or something - it fails from unknown things in vimrc
-vim +PluginInstall +qall
-
 echo "Installing TmuxPluginManager"
 test -d ~/.tmux/plugins/tpm || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "Start tmux and run 'prefix-I' to install tmux plugins... Press enter when done..."
