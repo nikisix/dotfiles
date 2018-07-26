@@ -93,9 +93,11 @@ defaults write at.eggerapps.Postico ShowSidebar -bool true
 defaults write at.eggerapps.Postico PreferTableListView -bool true
 
 echo "Don't forget to:"
+echo "- disable caps-lock. Open Keyboard prefs->Modifier Keys, Caps-lock no action"
 echo "- disable guest account"
-echo "- enable/verify filevault encryption"
 echo "- enable firewall"
+echo "- enable/verify filevault encryption"
+echo "- replace Spotlight shortcut with Alfred (remove system shortcut and open Alfred and set it there)"
 echo ""
 echo "Waiting..."
 read -r
