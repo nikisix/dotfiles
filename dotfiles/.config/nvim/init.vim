@@ -21,6 +21,7 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Plug 'easymotion/vim-easymotion' " Need to learn more, but it's like vimium's link following
+Plug '/usr/local/opt/fzf' " Use the brew installed fzf
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet-snippets' " actual snippets
 Plug 'Shougo/neosnippet.vim' " allows snippet completion

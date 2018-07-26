@@ -10,6 +10,7 @@ brew "curl"
 brew "diffutils"
 brew "findutils", args: ["with-default-names"]
 brew "fish"
+brew "fzf"
 brew "gawk"
 brew "git"
 brew "gnu-sed", args: ["with-default-names"]
