@@ -9,10 +9,10 @@
   l   = log
   m   = merge
   pl  = pull
-  pr  = pull-request
   ps  = push
   r   = reset
   rb  = rebase --autostash
+  rbc = rebase --continue
   rbi = rebase -i --autostash
   s   = status
   st  = stash
