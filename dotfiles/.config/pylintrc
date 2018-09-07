@@ -8,4 +8,4 @@ docstring-min-length=10
 min-public-methods=0
 
 [MESSAGES CONTROL]
-disable=consider-using-ternary, invalid-name, import-error, protected-access, too-many-ancestors, too-many-arguments
+disable=consider-using-ternary, invalid-name, import-error, protected-access, too-many-ancestors, too-many-arguments, bad-continuation, logging-fstring-interpolation, ungrouped-imports, unused-argument
