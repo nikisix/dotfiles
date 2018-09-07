@@ -1,4 +1,4 @@
-function make
+function make --wraps make
   fish -c "
     while [ \$PWD != '/' ]; and [ ! -e 'Makefile' ]
       cd ..
