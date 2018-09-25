@@ -20,20 +20,22 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 
+" Plug 'bling/vim-bufferline' " Show the buffers (and number) in status bar
+" Plug 'chrisbra/Recover.vim' " allow diff from existing .swp files - doesn't work well with nvim
 " Plug 'easymotion/vim-easymotion' " Need to learn more, but it's like vimium's link following
 Plug '/usr/local/opt/fzf' " Use the brew installed fzf
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet-snippets' " actual snippets
 Plug 'Shougo/neosnippet.vim' " allows snippet completion
 Plug 'altercation/vim-colors-solarized' " soloraized color scheme
+Plug 'bfredl/nvim-miniyank' " Fix block paste in neovim when clipboard=unnamed
 Plug 'bling/vim-airline' " minimal status line
-Plug 'chrisbra/Recover.vim' " allow diff from existing .swp files
 Plug 'chrisbra/csv.vim' " Fancy CSV viewing
 Plug 'christoomey/vim-tmux-navigator' " use ctrl-(h/j/k/l) to seamlessly navigate vim splits or tmux panes
 Plug 'dag/vim-fish' " Add fish syntax support
 Plug 'davidhalter/jedi-vim' " python highlighting, goto, etc. Using zchee/deoplete-jedi for completion though
 Plug 'elzr/vim-json' " adds json specific highlighting (instead of just js)
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'} " lots of go helpers
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " lots of go helpers
 Plug 'kana/vim-textobj-entire' " used for vim-expand-region config
 Plug 'kana/vim-textobj-indent' " used for vim-expand-region config
 Plug 'kana/vim-textobj-user'   " used for vim-expand-region config
@@ -48,7 +50,7 @@ Plug 'tpope/vim-sensible' " some sensible vim defaults, though I think most are 
 Plug 'tpope/vim-sleuth' " Auto detect space/indent
 Plug 'vim-airline/vim-airline-themes' " Use Solarized Light theme for statusline
 Plug 'w0rp/ale' " async linting, etc
-Plug 'zchee/deoplete-go', { 'do': 'make'} " async go completion
+Plug 'zchee/deoplete-go', { 'do': 'make' } " async go completion
 Plug 'zchee/deoplete-jedi' " async python completion
 
 call plug#end()
@@ -85,6 +87,8 @@ set tabstop=4 " Number of characters/spaces a tab appears as
 set textwidth=120 " Start new lines at 120 characters automatically or re-wrap to 120 with gq
 set undofile " Store change history between file sessions
 set visualbell " don't beep, ex when hitting escape in command mode
+
+autocmd bufreadpre *.py setlocal textwidth=88 " Match Black config
 
 " faster quit, write, and exit
 nnoremap <Leader>q :q<CR>
