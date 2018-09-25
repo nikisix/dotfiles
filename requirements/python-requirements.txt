@@ -1,3 +1,4 @@
+astroid
 black ; python_version >= '3'
 flake8
 isort
@@ -7,7 +8,4 @@ neovim
 pipenv
 pycodestyle<2.4.0 # flake8 depends on less than 2.4.0
 pyflakes
-
-# Install old pylint/astroid version b/c astroid got way slow: https://github.com/PyCQA/pylint/issues/2198
-astroid<=1.6.1 # Later versions are much slower...
-pylint==1.9.2 # >2 requires astroid>=2
+pylint
