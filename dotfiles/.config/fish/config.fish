@@ -1,5 +1,6 @@
 set -x COPYFILE_DISABLE 1 # Turn off special handling of ._* files in tar, etc.
 set -x EDITOR 'nvim'
+set -x GO111MODULE on
 set -x GOPATH $HOME
 set -x LANG en_US.UTF-8
 set -x LC_ALL en_US.UTF-8
