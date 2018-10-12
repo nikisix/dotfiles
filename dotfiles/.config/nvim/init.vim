@@ -30,6 +30,7 @@ Plug 'Shougo/neosnippet.vim' " allows snippet completion
 Plug 'altercation/vim-colors-solarized' " soloraized color scheme
 Plug 'bfredl/nvim-miniyank' " Fix block paste in neovim when clipboard=unnamed
 Plug 'bling/vim-airline' " minimal status line
+Plug 'chr4/nginx.vim' " Nginx conf file syntax highlighting
 Plug 'chrisbra/csv.vim' " Fancy CSV viewing
 Plug 'christoomey/vim-tmux-navigator' " use ctrl-(h/j/k/l) to seamlessly navigate vim splits or tmux panes
 Plug 'dag/vim-fish' " Add fish syntax support
@@ -41,8 +42,10 @@ Plug 'kana/vim-textobj-indent' " used for vim-expand-region config
 Plug 'kana/vim-textobj-user'   " used for vim-expand-region config
 Plug 'majutsushi/tagbar' " Shows ctags (ex for go-to definition)
 Plug 'mbbill/undotree' " friendly view for change history
+Plug 'ntpeters/vim-better-whitespace' " Highlight trailing whitespace
 Plug 'scrooloose/nerdtree' " file explorer
 Plug 'terryma/vim-expand-region' " expand visual selection by repeating key hit
+Plug 'terryma/vim-multiple-cursors' " Sublime Text style multi-edit
 Plug 'tmux-plugins/vim-tmux' " tmux syntax highlighting and a few others
 Plug 'tpope/vim-commentary' " Auto comment line (gcc) or visual block (gc)
 Plug 'tpope/vim-repeat' " allows plugin actions to be repeated as a whole with '.' instad of last native action
