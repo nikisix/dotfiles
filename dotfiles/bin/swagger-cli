@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+exec docker run \
+    --rm \
+    --workdir="$PWD" \
+    -v "$PWD:$PWD" \
+    jacobhayes/swagger-cli "${@}"

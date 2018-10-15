@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+exec docker run \
+    --rm \
+    --workdir="$PWD" \
+    -it \
+    -v "$PWD:$PWD" \
+    jacobhayes/octave "${@}"
