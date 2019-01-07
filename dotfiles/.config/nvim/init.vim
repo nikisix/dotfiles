@@ -173,10 +173,7 @@ vnoremap H <home>
 noremap L <end>
 vnoremap L <end>
 noremap <leader>k <pageup>
-"vnoremap K <pageup>
-" TODO join
 noremap <leader>j <pagedown>
-"vnoremap J <pagedown>  "TODO }
 
 "[[ SPLITS ]]
 "SPLIT SWITCH
