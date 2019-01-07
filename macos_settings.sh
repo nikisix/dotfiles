@@ -17,16 +17,16 @@ set -o pipefail
 open Inconsolata/Inconsolata-Bold.ttf
 open Inconsolata/Inconsolata-Regular.ttf
 # Setup apps
-for app in ./apps/*/; do
-    "${app}"/setup.sh
+for app in $(ls ./apps); do
+    ./apps/${app}/setup.sh
 done
 # Set preferred macOS and app settings. Probably worth looking at what the defaults are from the new computer so we can
 # drop them here.
 #
 # Set network name
-sudo scutil --set HostName JacobHayes
-sudo scutil --set LocalHostName JacobHayes
-sudo scutil --set ComputerName JacobHayes
+sudo scutil --set HostName goldencoast
+sudo scutil --set LocalHostName goldencoast
+sudo scutil --set ComputerName goldencoast
 # '-g' is short for the 'NSGlobalDomain' domain
 defaults delete -g NSUserDictionaryReplacementItems
 defaults write -g AppleActionOnDoubleClick -string 'Maximize'

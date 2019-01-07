@@ -1,23 +1,25 @@
 [alias]
-  a   = add
-  b   = branch
-  c   = commit
-  co  = checkout
-  cp  = cherry-pick
-  d   = diff
-  dt  = difftool
-  l   = log
-  m   = merge
-  pl  = pull
-  ps  = push
-  r   = reset
-  rb  = rebase --autostash
-  rbc = rebase --continue
-  rbi = rebase -i --autostash
-  s   = status
-  st  = stash
-  up  = pull --rebase --autostash
-  wt  = worktree
+  a    = add
+  b    = branch
+  c    = commit
+  co   = checkout
+  cp   = cherry-pick
+  d    = diff
+  dt   = difftool
+  l    = log
+  m    = merge
+  pl   = pull
+  pr   = pull-request
+  ps   = push
+  r    = reset
+  rb   = rebase
+  rbi  = rebase -i
+  s    = status
+  st   = stash
+  down = pull --rebase --autostash
+  wt   = worktree
+  lg = log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  date = log --follow --diff-filter=A --find-renames=40%
 [color]
   ui = auto
 [config]
@@ -25,26 +27,38 @@
 [core]
   autocrlf = input
   editor = vim
-  excludesfile = /Users/jacobhayes/.gitignore_global
+	excludesfile = /Users/zen/.gitignore_global
 [credential]
   helper = osxkeychain
 [github]
-  user = JacobHayes
+  user = nikisix
 [push]
   default = simple
 [user]
-  name = Jacob Hayes
-  email = jacob.r.hayes@gmail.com
+	name = Nikki Six
+	email = nicolai.tesela@gmail.com
 [url "git@github.com:"]
   pushInsteadOf = https://github.com/ # Use ssh keys, even if cloned with http
 [diff]
-  tool = vimdiff
+	tool = vimdiff
 [difftool]
   prompt = off
+[difftool "vimdiff"]
+	cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "vimdiff"]
+	cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
+	trustExitCode = true
+[commit]
+	template = /Users/six/.stCommitMsg
 [filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
-[credential "https://source.developers.google.com"]
-	helper = gcloud.sh
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = vimdiff \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

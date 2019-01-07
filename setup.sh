@@ -29,9 +29,9 @@ test -d ~/.tmux/plugins/tpm || git clone https://github.com/tmux-plugins/tpm ~/.
 echo "Start tmux and run 'prefix-I' to install tmux plugins... Press enter when done..."
 read -r
 
-echo "Changing default shell to brew's fish"
-sudo sh -c "echo '/usr/local/bin/fish' >> /etc/shells"
-chsh -s /usr/local/bin/fish
+echo "Changing default shell to brew's zsh"
+sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
+chsh -s /usr/local/bin/zsh
 
 if hash gcloud 2>/dev/null; then
     echo 'y' | gcloud components install docker-credential-gcr

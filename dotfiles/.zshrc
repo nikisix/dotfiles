@@ -1,123 +1,96 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-ZSH_THEME="lambda_custom"
-COMPLETION_WAITING_DOTS="true"
-ZLE_REMOVE_SUFFIX_CHARS="" # Fix space being removed when using '|' characters
-# Mostly used for autocompletion.
-plugins=(
-  brew
-  docker
-  docker-compose
-  golang
-)
+# Path to your oh-my-zsh installation.
+#export ZSH=/Users/zen/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="random"
+
+# Set list of themes to load
+# Setting this variable when ZSH_THEME=random
+# cause zsh load theme from this variable instead of
+# looking in ~/.oh-my-zsh/themes/
+# An empty array have no effect
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git battery)
 
 source $ZSH/oh-my-zsh.sh
-
-export COPYFILE_DISABLE=1 # Turn off special handling of ._* files in tar, etc.
-export EDITOR='vim'
-export GOPATH="$HOME"
-export PAGER="/usr/bin/less -S" # Don't wrap when paging, in eg: psql
-
-gobins="$GOPATH/bin"
-export PATH=$gobins:$PATH
-
-eval "$(hub alias -s)"
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
-
+source ~/.bashrc
 set -o vi
-bindkey '^?' backward-delete-char # Same as below, but I think works for os x.
-bindkey '^H' backward-delete-char # Delete characters after entering append/insert mode
-bindkey -a 'gg' beginning-of-buffer-or-history
-bindkey -a G end-of-buffer-or-history
-bindkey -a u undo # Undo more than one change
-bindkey -a '^R' redo
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias cp='cp -i'
-alias g="git"
-alias ll="ls -AGHohp"
-alias mv='mv -i'
-alias rm='rm -i'
-alias tree="tree -a"
-# Disables changing directory w/o `cd`
-unsetopt AUTO_CD
+# User configuration
 
-make() {
-  (
-    while [ "${PWD}" != '/' ] && [ ! -e 'Makefile' ]; do
-      cd ..
-    done
-    command make "${@}" # Run make even without a Makefile to allow `make --help`, etc
-  )
-}
+# export MANPATH="/usr/local/man:$MANPATH"
 
-set_iterm() {
-  profile="${1}"
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
-  iterm_cmd="\033]50;SetProfile=${profile}\a"
-  if [[ -n "${TMUX}" ]]; then
-    echo -e "\033Ptmux;\033${iterm_cmd}\033\\"
-  else
-    echo -e "${iterm_cmd}"
-  fi
-}
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
-set_vim() {
-  profile="${1}"
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
 
-  gsed -i "s#set background=.*#set background=${profile}#" ~/.vimrc
-  # Temp: this is to test out my sigusr1 vim branch to auto reload
-  pgrep -f './vim sigusr1' | xargs -r kill -s SIGUSR1
-}
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-set_tmux() {
-  profile="${1}"
-
-  gsed -i "s#set -g @colors-solarized '.*'#set -g @colors-solarized '${profile}'#" ~/.tmux.conf
-  tmux source-file ~/.tmux.conf
-}
-
-set_profile() {
-  profile="${1}"
-
-  set_iterm "${profile}"
-  set_tmux "${profile}"
-  set_vim "${profile}"
-}
-
-alias dark="set_profile dark"
-alias light="set_profile light"
-
-set_gcloud() {
-  export CLOUDSDK_CORE_ACCOUNT="${1}"
-  export CLOUDSDK_CORE_PROJECT="${2}"
-}
-
-notify() {
-    if eval "${@}"; then
-        osascript -e "display notification \"Complete!\" with title \"${*}\""
-    else
-        osascript -e "display notification \"Failed! 😞\" with title \"${*}\""
-    fi
-}
-
-_iterm2_hook() {
-  # This function should be used as the iterm2 command to run on terminal open
-  #
-  # Set iterm title bar to black
-  echo -e "\033]6;1;bg;red;brightness;0\a"
-  echo -e "\033]6;1;bg;green;brightness;0\a"
-  echo -e "\033]6;1;bg;blue;brightness;0\a"
-  # Create a new tmux session if it doesn't exists. Otherwise, create a new grouped session and clean it up on exit.
-  # This allows multiple terminals to view different tmux windows.
-  tmux new -s base || \
-    tmux new -t base \
-    | awk '{ gsub("\\)]", "", $4); print $4 }' \
-    | xargs --no-run-if-empty tmux kill-session -t
-}
-
-if [[ -f ~/.zshrc.override ]]
-then
-    source ~/.zshrc.override
-fi
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
