@@ -20,42 +20,28 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Plug 'bling/vim-bufferline' " Show the buffers (and number) in status bar
-" Plug 'chrisbra/Recover.vim' " allow diff from existing .swp files - doesn't work well with nvim
-" Plug 'easymotion/vim-easymotion' " Need to learn more, but it's like vimium's link following
+" [[ Six and MOMO ]]
 Plug '/usr/local/opt/fzf' " Use the brew installed fzf
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'Shougo/neosnippet-snippets' " actual snippets
-"Plug 'Shougo/neosnippet.vim' " allows snippet completion
-"Plug 'altercation/vim-colors-solarized' " soloraized color scheme
 Plug 'bfredl/nvim-miniyank' " Fix block paste in neovim when clipboard=unnamed
 Plug 'bling/vim-airline' " minimal status line
 Plug 'chr4/nginx.vim' " Nginx conf file syntax highlighting
 Plug 'chrisbra/csv.vim' " Fancy CSV viewing
 Plug 'christoomey/vim-tmux-navigator' " use ctrl-(h/j/k/l) to seamlessly navigate vim splits or tmux panes
-" Plug 'dag/vim-fish' " Add fish syntax support
 Plug 'davidhalter/jedi-vim' " python highlighting, goto, etc. Using zchee/deoplete-jedi for completion though
 Plug 'elzr/vim-json' " adds json specific highlighting (instead of just js)
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " lots of go helpers
-"Plug 'kana/vim-textobj-entire' " used for vim-expand-region config
-"Plug 'kana/vim-textobj-indent' " used for vim-expand-region config
-"Plug 'kana/vim-textobj-user'   " used for vim-expand-region config
 Plug 'vim-scripts/Tagbar' " Shows ctags (ex for go-to definition)
-"Plug 'mbbill/undotree' " friendly view for change history
 Plug 'ntpeters/vim-better-whitespace' " Highlight trailing whitespace
 Plug 'scrooloose/nerdtree' " file explorer
-"Plug 'terryma/vim-expand-region' " expand visual selection by repeating key hit
-"Plug 'terryma/vim-multiple-cursors' " Sublime Text style multi-edit
 Plug 'tmux-plugins/vim-tmux' " tmux syntax highlighting and a few others
-"Plug 'tpope/vim-commentary' " Auto comment line (gcc) or visual block (gc)
 Plug 'tpope/vim-repeat' " allows plugin actions to be repeated as a whole with '.' instad of last native action
-"Plug 'tpope/vim-sensible' " some sensible vim defaults, though I think most are overwritten below.
 Plug 'tpope/vim-sleuth' " Auto detect space/indent
 Plug 'vim-airline/vim-airline-themes' " Use Solarized Light theme for statusline
 Plug 'w0rp/ale' " async linting, etc
 Plug 'zchee/deoplete-go', { 'do': 'make' } " async go completion
 Plug 'zchee/deoplete-jedi' " async python completion
-
+" [[ Six not MOMO ]]
 Plug 'tpope/vim-surround' "Surround text v(highlight)S<character>
 Plug 'tpope/vim-fugitive' "Vim git plugin
 Plug 'mattboehm/vim-unstack' "Unfold a stacktrace into vim-splits
@@ -65,8 +51,25 @@ Plug 'vorillaz/devicons' "Next level bling
 Plug 'bling/vim-bufferline'
 Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine' "Marks indentation levels with a character
+
+" [[ ICEBOX ]]
 "Plug 'hrj/vim-DrawIt' "VERY useful for diagramming
 "Plug 'xsunsmile/showmarks'
+"Plug 'bling/vim-bufferline' " Show the buffers (and number) in status bar
+"Plug 'chrisbra/Recover.vim' " allow diff from existing .swp files - doesn't work well with nvim
+"Plug 'easymotion/vim-easymotion' " Need to learn more, but it's like vimium's link following
+"Plug 'Shougo/neosnippet-snippets' " actual snippets
+"Plug 'Shougo/neosnippet.vim' " allows snippet completion
+"Plug 'altercation/vim-colors-solarized' " soloraized color scheme
+"Plug 'dag/vim-fish' " Add fish syntax support
+"Plug 'kana/vim-textobj-entire' " used for vim-expand-region config
+"Plug 'kana/vim-textobj-indent' " used for vim-expand-region config
+"Plug 'kana/vim-textobj-user'   " used for vim-expand-region config
+"Plug 'mbbill/undotree' " friendly view for change history
+"Plug 'terryma/vim-expand-region' " expand visual selection by repeating key hit
+"Plug 'terryma/vim-multiple-cursors' " Sublime Text style multi-edit
+"Plug 'tpope/vim-commentary' " Auto comment line (gcc) or visual block (gc)
+"Plug 'tpope/vim-sensible' " some sensible vim defaults, though I think most are overwritten below.
 
 call plug#end()
 
@@ -75,7 +78,9 @@ for f in split(glob('~/.config/nvim/plugins/*.vim'), '\n')
     exe 'source' f
 endfor
 
-" TODO move functions below to: nvim/functions
+for f in split(glob('~/.config/nvim/functions/*.vim'), '\n')
+    exe 'source' f
+endfor
 
 "####################"
 "##    MOMO VIM    ##"
@@ -131,22 +136,6 @@ function! s:select_without_newline()
   return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
 inoremap <silent> <CR> <C-r>=<SID>select_without_newline()<CR>
-
-" handle tabs in insert mode specially if a completion menu or snippet is open
-function! s:tab_complete()
-  if pumvisible()
-    " a completion menu open is open - cycle to the next item
-    return "\<c-n>"
-  elseif neosnippet#expandable_or_jumpable()
-    " Either a snippet can be expanded or a placeholder can be jumped to
-    " Still need to use enter to select, and then tab to fill out snippet
-    return "\<Plug>(neosnippet_expand_or_jump)"
-  else
-    return "\<tab>"
-  endif
-endfunction
-imap <silent><expr><TAB> <SID>tab_complete()
-
 
 "####################"
 "##    SIX VIM     ##"
@@ -265,55 +254,6 @@ set lcs=tab:⇒·,trail:␣,nbsp:~"
 highlight InvisibleSpaces ctermfg=Black ctermbg=Black
 call matchadd('InvisibleSpaces', '\s\+\%#', 100)
 
-"Uppercase SQL
-function! SQLtoUPPER()
-    execute ":%s/\\v(\\s+)create(\\s+)/\\1CREATE\\2/g"
-    execute ":%s/\\v(\\s+)not(\\s+)/\\1NOT\\2/g"
-    execute ":%s/\\v(\\s+)on(\\s+)/\\1ON\\2/g"
-    execute ":%s/\\v(\\s+)as(\\s+)/\\1AS\\2/g"
-    execute ":%s/\\v(\\s*)where(\\s+)/\\1WHERE\\2/g"
-    execute ":%s/\\v(\\s*)select(\\s+)/\\1SELECT\\2/g"
-    execute ":%s/\\v(\\s*)inner(\\s+)/\\1INNER\\2/g"
-    execute ":%s/\\v(\\s*)join(\\s+)/\\1JOIN\\2/g"
-    execute ":%s/\\v(\\s*)from(\\s+)/\\1FROM\\2/g"
-    execute ":%s/\\v(\\s*)cross(\\s+)/\\1CROSS\\2/g"
-    execute ":%s/\\v(\\s*)with(\\s+)/\\1WITH\\2/g"
-endfunction
-"todo change this to a sql-file-only command
-nnoremap <leader>u :call SQLtoUPPER()<CR>
-
-
-"[[ FOLDING ]]
-"zM fold all
-"zR unfold all
-"set foldmethod=indent
-set nofoldenable
-nnoremap f zm
-nnoremap F zr
-set foldmethod=expr
-set foldexpr=FoldMethod(v:lnum)
-
-function! FoldMethod(lnum)
-  "get string of current line
-  let crLine=getline(a:lnum)
-
-  " check if empty line 
-  if empty(crLine) "Empty line or end comment 
-    return -1 " so same indent level as line before 
-  endif 
-
-  " check if comment 
-  let a:data=join( map(synstack(a:lnum, 1), 'synIDattr(v:val, "name")') )
-  if a:data =~ ".*omment.*"
-    return '='
-  endif
-
-  "Otherwise return foldlevel equal to indent /shiftwidth (like if
-  "foldmethod=indent)
-  else  "return indent base fold
-    return indent(a:lnum)/&shiftwidth
-endfunction
-
 " Spell checking 
 "change misspelled words FROM getting highlighted to underlined
 " z= gives a list of suggestions for misspelled words
@@ -328,26 +268,5 @@ hi SpellCap cterm=underline
 hi SpellRare cterm=underline
 setlocal spell spelllang=en_us "uncomment this to allow spell-checking
 
-" Bind nohl
-" Removes highlight of your last search
-" ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
 noremap <leader>n :nohl<CR>
 map <Leader>b obreakpoint()  # TODO BREAKPOINT<C-c>
-
-" Commenting blocks of code.
-autocmd FileType *                  let b:comment_leader = '# '
-autocmd FileType c,cpp,java,scala   let b:comment_leader = '// '
-autocmd FileType js,javascript      let b:comment_leader = '// '
-autocmd FileType octave             let b:comment_leader = '% '
-autocmd FileType sh,ruby,python     let b:comment_leader = '# '
-autocmd FileType conf,fstab         let b:comment_leader = '# '
-autocmd FileType text               let b:comment_leader = '# '
-autocmd FileType tex                let b:comment_leader = '% '
-autocmd FileType mail               let b:comment_leader = '> '
-autocmd FileType vim                let b:comment_leader = '" '
-autocmd FileType sql                let b:comment_leader = '-- '
-noremap <silent> <leader>c :<C-B>silent <C-E>s/\v([^ \t])/<C-R>=escape(b:comment_leader,'\/')<CR>\1/<CR>:nohlsearch<CR>
-noremap <silent> <leader>C :<C-B>silent <C-E>s/\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
-
-" Title sections
-noremap <silent> <leader>t :s/^/[[ /e<CR>:nohlsearch<CR> :s/$/ ]]/e<CR>:nohlsearch<CR>

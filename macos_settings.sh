@@ -18,7 +18,7 @@ open Inconsolata/Inconsolata-Bold.ttf
 open Inconsolata/Inconsolata-Regular.ttf
 # Setup apps
 for app in $(ls ./apps); do
-    ./apps/${app}/setup.sh
+    ./apps/"${app}"/setup.sh
 done
 # Set preferred macOS and app settings. Probably worth looking at what the defaults are from the new computer so we can
 # drop them here.

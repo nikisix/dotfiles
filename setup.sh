@@ -32,6 +32,8 @@ read -r
 echo "Changing default shell to brew's zsh"
 sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
 chsh -s /usr/local/bin/zsh
+echo "Installing oh-my-zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 if hash gcloud 2>/dev/null; then
     echo 'y' | gcloud components install docker-credential-gcr
