@@ -91,6 +91,7 @@ set textwidth=120 " Start new lines at 120 characters automatically or re-wrap t
 set undofile " Store change history between file sessions
 set visualbell " don't beep, ex when hitting escape in command mode
 
+autocmd bufreadpre *.md setlocal conceallevel=0 " Don't hide syntax symbols like _
 autocmd bufreadpre *.py setlocal textwidth=88 " Match Black config
 
 " faster quit, write, and exit

@@ -8,4 +8,5 @@ exec docker run \
     --rm \
     --workdir="$PWD" \
     -v "$PWD:$PWD" \
+    -v "/tmp:/tmp" \
     jacobhayes/speccy "${@}"

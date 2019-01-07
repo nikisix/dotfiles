@@ -24,10 +24,6 @@ echo "Linking dotfiles to ~/"
 # Using the gnu version of cp from brew coreutils b/c it has the -s flag for symbolic links and works with directories
 gcp -srf "${PWD}"/dotfiles/.[^.]* ~/
 
-echo "Installing Fisherman"
-curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
-fisher
-
 echo "Installing TmuxPluginManager"
 test -d ~/.tmux/plugins/tpm || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "Start tmux and run 'prefix-I' to install tmux plugins... Press enter when done..."

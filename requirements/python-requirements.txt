@@ -6,6 +6,6 @@ jedi
 mccabe
 neovim
 pipenv
-pycodestyle<2.4.0 # flake8 depends on less than 2.4.0
+pycodestyle
 pyflakes
 pylint
