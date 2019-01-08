@@ -27,7 +27,7 @@
 [core]
   autocrlf = input
   editor = vim
-	excludesfile = /Users/zen/.gitignore_global
+  excludesfile = /Users/zen/.gitignore_global
 [credential]
   helper = osxkeychain
 [github]
@@ -35,8 +35,8 @@
 [push]
   default = simple
 [user]
-	name = Nikki Six
-	email = nicolai.tesela@gmail.com
+  name = Nikki Six
+  email = nicolai.tesela@gmail.com
 [url "git@github.com:"]
   pushInsteadOf = https://github.com/ # Use ssh keys, even if cloned with http
 [diff]
@@ -45,7 +45,7 @@
   prompt = off
 [difftool "vimdiff"]
 	cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	# path = 
 [mergetool "vimdiff"]
 	cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
 	trustExitCode = true

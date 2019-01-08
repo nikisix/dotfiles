@@ -8,6 +8,7 @@
 # https://www.defaults-write.com/speed-up-macos-high-sierra/
 # https://github.com/herrbischoff/awesome-osx-command-line
 # https://gist.github.com/ryanpcmcquen/b2e608311f286a4ab3e1
+# http://www.nyx.net/~mlu/pages/computing/installing_and_configuring/installing_and_configuring_command-line_utilities/#.XDPrMfxMEWo
 
 set -o errexit
 set -o nounset
