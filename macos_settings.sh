@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-#
 # Take a look at these for other ideas:
 # https://github.com/dsdstudio/dotfiles/blob/master/.osx
 # https://github.com/mathiasbynens/dotfiles/blob/master/.macos
@@ -15,8 +14,17 @@ set -o nounset
 set -o pipefail
 
 # Install fonts
-open Inconsolata/Inconsolata-Bold.ttf
-open Inconsolata/Inconsolata-Regular.ttf
+# open Inconsolata/Inconsolata-Bold.ttf
+# open Inconsolata/Inconsolata-Regular.ttf
+curl -L https://github.com/powerline/fonts/blob/master/RobotoMono/Roboto%20Mono%20Bold%20for%20Powerline.ttf\?raw\=true ./fonts/roboto/"Roboto Mono Bold for Powerline.ttf"
+curl -L https://github.com/powerline/fonts/blob/master/RobotoMono/Roboto%20Mono%20Bold%20for%20Powerline.ttf\?raw\=true ./fonts/roboto/"Roboto Mono Bold for Powerline.ttf"
+curl -L https://github.com/powerline/fonts/blob/master/RobotoMono/Roboto%20Mono%20Italic%20for%20Powerline.ttf\?raw\=true > ./fonts/roboto/"Roboto Mono Italic for Powerline.ttf"
+# TODO not working curl -L https://github.com/powerline/fonts/blob/master/RobotoMono/Roboto%20Mono%20Bold%20Italic%20for%20Powerline.ttf?raw=true ./fonts/roboto/"Roboto Mono Bold Italic for Powerline.ttf"
+open ./fonts/roboto/"Roboto Mono for Powerline.ttf"
+open ./fonts/roboto/"Roboto Mono Bold for Powerline.ttf"
+open ./fonts/roboto/"Roboto Mono Italic for Powerline.ttf"
+# TODO Not working open ./fonts/roboto/"Roboto Mono Bold Italic for Powerline.ttf"
+
 # Setup apps
 for app in $(ls ./apps); do
     ./apps/"${app}"/setup.sh
@@ -61,7 +69,7 @@ defaults write com.apple.dock showAppExposeGestureEnabled -bool true
 defaults write com.apple.dock tilesize -float 25
 # Finder
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
-defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 defaults write com.apple.finder ShowRecentTags -bool false
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true

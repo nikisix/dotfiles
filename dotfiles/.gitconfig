@@ -44,21 +44,21 @@
 [difftool]
   prompt = off
 [difftool "vimdiff"]
-	cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
-	# path = 
+  cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
+  # path = 
 [mergetool "vimdiff"]
-	cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
-	trustExitCode = true
+  cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
+  trustExitCode = true
 [commit]
-	template = /Users/six/.stCommitMsg
+  template = /Users/six/.stCommitMsg
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path = 
 [mergetool "sourcetree"]
-	cmd = vimdiff \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+  cmd = vimdiff \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
