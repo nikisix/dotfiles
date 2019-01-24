@@ -23,6 +23,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 " [[ Six and MOMO ]]
 Plug '/usr/local/opt/fzf' " Use the brew installed fzf
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/neosnippet-snippets' " actual snippets
+Plug 'Shougo/neosnippet.vim' " allows snippet completion
 Plug 'bfredl/nvim-miniyank' " Fix block paste in neovim when clipboard=unnamed
 Plug 'bling/vim-airline' " minimal status line
 Plug 'chr4/nginx.vim' " Nginx conf file syntax highlighting
@@ -36,21 +38,22 @@ Plug 'ntpeters/vim-better-whitespace' " Highlight trailing whitespace
 Plug 'scrooloose/nerdtree' " file explorer
 Plug 'tmux-plugins/vim-tmux' " tmux syntax highlighting and a few others
 Plug 'tpope/vim-repeat' " allows plugin actions to be repeated as a whole with '.' instad of last native action
-Plug 'tpope/vim-sleuth' " Auto detect space/indent
 Plug 'vim-airline/vim-airline-themes' " Use Solarized Light theme for statusline
 Plug 'w0rp/ale' " async linting, etc
 Plug 'zchee/deoplete-go', { 'do': 'make' } " async go completion
 Plug 'zchee/deoplete-jedi' " async python completion
+Plug 'terryma/vim-expand-region' " expand visual selection by repeating key hit
+
 " [[ Six not MOMO ]]
 Plug 'tpope/vim-surround' "Surround text v(highlight)S<character>
 Plug 'tpope/vim-fugitive' "Vim git plugin
 Plug 'mattboehm/vim-unstack' "Unfold a stacktrace into vim-splits
 Plug 'vim-scripts/dbext.vim' "THE BEST DB INTERFACE
 Plug 'easymotion/vim-easymotion' "Space+vim-motion - quick jumps
-Plug 'vorillaz/devicons' "Next level bling
 Plug 'bling/vim-bufferline'
 Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine' "Marks indentation levels with a character
+Plug 'vorillaz/devicons' "Next level bling
 
 " [[ ICEBOX ]]
 "Plug 'hrj/vim-DrawIt' "VERY useful for diagramming
@@ -58,20 +61,20 @@ Plug 'Yggdroot/indentLine' "Marks indentation levels with a character
 "Plug 'bling/vim-bufferline' " Show the buffers (and number) in status bar
 "Plug 'chrisbra/Recover.vim' " allow diff from existing .swp files - doesn't work well with nvim
 "Plug 'easymotion/vim-easymotion' " Need to learn more, but it's like vimium's link following
-"Plug 'Shougo/neosnippet-snippets' " actual snippets
-"Plug 'Shougo/neosnippet.vim' " allows snippet completion
 "Plug 'altercation/vim-colors-solarized' " soloraized color scheme
 "Plug 'dag/vim-fish' " Add fish syntax support
 "Plug 'kana/vim-textobj-entire' " used for vim-expand-region config
 "Plug 'kana/vim-textobj-indent' " used for vim-expand-region config
 "Plug 'kana/vim-textobj-user'   " used for vim-expand-region config
 "Plug 'mbbill/undotree' " friendly view for change history
-"Plug 'terryma/vim-expand-region' " expand visual selection by repeating key hit
 "Plug 'terryma/vim-multiple-cursors' " Sublime Text style multi-edit
 "Plug 'tpope/vim-commentary' " Auto comment line (gcc) or visual block (gc)
 "Plug 'tpope/vim-sensible' " some sensible vim defaults, though I think most are overwritten below.
+"Plug 'tpope/vim-sleuth' " Auto detect space/indent
 
 call plug#end()
+
+let g:airline_powerline_fonts = 1
 
 " Source plugin config files
 for f in split(glob('~/.config/nvim/plugins/*.vim'), '\n')
@@ -105,6 +108,7 @@ set shiftwidth=0 " Number of characters to insert with << or >>, with 0 it defau
 set showmatch " Jump to the corresponding enclosing char when inserting new ones (ex paren, bracket, etc)
 set smartcase " Ignores search case except when you use a caps
 set tabstop=4 " Number of characters/spaces a tab appears as
+set shiftwidth=4 " Number of characters/spaces a tab appears as
 set textwidth=120 " Start new lines at 120 characters automatically or re-wrap to 120 with gq
 set undofile " Store change history between file sessions
 set visualbell " don't beep, ex when hitting escape in command mode
@@ -251,13 +255,13 @@ set lcs=tab:⇒·,trail:␣,nbsp:~"
 highlight InvisibleSpaces ctermfg=Black ctermbg=Black
 call matchadd('InvisibleSpaces', '\s\+\%#', 100)
 
-" Spell checking 
+" Spell checking
 "change misspelled words FROM getting highlighted to underlined
 " z= gives a list of suggestions for misspelled words
 " set spell might work too
 hi clear SpellBad
-hi clear SpellLocal 
-hi clear SpellCap 
+hi clear SpellLocal
+hi clear SpellCap
 hi clear SpellRare
 hi SpellBad cterm=underline
 hi SpellLocal cterm=underline

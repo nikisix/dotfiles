@@ -3,8 +3,7 @@
 # https://github.com/dsdstudio/dotfiles/blob/master/.osx
 # https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 # https://gist.github.com/meleyal/5890865
-# https://github.com/connorcimowsky/dotfiles/blob/master/defaults.sh
-# https://www.defaults-write.com/speed-up-macos-high-sierra/
+# https://github.com/connorcimowsky/dotfiles/blob/master/defaults.sh https://www.defaults-write.com/speed-up-macos-high-sierra/
 # https://github.com/herrbischoff/awesome-osx-command-line
 # https://gist.github.com/ryanpcmcquen/b2e608311f286a4ab3e1
 # http://www.nyx.net/~mlu/pages/computing/installing_and_configuring/installing_and_configuring_command-line_utilities/#.XDPrMfxMEWo
@@ -95,6 +94,8 @@ defaults write com.apple.systemuiserver menuExtras -array \
 # Accessability - aka zoom and invert
 defaults write com.apple.universalaccess closeViewDesiredZoomFactor -float 2
 defaults write com.apple.universalaccess closeViewFlashScreenOnNotificationEnabled -bool true
+# Drag a window from anywhere with Ctrl+Cmd+Drag
+defaults write -g NSWindowShouldDragOnGesture -bool true
 # Spaces
 defaults write com.apple.spaces spans-displays -bool false
 # Postico

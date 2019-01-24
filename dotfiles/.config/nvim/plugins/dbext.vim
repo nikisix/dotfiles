@@ -1,6 +1,6 @@
 "DBEXT
 "Adding connection profiles is the best way to use dbext, :h dbext.txt has lots of examples of different profiles for different databases.
-"<leader>sbp - connect to a sql db 
+"<leader>sbp - connect to a sql db
 "<leader>slt - SQL List Table - lists all of the tables of the db
 "<leader>sdt - SQL Describe Table - describes the table whose name is under your cursor
 "<leader>se  - SQL Execute - executes the line your cursor is ON (command mode) or all selected text (visual mode)

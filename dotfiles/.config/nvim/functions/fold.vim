@@ -1,7 +1,15 @@
 "[[ FOLDING ]]
 "zM fold all
 "zR unfold all
-"set foldmethod=indent
+"
+" FOLD ON PARENS
+" set foldmethod=marker
+" set foldmarker=(,)
+" BRACKETS
+" set foldmarker={,}
+"
+" PYTHON
+" set foldmethod=indent
 set nofoldenable
 nnoremap f zm
 nnoremap F zr

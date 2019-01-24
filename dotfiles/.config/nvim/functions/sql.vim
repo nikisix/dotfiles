@@ -11,6 +11,8 @@ function! SQLtoUPPER()
     execute ":%s/\\v(\\s*)from(\\s+)/\\1FROM\\2/g"
     execute ":%s/\\v(\\s*)cross(\\s+)/\\1CROSS\\2/g"
     execute ":%s/\\v(\\s*)with(\\s+)/\\1WITH\\2/g"
+    execute ":%s/\\v(\\s*)coalesce(\\s+)/\\1COALESCE\\2/g"
+    execute ":%s/\\v(\\s*)nullif(\\s+)/\\1NULLIF\\2/g"
 endfunction
 "todo change this to a sql-file-only command
 nnoremap <leader>u :call SQLtoUPPER()<CR>
