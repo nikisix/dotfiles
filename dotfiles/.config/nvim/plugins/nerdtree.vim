@@ -1,7 +1,7 @@
 " Close vim if only nerdtree is left open
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeShowHidden=1
-map <C-n> :NERDTreeToggle<CR>
+map <C-N> :NERDTreeToggle<CR>
 
 "NERDTree plugin
 "If nerdtree's the only open window when you close vi, then close the nerdtree window too

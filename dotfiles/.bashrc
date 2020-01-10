@@ -1,13 +1,10 @@
 if [[ `uname` == 'Darwin' ]]; then
 
-    export PATH="/Users/zen/bin:~/code/scripts:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
+    export PATH="/Users/zen/bin:~/code/scripts:/usr/local/lib/ruby/gems/2.6.0/gems/tmuxinator-1.1.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
     # Add gnu coreutils to path
     export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
     # Add gnu coreutils docs
     export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-    #make
-    PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
-    MANPATH="/usr/local/opt/make/libexec/gnuman:$MANPATH"
 
     #for pylint
     LC_CTYPE=en_US.UTF-8
@@ -27,13 +24,14 @@ set -o vi
 #source ~/.git-prompt.sh #export PS1="\w\$(__git_ps1)=☆= "
 #=✪=
 #(♂)
-export EDITOR=vim
+export EDITOR=nvim
 export HISTTIMEFORMAT='%F %T '
-export HOMEBREW_GITHUB_API_TOKEN=8ad517d619cb1d155f9ac7ba3ef0a8f8b749e6e6
+export HOMEBREW_GITHUB_API_TOKEN=6cb508ae27ff3c3ae60f8e5e3855aa08e973d5ba
 
-export IPYTHONPATH=$PYTHONPATH
+# export IPYTHONPATH=$PYTHONPATH
+alias ipython="python -m IPython"
 # Instruct Python to execute a start up script
-export PYTHONSTARTUP=$HOME/.python_startup.py
+# export PYTHONSTARTUP=$HOME/.python_startup.py
 # Speed up program execution time maybe turn off
 export PYTHONDONTWRITEBYTECODE=1
 # Ensure that the startup script will be able to access COLUMNS
@@ -42,11 +40,12 @@ export COLUMNS
 export datadir=/Volumes/oasis/ntomasino/data/swlabs/model/
 
 # PATHS
-alias work='cd /Users/six/code/unicorn/warehouse/src/warehouse/reference-sql/bigquery/pre_calc/metrics/templates
-'
+alias warehouse='cd /Users/six/code/unicorn/warehouse/src/warehouse/'
+alias metrics='cd /Users/six/code/unicorn/warehouse/src/warehouse/bigquery/templates/metrics'
 alias aa='cd ~/code/data_analytics_f20180410/'
 alias unicorn='cd ~/code/unicorn'
 alias upgrade_path='cd ~/code/data_analytics_f20180410/analytics/upgrade_path'
+alias model='/Users/six/code/model/preprocessing/public_transit/chicago'
 
 #SERVERS
 alias emr='ssh -i ~/.ssh/dev-vpc-emr-yotabites.pem hadoop@172.23.11.97'
@@ -57,9 +56,12 @@ alias la='ls -A'
 alias l='ls -CF'
 alias ls='ls -GF'
 alias sl='ls -GF'
-function fp() { echo $(pwd)/"$1"; }
+function fp() { for i in "$@"; do echo $(pwd)/"$i"; done; }
 # alias date='date --iso-8601'
 alias ag='ag --color'
+alias pstree='pstree -g3 -s $1'
+alias less='less -Sr'
+alias date='date --iso-8601'
 alias gits='git status'
 alias env-pipenv='source $(pipenv --venv)/bin/activate; [[ -f .env ]] && source .env'
 alias debug='vim +UnstackFromClipboard'
@@ -74,14 +76,18 @@ alias matrix='cmatrix -sabu2'
 function google () { w3m "http://www.google.com/search?q=$*"; }
 alias news='newsbeuter'
 alias sed='/usr/local/bin/gsed'
+alias sp='emacsclient -t $*'
+alias spc='emacsclient -t $*'
 alias vi='/usr/local/bin/nvim'
+alias viconfig='vi ~/.config/nvim/init.vim'
 # alias vi='/usr/local/bin/mvim'  # for macvim
 #function __csv { cat $1 | column -s, -t | less -S; }
 function csv () { csvlook $1 | less -S; }
 function csvsample () { head -n100 $1 | csvlook | less -S;}
 alias clock='watch -n1 "date '+%D%n%T'|figlet -k"'
 function difffiles () { diff <(sort $1) <(sort $2) | less -S; }
-function cols () { head -n1 $1 | gsed 's/,/\n/g' | less -N; }
+function cols () { head -n1 $1 | gsed 's/,/\n/g'; }
+function cols1 () { python -c "import pandas as pd; df = pd.read_csv('$1', nrows=1); print(df.head(1).transpose());" }
 function killps () { kill -9 `ps | grep $1 | sed 's/^[ ]*//' | cut -f1 -d ' '`; }
 function gather () { sed -n -e "/$1/,/},/p" ~/code/dex/allcards.json; }
 function mute () {   osascript -e 'set volume output muted true';
@@ -89,7 +95,7 @@ function mute () {   osascript -e 'set volume output muted true';
                     osascript -e 'set volume output muted false';
                 }
 
-#function __cd { 
+#function __cd {
     ##cd ${1/~/$HOME} #TODO not working b/c ~ doesn't get expanded
     ##pushd ${1:-$HOME} > /dev/null; #push new dir onto stack and cd to it
     #pushd ${PWD/~/$HOME} > /dev/null; #push new dir onto stack and cd to it
@@ -111,11 +117,12 @@ alias bounce_pandora='killps pianobar;pianobar 2>/dev/null'
 alias watchdir='watch -n1 -dc ls -alh'
 alias docker-compost='docker-compose'
 alias vimrc='vi ~/.vimrc'
-alias env-analytics='source ~/.virtualenvs/analytics/bin/activate'
-alias env-prototype='source ~/.virtualenvs/prototype/bin/activate'
+alias env='source ~/.emacs.d/.python-environments/default/bin/activate'
 alias psqllocal='psql -hlocalhost -Upostgres' #stay off of model's db-tunnel
 #set up ssh tunnel. psql into db. kill tunnel on exit
 alias sotdb="ssh -NL 6666:127.0.0.1:5432 -i ~/.ssh/google_compute_engine ntomasino@sot & sleep 1; psql -p6666 -Upostgres -hlocalhost -dmetadata; pkill -6 -f '6666:127.0.0.1:5432'"
+alias floppy="ssh zen@192.168.4.32"
+alias floppydb="psql -Upostgres -dpropdata -h 192.168.4.32"
 
 # man() {
     # env \
@@ -158,3 +165,4 @@ alias prod-kube='kubectl -n prod'
 export AIRFLOW_HOME=~/airflow
 
 source ~/.alias_docker
+alias ff='. /Users/six/.ff/ff.sh'

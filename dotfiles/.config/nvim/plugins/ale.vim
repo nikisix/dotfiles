@@ -1,11 +1,13 @@
 let g:ale_fix_on_save = 1
-let g:ale_fixers = { 'json': ['jq', ], 'python': ['isort', 'black', ], }
+let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'], 'json': ['jq', ], 'python': ['isort'], } " , 'black'
 let g:ale_go_gometalinter_options = '--tests' " Include tests in linting
 let g:ale_lint_delay = 5000 " Wait 5 seconds after last change before trying to lint - reduce spin
-let g:ale_lint_on_enter = 0 " Disable linting on opening file so don't have to close loc when just glancing at files
-let g:ale_linters = {'go': ['gometalinter']} " By default, ALE will run all linters for files not defined here
+let g:ale_lint_on_enter = 1 " Disable linting on opening file so don't have to close loc when just glancing at files
+let b:ale_linters = ['flake8'] ", 'pylint']
+"let g:ale_linters = {} " By default, ALE will run all linters for files not defined here
 let g:ale_list_window_size = 3 " Only show a handful of error lines
 let g:ale_open_list = 1 " Popup with errors by default
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
 let g:ale_use_global_executables = 1 " Only run global executables
+let g:ale_python_flake8_change_directory = 1

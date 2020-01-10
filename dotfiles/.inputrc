@@ -1,2 +1,4 @@
 set editing-mode vi
 set keymap vi-insert
+set keymap vi
+set convert-meta on

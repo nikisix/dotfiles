@@ -15,8 +15,14 @@ ZSH_THEME="random"
 # cause zsh load theme from this variable instead of
 # looking in ~/.oh-my-zsh/themes/
 # An empty array have no effect
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
+ZSH_THEME_RANDOM_CANDIDATES=(
+    "amuse" "arrow" "crunch" "daveverwer" "emotty" "evan"
+    "fishy" "fletcherm" "gallifrey" "kardan" "lukerandall"
+    "miloshadzic" "nebirhos" "peepcode" "sunaku" "sunrise"
+    "zhann"
+)
+# "wuffers"  - is now broken :/
+#
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -37,10 +43,10 @@ ZSH_THEME="random"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -50,7 +56,7 @@ ZSH_THEME="random"
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -59,7 +65,7 @@ ZSH_THEME="random"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git battery)
+plugins=(git battery kubectl) # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/kubectl
 
 source $ZSH/oh-my-zsh.sh
 source ~/.bashrc
@@ -74,11 +80,11 @@ set -o vi
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -94,3 +100,22 @@ set -o vi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+eval "$(direnv hook zsh)"
+if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+
+# VIM mode
+bindkey -v
+
+# vim-mode highlighting on command prompt!
+# works but too slow (recursive function max)
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[green]%} [% NORMAL]%  %{$reset_color%}"
+    # RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$(git) $EPS1"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+export KEYTIMEOUT=1
+source ~/.bin/tmuxinator.zsh

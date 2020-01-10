@@ -23,16 +23,17 @@ call plug#begin('~/.local/share/nvim/plugged')
 " [[ Six and MOMO ]]
 Plug '/usr/local/opt/fzf' " Use the brew installed fzf
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+Plug 'davidhalter/jedi-vim' " python highlighting, goto, etc. Using zchee/deoplete-jedi for completion though
+Plug 'zchee/deoplete-jedi' " async python completion
 Plug 'Shougo/neosnippet-snippets' " actual snippets
 Plug 'Shougo/neosnippet.vim' " allows snippet completion
 Plug 'bfredl/nvim-miniyank' " Fix block paste in neovim when clipboard=unnamed
 Plug 'bling/vim-airline' " minimal status line
-Plug 'chr4/nginx.vim' " Nginx conf file syntax highlighting
+" Plug 'chr4/nginx.vim' " Nginx conf file syntax highlighting
 Plug 'chrisbra/csv.vim' " Fancy CSV viewing
 Plug 'christoomey/vim-tmux-navigator' " use ctrl-(h/j/k/l) to seamlessly navigate vim splits or tmux panes
-Plug 'davidhalter/jedi-vim' " python highlighting, goto, etc. Using zchee/deoplete-jedi for completion though
-Plug 'elzr/vim-json' " adds json specific highlighting (instead of just js)
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " lots of go helpers
+" Plug 'elzr/vim-json' " adds json specific highlighting (instead of just js)
 Plug 'vim-scripts/Tagbar' " Shows ctags (ex for go-to definition)
 Plug 'ntpeters/vim-better-whitespace' " Highlight trailing whitespace
 Plug 'scrooloose/nerdtree' " file explorer
@@ -40,20 +41,20 @@ Plug 'tmux-plugins/vim-tmux' " tmux syntax highlighting and a few others
 Plug 'tpope/vim-repeat' " allows plugin actions to be repeated as a whole with '.' instad of last native action
 Plug 'vim-airline/vim-airline-themes' " Use Solarized Light theme for statusline
 Plug 'w0rp/ale' " async linting, etc
-Plug 'zchee/deoplete-go', { 'do': 'make' } " async go completion
-Plug 'zchee/deoplete-jedi' " async python completion
 Plug 'terryma/vim-expand-region' " expand visual selection by repeating key hit
 
 " [[ Six not MOMO ]]
 Plug 'tpope/vim-surround' "Surround text v(highlight)S<character>
 Plug 'tpope/vim-fugitive' "Vim git plugin
+Plug 'tpope/vim-rhubarb' "Vim github plugin
 Plug 'mattboehm/vim-unstack' "Unfold a stacktrace into vim-splits
 Plug 'vim-scripts/dbext.vim' "THE BEST DB INTERFACE
 Plug 'easymotion/vim-easymotion' "Space+vim-motion - quick jumps
 Plug 'bling/vim-bufferline'
 Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine' "Marks indentation levels with a character
-Plug 'vorillaz/devicons' "Next level bling
+" Plug 'vorillaz/devicons' "Next level bling
+Plug 'shime/vim-livedown' "markdown server
 
 " [[ ICEBOX ]]
 "Plug 'hrj/vim-DrawIt' "VERY useful for diagramming
@@ -71,10 +72,11 @@ Plug 'vorillaz/devicons' "Next level bling
 "Plug 'tpope/vim-commentary' " Auto comment line (gcc) or visual block (gc)
 "Plug 'tpope/vim-sensible' " some sensible vim defaults, though I think most are overwritten below.
 "Plug 'tpope/vim-sleuth' " Auto detect space/indent
+" [[ MOMO NOT SIX ]]
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " lots of go helpers
+" Plug 'zchee/deoplete-go', { 'do': 'make' } " async go completion
 
 call plug#end()
-
-let g:airline_powerline_fonts = 1
 
 " Source plugin config files
 for f in split(glob('~/.config/nvim/plugins/*.vim'), '\n')
@@ -103,18 +105,22 @@ set nofoldenable " disable folding by default when a fold type is specified
 set nojoinspaces " Don't use double spaces when joining lines ending with periods
 set number " Shows line numbers
 "set relativenumber " show numbers as relative to current line.
-set scrolloff=10 " Minimum number of lines before/after cursor at top/bottom
+" set scrolloff=10 " Minimum number of lines before/after cursor at top/bottom
 set shiftwidth=0 " Number of characters to insert with << or >>, with 0 it defaults to tabstop
 set showmatch " Jump to the corresponding enclosing char when inserting new ones (ex paren, bracket, etc)
 set smartcase " Ignores search case except when you use a caps
 set tabstop=4 " Number of characters/spaces a tab appears as
 set shiftwidth=4 " Number of characters/spaces a tab appears as
-set textwidth=120 " Start new lines at 120 characters automatically or re-wrap to 120 with gq
+" set textwidth=120 " Start new lines at 120 characters automatically or re-wrap to 120 with gq
 set undofile " Store change history between file sessions
 set visualbell " don't beep, ex when hitting escape in command mode
+set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 
-autocmd bufreadpre *.md setlocal conceallevel=0 " Don't hide syntax symbols like _
-autocmd bufreadpre *.py setlocal textwidth=88 " Match Black config
+autocmd bufread *.md setlocal conceallevel=0 " Don't hide syntax symbols like _
+autocmd bufread *.py setlocal textwidth=88 " Match Black config
+autocmd bufread *.tsx set syntax=javascript
+autocmd bufread *.sql.tmpl set syntax=sql
+autocmd bufread *.org set syntax=sql
 
 "" faster quit, write, and exit
 "nnoremap <Leader>q :q<CR>
@@ -157,14 +163,14 @@ set smartcase
 set nobackup " Disable stupid backup and swap files - they trigger too many events for file system watchers
 set nowritebackup
 set noswapfile
-set laststatus=2 "Status line - show the percentage through a file 
+set laststatus=2 "Status line - show the percentage through a file
 
-"[[ SYNTAX HIGHLIGHTING ]]
+"[[ SYNTAX HIGHLIGHTING COLORS ]]
 syntax on
-highlight Comment ctermfg='darkgrey'
-highlight Number ctermfg='blue'
-highlight String ctermfg='cyan'
-highlight Float ctermfg='blue'
+" highlight Comment ctermfg='darkgrey'
+" highlight Number ctermfg='blue'
+" highlight String ctermfg='cyan'
+" highlight Float ctermfg='blue'
 highlight Fold cterm='underline'
 hi clear Folded
 highlight Folded cterm='underline'
@@ -198,8 +204,8 @@ nnoremap <c-n> <esc>:bprevious<CR>
 nnoremap <c-b> <esc>:buffer #<CR>
 nnoremap <c-m> <esc>:bnext<CR>
 nnoremap B :buffers<CR>:buffer<SPACE>
-"nnoremap b :buffers<CR>:buffer<SPACE> "this pisses @momo off too much
-nnoremap O :only<CR>
+" nnoremap b :buffers<CR>:buffer<SPACE> "this pisses @momo off too much
+" nnoremap O :only<CR>
 
 "[[ INDENT ]]
 vnoremap < <gv
@@ -216,22 +222,22 @@ nnoremap Q :qall!<CR>
 "normal quit
 nnoremap q :quit<CR>
 "soft close buffers
-"nnoremap Q :bdelete<CR> 
+"nnoremap Q :bdelete<CR>
 "close all buffers but this one
 nnoremap <leader>q <ESC>:w<CR>:%bd<CR>:e#<CR>
 
 
 "[[ TAGS ]]
-set tags=tags "ctags compatibility
+set tags=tags; "ctags compatibility
 
 function! UpdateTags()
   execute ":!ctags -R --languages=SQL,SH,Python --fields=+iaS --extra=+q ./"
   echohl StatusLine | echo "SQL tag updated" | echohl None
 endfunction
-nnoremap <F4> :call UpdateTags() "TODO map this to something better than F4 
+nnoremap <F4> :call UpdateTags() "TODO map this to something better than F4
 
 " Jump Between Tags (forwards and back respectively)
-nnoremap <C-u> <C-]> 
+nnoremap <C-u> <C-]>
 nnoremap <C-i> :tn<CR>
 nnoremap <C-y> <C-t>
 
@@ -270,4 +276,10 @@ hi SpellRare cterm=underline
 setlocal spell spelllang=en_us "uncomment this to allow spell-checking
 
 noremap <leader>n :nohl<CR>
-map <Leader>b obreakpoint()  # TODO BREAKPOINT<C-c>
+
+" [[ PYTHON IDE ]]
+" autocmd FileType py noremap <buffer> <C-CR> :!python %<CR>
+" noremap <C-CR> :!python %<CR>
+noremap <F12> :!python %<CR>
+" map <Leader>b obreakpoint()  # TODO BREAKPOINT<C-c>
+map <Leader>b oimport ipdb; ipdb.set_trace()  # TODO BREAKPOINT<C-c>

@@ -35,8 +35,8 @@
 [push]
   default = simple
 [user]
-  name = Nikki Six
-  email = nicolai.tesela@gmail.com
+	name = Nick Tomasino
+	email = nicolai.tesela@gmail.com
 [url "git@github.com:"]
   pushInsteadOf = https://github.com/ # Use ssh keys, even if cloned with http
 [diff]
