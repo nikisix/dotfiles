@@ -18,10 +18,12 @@ ZSH_THEME="random"
 ZSH_THEME_RANDOM_CANDIDATES=(
     "amuse" "arrow" "crunch" "daveverwer" "emotty" "evan"
     "fishy" "fletcherm" "gallifrey" "kardan" "lukerandall"
-    "miloshadzic" "nebirhos" "peepcode" "sunaku" "sunrise"
-    "zhann"
+    "miloshadzic" "nebirhos" "peepcode" "sunaku"
 )
-# "wuffers"  - is now broken :/
+# Nice but broken themes
+    # "zhann" - creates memory leak
+    # "sunrise"
+    # "wuffers"  - is now broken :/
 #
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -65,10 +67,10 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git battery kubectl) # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/kubectl
+plugins=(git) # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/kubectl
 
 source $ZSH/oh-my-zsh.sh
-source ~/.bashrc
+source ~/.bash_profile
 set -o vi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

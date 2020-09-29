@@ -14,11 +14,6 @@ elif [[ "$unamestr" == 'Linux' ]]; then
     source ~/.bash-windows  # TODO and uname == six
 fi
 
-if [[ `whoami` == 'nicktomasino' ]]; then
-    . /Users/nicktomasino/anaconda3/etc/profile.d/conda.sh
-    source ~/.emrrc
-fi
-
 set -o vi
 
 #source ~/.git-prompt.sh #export PS1="\w\$(__git_ps1)=☆= "
@@ -26,6 +21,7 @@ set -o vi
 #(♂)
 export EDITOR=nvim
 export HISTTIMEFORMAT='%F %T '
+# TODO
 export HOMEBREW_GITHUB_API_TOKEN=6cb508ae27ff3c3ae60f8e5e3855aa08e973d5ba
 
 # export IPYTHONPATH=$PYTHONPATH

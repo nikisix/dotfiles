@@ -42,6 +42,7 @@ brew "rename"
 brew "watch"
 brew "mpv"
 brew "mps-youtube"
+brew "tldr"
 
 # cask "alfred"
 cask "docker"

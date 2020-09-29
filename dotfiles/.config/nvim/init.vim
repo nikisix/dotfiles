@@ -40,10 +40,11 @@ Plug 'scrooloose/nerdtree' " file explorer
 Plug 'tmux-plugins/vim-tmux' " tmux syntax highlighting and a few others
 Plug 'tpope/vim-repeat' " allows plugin actions to be repeated as a whole with '.' instad of last native action
 Plug 'vim-airline/vim-airline-themes' " Use Solarized Light theme for statusline
-Plug 'w0rp/ale' " async linting, etc
+" Plug 'w0rp/ale' " async linting, etc
 Plug 'terryma/vim-expand-region' " expand visual selection by repeating key hit
 
 " [[ Six not MOMO ]]
+Plug 'rafi/awesome-vim-colorschemes' "colorthemes
 Plug 'tpope/vim-surround' "Surround text v(highlight)S<character>
 Plug 'tpope/vim-fugitive' "Vim git plugin
 Plug 'tpope/vim-rhubarb' "Vim github plugin
