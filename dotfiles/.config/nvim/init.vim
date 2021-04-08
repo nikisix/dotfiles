@@ -24,8 +24,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug '/usr/local/opt/fzf' " Use the brew installed fzf
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-Plug 'davidhalter/jedi-vim' " python highlighting, goto, etc. Using zchee/deoplete-jedi for completion though
-Plug 'zchee/deoplete-jedi' " async python completion
+" Plug 'davidhalter/jedi-vim' " python highlighting, goto, etc. Using zchee/deoplete-jedi for completion though
+" Plug 'zchee/deoplete-jedi' " async python completion
 Plug 'Shougo/neosnippet-snippets' " actual snippets
 Plug 'Shougo/neosnippet.vim' " allows snippet completion
 Plug 'bfredl/nvim-miniyank' " Fix block paste in neovim when clipboard=unnamed
@@ -44,12 +44,13 @@ Plug 'vim-airline/vim-airline-themes' " Use Solarized Light theme for statusline
 Plug 'terryma/vim-expand-region' " expand visual selection by repeating key hit
 
 " [[ Six not MOMO ]]
+Plug 'ervandew/supertab'
 Plug 'rafi/awesome-vim-colorschemes' "colorthemes
 Plug 'tpope/vim-surround' "Surround text v(highlight)S<character>
 Plug 'tpope/vim-fugitive' "Vim git plugin
 Plug 'tpope/vim-rhubarb' "Vim github plugin
 Plug 'mattboehm/vim-unstack' "Unfold a stacktrace into vim-splits
-Plug 'vim-scripts/dbext.vim' "THE BEST DB INTERFACE
+" Plug 'vim-scripts/dbext.vim' "THE BEST DB INTERFACE
 Plug 'easymotion/vim-easymotion' "Space+vim-motion - quick jumps
 Plug 'bling/vim-bufferline'
 Plug 'airblade/vim-gitgutter'
@@ -58,6 +59,7 @@ Plug 'Yggdroot/indentLine' "Marks indentation levels with a character
 Plug 'shime/vim-livedown' "markdown server
 
 " [[ ICEBOX ]]
+"Plug 'szymonmaszke/vimpyter' "abandoned
 "Plug 'hrj/vim-DrawIt' "VERY useful for diagramming
 "Plug 'xsunsmile/showmarks'
 "Plug 'bling/vim-bufferline' " Show the buffers (and number) in status bar

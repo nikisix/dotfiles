@@ -8,6 +8,10 @@ let g:deoplete#sources#jedi#server_timeout = 60
 " TODO not sure why doesn't work
 " let g:python3_host_prog = system("which python3")
 " let g:python_host_prog = system("which python")
+"
 " Works
-let g:python3_host_prog = '/Users/six/envs/env1/bin/python3'
-let g:python_host_prog = '/Users/six/envs/env1/bin/python'
+" let g:python3_host_prog = '/Users/six/envs/env1/bin/python3'
+" let g:python_host_prog = '/Users/six/envs/env1/bin/python'
+"
+" let g:python3_host_prog = '/Users/six/code/mysterio/env/bin/python3'
+" let g:python_host_prog = '/Users/six/code/mysterio/env/bin/python'

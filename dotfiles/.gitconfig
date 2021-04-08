@@ -18,7 +18,7 @@
   st   = stash
   down = pull --rebase --autostash
   wt   = worktree
-  lg = log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  lg   = log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   date = log --follow --diff-filter=A --find-renames=40%
 [color]
   ui = auto
@@ -35,17 +35,21 @@
 [push]
   default = simple
 [user]
-	name = Nick Tomasino
-	email = nicolai.tesela@gmail.com
-[url "git@github.com:"]
+  name = Nick Tomasino
+  email = nicolai.tesela@gmail.com
+[url "ssh://git@github.com:"]
   pushInsteadOf = https://github.com/ # Use ssh keys, even if cloned with http
+[url "ssh://git@gitlab.com/"]
+  insteadOf = https://gitlab.com/
+[url "ssh://git@bitbucket.org/"]
+  insteadOf = https://bitbucket.org/
 [diff]
-	tool = vimdiff
+  tool = vimdiff
 [difftool]
   prompt = off
 [difftool "vimdiff"]
   cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
-  # path = 
+  # path =
 [mergetool "vimdiff"]
   cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
   trustExitCode = true
@@ -56,9 +60,3 @@
   process = git-lfs filter-process
   required = true
   clean = git-lfs clean -- %f
-[difftool "sourcetree"]
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path = 
-[mergetool "sourcetree"]
-  cmd = vimdiff \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true

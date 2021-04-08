@@ -67,7 +67,8 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git) # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/kubectl
+# plugins=(git colored-man-pages) # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/kubectl
+plugins=(git vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.bash_profile

@@ -1,8 +1,16 @@
-call deoplete#custom#option('smart_case', v:true)
+" call deoplete#custom#option('smart_case', v:true)
 let g:deoplete#enable_at_startup = 1
-set completeopt+=noinsert " Select the first completion automatically
 
-" TODO: Think about only enabling deoplete for registered files (python, go, etc)
-"   with vim-plug: 'for': ['python', 'go']
-" Need to check when python is started. Ex: does deoplete-jedi start a python for non python files? Limit that.
-" If deoplete doesn't do anything helpful for files w/o plugins, disable it too
+let g:deoplete#candidate_marks = 30
+" Omnifunc (or deoplete?) wants to prepopulate first result and exit by default for some reason
+call deoplete#custom#buffer_option('auto_complete', v:false)
+set completeopt+=noinsert " Select the first completion automatically
+"
+" MAP OMNICOMPLETE TO CONTROL-SPACE
+inoremap <C-@> <c-x><c-o><c-p>
+inoremap <C-Space> <c-x><c-o>
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function() abort
+  return deoplete#close_popup() . "\<CR>"
+endfunction
