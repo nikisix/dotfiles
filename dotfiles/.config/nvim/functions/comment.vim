@@ -13,5 +13,5 @@ autocmd FileType sql                let b:comment_leader = '-- '
 noremap <silent> <leader>c :<C-B>silent <C-E>s/\v([^ \t])/<C-R>=escape(b:comment_leader,'\/')<CR>\1/<CR>:nohlsearch<CR>
 noremap <silent> <leader>C :<C-B>silent <C-E>s/\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
-" Title sections
-noremap <silent> <leader>t :s/^/[[ /e<CR>:nohlsearch<CR> :s/$/ ]]/e<CR>:nohlsearch<CR>
+" Quick-Todo
+noremap <silent> <leader>t :s/$/  # TODO /e<CR>:nohlsearch<CR>A

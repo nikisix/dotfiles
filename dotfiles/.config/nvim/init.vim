@@ -107,8 +107,8 @@ set mouse=a " Enables mouse in all modes, such as scroll and highlight
 set nofoldenable " disable folding by default when a fold type is specified
 set nojoinspaces " Don't use double spaces when joining lines ending with periods
 set number " Shows line numbers
-"set relativenumber " show numbers as relative to current line.
-" set scrolloff=10 " Minimum number of lines before/after cursor at top/bottom
+set relativenumber " show numbers as relative to current line.
+set scrolloff=10 " Minimum number of lines before/after cursor at top/bottom
 set shiftwidth=0 " Number of characters to insert with << or >>, with 0 it defaults to tabstop
 set showmatch " Jump to the corresponding enclosing char when inserting new ones (ex paren, bracket, etc)
 set smartcase " Ignores search case except when you use a caps
@@ -117,7 +117,7 @@ set shiftwidth=4 " Number of characters/spaces a tab appears as
 " set textwidth=120 " Start new lines at 120 characters automatically or re-wrap to 120 with gq
 set undofile " Store change history between file sessions
 set visualbell " don't beep, ex when hitting escape in command mode
-set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 autocmd bufread *.md setlocal conceallevel=0 " Don't hide syntax symbols like _
 autocmd bufread *.py setlocal textwidth=88 " Match Black config
