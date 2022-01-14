@@ -5,12 +5,12 @@ set -o vi
 if [ -f "/google/devshell/bashrc.google" ]; then
   gcloud config set project email-dm-optimization
   # sudo apt-get install neovim
-  source "/google/devshell/bashrc.google"
+  # source "/google/devshell/bashrc.google"
 fi
 #source ~/.git-prompt.sh #export PS1="\w\$(__git_ps1)=☆= "
 #=✪=
 #(♂)
-export EDITOR=nvim
+export EDITOR=vi
 export HISTTIMEFORMAT='%F %T '
 # TODO
 # export HOMEBREW_GITHUB_API_TOKEN=6cb508ae27ff3c3ae60f8e5e3855aa08e973d5ba
