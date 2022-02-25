@@ -16,6 +16,9 @@ set nobackup " Disable stupid backup and swap files - they trigger too many even
 set nowritebackup
 set noswapfile
 set laststatus=2 "Status line - show the percentage through a file
+set expandtab
+set tabstop=4
+set shiftwidth=4
 
 "[[ SYNTAX HIGHLIGHTING COLORS ]]
 syntax on
