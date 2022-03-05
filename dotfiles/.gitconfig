@@ -26,8 +26,8 @@
   autosetuprebase = always
 [core]
   autocrlf = input
-  editor = nvim
-  excludesfile = /Users/zen/.gitignore_global
+  editor = vi
+  excludesfile = ~/.gitignore_global
 [credential]
   helper = osxkeychain
 [github]
@@ -36,7 +36,7 @@
   default = simple
 [user]
   name = Nick Tomasino
-  email = nicolai.tesela@gmail.com
+  email = nick.w.tomasino@gmail.com
 [url "ssh://git@github.com:"]
   pushInsteadOf = https://github.com/ # Use ssh keys, even if cloned with http
 [url "ssh://git@gitlab.com/"]
