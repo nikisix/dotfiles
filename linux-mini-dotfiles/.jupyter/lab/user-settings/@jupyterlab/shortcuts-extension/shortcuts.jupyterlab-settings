@@ -10,6 +10,10 @@
     "command": "notebook:restart-and-run-to-selected",
     "keys": ["9", "9"],
     "selector": "[data-jp-kernel-user]:focus"
+},{
+    "command": "runmenu:restart-and-run-all",
+    "keys": ["0", "0"],
+    "selector": "[data-jp-kernel-user]:focus"
 }
     
 ]
