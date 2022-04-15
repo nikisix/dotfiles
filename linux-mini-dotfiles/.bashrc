@@ -36,6 +36,7 @@ alias less='less -Sir'
 alias gits='git status'
 alias debug='vim +UnstackFromClipboard'
 # alias vi=$(which nvim)
+alias gtop='watch -n1 -d -t nvidia-smi'
 
 alias matrix='cmatrix -sabu2'
 function google () { w3m "http://www.google.com/search?q=$*"; }

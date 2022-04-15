@@ -1,0 +1,17 @@
+session_name: 'monitor'
+windows:
+- focus: 'true'
+  layout: c27d,161x55,0,0,0
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: htop
+  start_directory: /home/jupyter
+  window_name: htop
+- layout: c27e,161x55,0,0,1
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: watch -t -d -n1 nvidia-smi
+  start_directory: /home/jupyter
+  window_name: '[tmux]'

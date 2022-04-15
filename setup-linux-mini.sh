@@ -8,6 +8,7 @@ set -o pipefail
 # pip3 install --upgrade pip setuptools
 # echo "Installing python packages"
 # pip3 install --upgrade -r ./requirements/python-requirements.txt
+pip install tmuxp
 
 echo "Linking dotfiles to ~/"
 # Using the gnu version of cp from brew coreutils b/c it has the -s flag for symbolic links and works with directories
