@@ -10,7 +10,7 @@ fi
 #source ~/.git-prompt.sh #export PS1="\w\$(__git_ps1)=☆= "
 #=✪=
 #(♂)
-export EDITOR=vi
+export EDITOR=vim
 export HISTTIMEFORMAT='%F %T '
 # TODO
 # export HOMEBREW_GITHUB_API_TOKEN=6cb508ae27ff3c3ae60f8e5e3855aa08e973d5ba
