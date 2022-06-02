@@ -51,6 +51,12 @@ alias dv='dirs -v'
 
 export PAGER="/usr/bin/less -Si" #dont wrap long lines. ignore case on searches
 
+#ssh init
+eval $(ssh-agent)
+ssh-add ~/.ssh/id_rsa
+ssh-add ~/.ssh/id_rsa_work
+
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/conda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
