@@ -29,4 +29,8 @@ read -r
 #     echo 'y' | gcloud components install docker-credential-gcr
 # fi
 
+echo 'installing jupyterlab vim'
+pip install jupyterlab-vim
+jupyter lab build --dev-build=False --minimize=False
+
 echo "Done!"
