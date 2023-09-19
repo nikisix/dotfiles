@@ -2,14 +2,15 @@ set -o nounset
 set -o vi
 
 if [[ `uname` == 'Darwin' ]]; then
-    export PATH="/opt/homebrew/bin:$PATH"
-
-    # export PATH="/Users/zen/bin:~/code/scripts:/usr/local/lib/ruby/gems/2.6.0/gems/tmuxinator-1.1.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
-    # Add gnu coreutils to path
-    # export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-    # Add gnu coreutils docs
-    # export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-
+    if [[ $HOST=='sierranevada' ]]; then
+        export PATH="/opt/homebrew/bin:$PATH"
+    elif [[ $HOST=='goldencoast' ]]; then
+        export PATH="/Users/zen/bin:~/code/scripts:/usr/local/lib/ruby/gems/2.6.0/gems/tmuxinator-1.1.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
+        # Add gnu coreutils to path
+        export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+        # Add gnu coreutils docs
+        export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+    fi
     #for pylint
     LC_CTYPE=en_US.UTF-8
     export LC_CTYPE
