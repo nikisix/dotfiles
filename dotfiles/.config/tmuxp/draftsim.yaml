@@ -1,0 +1,21 @@
+session_name: d2l
+windows:
+- layout: bbe6,212x63,0,0,9
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: pianobar
+  start_directory: /Users/six
+  window_name: music
+- focus: 'true'
+  layout: cba3,212x63,0,0{106x63,0,0,8,105x63,107,0[105x45,107,0,10,105x17,107,46,11]}
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: nvim matchup_pairwise.py
+  - ipython
+  - tmux clock-mode
+  start_directory: /Users/six/code/draftsim/data/STX data 04-26-2021
+  window_name: draftsim

@@ -1,0 +1,21 @@
+session_name: '0'
+windows:
+- focus: 'true'
+  layout: adfe,126x40,0,0,1
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: Python
+  start_directory: /Users/six
+  window_name: pianobar
+- layout: 9cda,126x40,0,0{63x40,0,0,6,62x40,64,0[62x20,64,0,4,62x19,64,21,0]}
+  options:
+    automatic-rename: 'off'
+  panes:
+  - zsh
+  - Python
+  - focus: 'true'
+    shell_command: zsh
+  start_directory: /Users/six/code/tensor-house/pricing
+  window_name: dqn

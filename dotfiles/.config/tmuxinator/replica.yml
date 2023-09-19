@@ -1,0 +1,15 @@
+---
+name: replica
+project_root: "/usr"
+windows:
+- replica:
+    layout: 5916,158x50,0,0,74
+    panes:
+    - cd /Users/six/code/replica-etl/idot-data
+- model:
+    layout: 0d6c,158x50,0,0{79x50,0,0,77,78x50,80,0[78x17,80,0,78,78x16,80,18,82,78x15,80,35,80]}
+    panes:
+    - cd /Users/six/code/model && kubectl port-forward service/etl-notebook 8889:8888
+    - cd /Users/six/notes/six-analytics/swlabs/replica && vi commands.txt
+    - cd /Users/six/notes/six-analytics/swlabs/replica
+    - cd /Users/six && vi worklog-replica.org

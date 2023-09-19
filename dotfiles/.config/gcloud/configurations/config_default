@@ -1,0 +1,11 @@
+[core]
+account = nicolai.tesela@gmail.com
+project = six-analytics
+disable_usage_reporting = False
+
+[ai]
+region = us-central1
+
+[ai_platform]
+region = us-central1
+

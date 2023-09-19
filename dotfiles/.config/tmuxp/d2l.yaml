@@ -1,0 +1,38 @@
+session_name: 'd2l'
+windows:
+- layout: ae7d,127x40,0,0,0
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: pianobar
+  start_directory: /Users/six
+  window_name: music
+- focus: 'true'
+  layout: 4b20,127x40,0,0[127x24,0,0,1,127x15,0,25{63x15,0,25,10,63x15,64,25,13}]
+  options:
+    automatic-rename: 'off'
+  shell_command_before:
+    - source ~/envs/d2l/bin/activate
+  panes:
+  - focus: 'true'
+  - echo get it done!
+  - shell_command: tmux clock-mode
+  start_directory: /Users/six/notes/classes/d2l/ch9
+  window_name: d2l
+- layout: ae83,127x40,0,0,6
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: zsh
+  start_directory: /Users/six/envs/d2l/lib/python3.8/site-packages/torch
+  window_name: torch-src
+- layout: ae86,127x40,0,0,9
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: nvim
+  start_directory: /Users/six/code/d2l-en
+  window_name: d2l-en

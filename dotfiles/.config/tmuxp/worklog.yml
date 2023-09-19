@@ -1,0 +1,11 @@
+session_name: worklog
+start_directory: ~/
+windows:
+- layout: main-vertical
+  panes:
+  - emacs --daemon; spc ~/org/worklog-replica-2020.org
+  - pianobar
+  window_name: editor
+- panes:
+  - cd ~/code
+  window_name: code

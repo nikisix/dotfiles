@@ -1,0 +1,58 @@
+session_name: wedding
+windows:
+- layout: 5ee2,238x72,0,0,32
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: zsh
+  start_directory: /Users/six
+  window_name: music
+- layout: d361,238x72,0,0{119x72,0,0,8,118x72,120,0[118x57,120,0,10,118x14,120,58,11]}
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: zsh
+  - Python
+  - zsh
+  start_directory: /Users/six/code/draftsim/data/STX data 04-26-2021
+  window_name: draftsim
+- layout: 43b9,238x72,0,0{119x72,0,0,28,118x72,120,0,29}
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: zsh
+  - zsh
+  start_directory: /Users/six/code/draftsim/data/STX data 04-26-2021
+  window_name: berlin
+- layout: 5ee0,238x72,0,0,30
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: zsh
+  start_directory: /Users/six/notes/classes/d2l
+  window_name: source
+- layout: 5ee1,238x72,0,0,31
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: zsh
+  start_directory: /Users/six/info/books/machine_learning
+  window_name: ml-books
+- focus: 'true'
+  layout: c3b6,238x72,0,0{119x72,0,0,35,118x72,120,0,36}
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command:
+    - cd /Users/six/code/linkedin-skill-assessments-quizzes
+    - Python
+  - shell_command:
+    - cd /Users/six/code/linkedin-skill-assessments-quizzes/machine-learning
+    - zsh
+  window_name: linked-in prep

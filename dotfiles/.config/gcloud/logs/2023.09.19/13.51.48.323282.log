@@ -1,0 +1,4 @@
+2023-09-19 13:51:48,329 DEBUG    root            Loaded Command Group: ['gcloud', 'auth']
+2023-09-19 13:51:48,339 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'git_helper']
+2023-09-19 13:51:48,341 ERROR    root            (gcloud.auth.git-helper) argument METHOD: Must be specified.
+2023-09-19 13:51:48,352 DEBUG    root            Metrics reporting process started...

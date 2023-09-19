@@ -1,0 +1,77 @@
+session_name: '0'
+windows:
+- focus: 'true'
+  layout: cd7e,238x72,0,0[238x49,0,0{119x49,0,0,75,118x49,120,0,0},238x22,0,50{119x22,0,50,61,118x22,120,50,73}]
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command:
+    - cd /Users/six/.config/tmuxp
+    - Python
+  - shell_command:
+    - cd /Users/six/Music/nwt/mps/capoeira
+    - pianobar
+  - shell_command:
+    - cd /Users/six/Music/nwt/mps/capoeira
+    - nvim
+  - shell_command:
+    - cd /Users/six/Music/nwt/mps/capoeira/mps
+    - watch
+  window_name: radio
+- layout: c3b4,238x72,0,0{119x72,0,0,10,118x72,120,0,76}
+  options:
+    automatic-rename: 'off'
+  panes:
+  - shell_command:
+    - cd /Users/six/.config/pyradio/recordings
+    - zsh
+  - focus: 'true'
+    shell_command:
+    - cd /Users/six/info/books/machine_learning/reinforcement_learning
+    - zsh
+  window_name: recordings
+- layout: 86ae,238x72,0,0{93x72,0,0,22,142x72,94,0,85,1x72,237,0,74}
+  options:
+    automatic-rename: 'off'
+  panes:
+  - shell_command:
+    - cd /Users/six/resume/applications/2023/app_orchid/pyro-survival-model
+    - nvim
+  - focus: 'true'
+    shell_command:
+    - cd /Users/six/resume/applications/2023/app_orchid/pyro-survival-model
+    - Python
+  - shell_command:
+    - cd /Users/six/code/bestbuy
+    - zsh
+  window_name: app-orchid
+- layout: 6f3b,238x72,0,0{236x72,0,0,35,1x72,237,0,28}
+  options:
+    automatic-rename: 'off'
+  panes:
+  - vim
+  - focus: 'true'
+    shell_command: nvim
+  start_directory: /Users/six/.local/share/nvim/plugged/vim-jukit
+  window_name: jukit
+- layout: 5ee4,238x72,0,0,72
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: zsh
+  start_directory: /Users/six/notes/classes/coursera/masters/3_dynamic_and_greedy_algs/week1_divide_and_conquer
+  window_name: masters
+- layout: b845,238x72,0,0[238x36,0,0,78,238x35,0,37,62]
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command:
+    - cd /Users/six/notes/org
+    - Python
+  - shell_command:
+    - cd /Users/six/notes/classes/coursera/masters/3_dynamic_and_greedy_algs/week1_divide_and_conquer
+    - zsh
+  window_name: finance
