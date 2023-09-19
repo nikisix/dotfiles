@@ -23,7 +23,8 @@ pip3 install --upgrade -r ./requirements/python-requirements.txt
 
 echo "Linking dotfiles to ~/"
 # Using the gnu version of cp from brew coreutils b/c it has the -s flag for symbolic links and works with directories
-cp -srf "${PWD}"/dotfiles/.[^.]* ~/ #gcp is invoking git cherry-pick annoyingly
+cp -srf "${PWD}"/dotfiles/.[^.]* ~/ # SOURCE must resolve to an absolute path to work
+# ln -s "${PWD}"/dotfiles/.[^.]* ~/
 
 echo "Installing TmuxPluginManager"
 test -d ~/.tmux/plugins/tpm || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
