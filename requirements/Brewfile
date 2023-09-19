@@ -8,24 +8,25 @@ brew "coreutils"
 brew "ctags"
 brew "curl"
 brew "diffutils"
-brew "findutils", args: ["with-default-names"]
+brew "findutils" #, args: ["with-default-names"]
 brew "zsh"
 # brew "fish"
 brew "fzf"
 brew "gawk"
+brew "gh"
 brew "git"
 brew "glow" # recursive markdown viewer
-brew "gnu-sed", args: ["with-default-names"]
-brew "gnu-tar", args: ["with-default-names"]
-brew "gnu-time", args: ["with-default-names"]
+brew "gnu-sed" #, args: ["with-default-names"]
+brew "gnu-tar" #, args: ["with-default-names"]
+brew "gnu-time" #, args: ["with-default-names"]
 brew "go"
-brew "grep", args: ["with-default-names"]
+brew "grep" #, args: ["with-default-names"]
 brew "gzip"
 brew "hub"
 brew "jq"
 brew "less"
 brew "luajit"
-brew "make", args: ["with-default-names"]
+brew "make" #, args: ["with-default-names"]
 brew "neovim"
 brew "openssh"
 brew "openssl"

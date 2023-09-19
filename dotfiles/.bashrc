@@ -1,10 +1,14 @@
-if [[ `uname` == 'Darwin' ]]; then
+set -o nounset
+set -o vi
 
-    export PATH="/Users/zen/bin:~/code/scripts:/usr/local/lib/ruby/gems/2.6.0/gems/tmuxinator-1.1.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
+if [[ `uname` == 'Darwin' ]]; then
+    export PATH="/opt/homebrew/bin:$PATH"
+
+    # export PATH="/Users/zen/bin:~/code/scripts:/usr/local/lib/ruby/gems/2.6.0/gems/tmuxinator-1.1.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
     # Add gnu coreutils to path
-    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+    # export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
     # Add gnu coreutils docs
-    export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+    # export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
     #for pylint
     LC_CTYPE=en_US.UTF-8
@@ -13,8 +17,6 @@ elif [[ "$unamestr" == 'Linux' ]]; then
     echo 'penguin time!'
     source ~/.bash-windows  # TODO and uname == six
 fi
-
-set -o vi
 
 #source ~/.git-prompt.sh #export PS1="\w\$(__git_ps1)=☆= "
 #=✪=
@@ -26,6 +28,8 @@ export HOMEBREW_GITHUB_API_TOKEN=6cb508ae27ff3c3ae60f8e5e3855aa08e973d5ba
 
 # export IPYTHONPATH=$PYTHONPATH
 alias ipython="python -m IPython"
+alias python="python3"
+alias pip="pip3"
 # Instruct Python to execute a start up script
 # export PYTHONSTARTUP=$HOME/.python_startup.py
 # Speed up program execution time maybe turn off
@@ -74,9 +78,8 @@ alias news='newsbeuter'
 alias sed='/usr/local/bin/gsed'
 alias sp='emacsclient -t $*'
 alias spc='emacsclient -t $*'
-alias vi='/usr/local/bin/nvim'
+alias vi='nvim'
 alias viconfig='vi ~/.config/nvim/init.vim'
-# alias vi='/usr/local/bin/mvim'  # for macvim
 #function __csv { cat $1 | column -s, -t | less -S; }
 function csv () { csvlook $1 | less -S; }
 function csvsample () { head -n100 $1 | csvlook | less -S;}
@@ -160,5 +163,5 @@ alias prod-kube='kubectl -n prod'
 #Airflow
 export AIRFLOW_HOME=~/airflow
 
-source ~/.alias_docker
+#source ~/.alias_docker
 alias ff='. /Users/six/.ff/ff.sh'

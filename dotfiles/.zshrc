@@ -2,7 +2,6 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-#export ZSH=/Users/zen/.oh-my-zsh
 export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -70,8 +69,8 @@ HIST_STAMPS="yyyy-mm-dd"
 # plugins=(git colored-man-pages) # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/kubectl
 plugins=(git vi-mode)
 
-source $ZSH/oh-my-zsh.sh
-source ~/.bash_profile
+# source $ZSH/oh-my-zsh.sh
+source ~/.bashrc
 set -o vi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -83,11 +82,11 @@ set -o vi
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='nvim'
+# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -104,24 +103,21 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 eval "$(direnv hook zsh)"
-if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+#if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
 # VIM mode
 bindkey -v
 
 # vim-mode highlighting on command prompt!
 # works but too slow (recursive function max)
-function zle-line-init zle-keymap-select {
-    VIM_PROMPT="%{$fg_bold[green]%} [% NORMAL]%  %{$reset_color%}"
-    # RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$(git) $EPS1"
-    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
-    zle reset-prompt
-}
-
-zle -N zle-line-init
-zle -N zle-keymap-select
+# function zle-line-init zle-keymap-select {
+#     VIM_PROMPT="%{$fg_bold[green]%} [% NORMAL]%  %{$reset_color%}"
+#     # RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$(git) $EPS1"
+#     RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+#     zle reset-prompt
+# }
+# 
+# zle -N zle-line-init
+# zle -N zle-keymap-select
+# source ~/.bin/tmuxinator.zsh
 export KEYTIMEOUT=1
-source ~/.bin/tmuxinator.zsh
-
-# Created by `pipx` on 2023-05-23 23:52:54
-export PATH="$PATH:/Users/six/.local/bin"
