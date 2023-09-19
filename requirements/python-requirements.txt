@@ -9,3 +9,6 @@ pipenv
 pycodestyle
 pyflakes
 pylint
+requests
+rich
+pipx

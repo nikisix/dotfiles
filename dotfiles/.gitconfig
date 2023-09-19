@@ -26,7 +26,7 @@
   autosetuprebase = always
 [core]
   autocrlf = input
-  editor = vi
+  editor = nvim
   excludesfile = ~/.gitignore_global
 [credential]
   helper = osxkeychain

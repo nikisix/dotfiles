@@ -24,10 +24,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug '/usr/local/opt/fzf' " Use the brew installed fzf
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-" Plug 'davidhalter/jedi-vim' " python highlighting, goto, etc. Using zchee/deoplete-jedi for completion though
-" Plug 'zchee/deoplete-jedi' " async python completion
-Plug 'Shougo/neosnippet-snippets' " actual snippets
-Plug 'Shougo/neosnippet.vim' " allows snippet completion
+Plug 'davidhalter/jedi-vim' " python highlighting, goto, etc. Using zchee/deoplete-jedi for completion though
+Plug 'zchee/deoplete-jedi' " async python completion
+" Plug 'Shougo/neosnippet-snippets' " actual snippets
+" Plug 'Shougo/neosnippet.vim' " allows snippet completion
 Plug 'bfredl/nvim-miniyank' " Fix block paste in neovim when clipboard=unnamed
 Plug 'bling/vim-airline' " minimal status line
 " Plug 'chr4/nginx.vim' " Nginx conf file syntax highlighting
@@ -44,6 +44,7 @@ Plug 'vim-airline/vim-airline-themes' " Use Solarized Light theme for statusline
 Plug 'terryma/vim-expand-region' " expand visual selection by repeating key hit
 
 " [[ Six not MOMO ]]
+Plug 'luk400/vim-jukit'
 Plug 'ervandew/supertab'
 Plug 'rafi/awesome-vim-colorschemes' "colorthemes
 Plug 'tpope/vim-surround' "Surround text v(highlight)S<character>
@@ -51,20 +52,19 @@ Plug 'tpope/vim-fugitive' "Vim git plugin
 Plug 'tpope/vim-rhubarb' "Vim github plugin
 Plug 'mattboehm/vim-unstack' "Unfold a stacktrace into vim-splits
 " Plug 'vim-scripts/dbext.vim' "THE BEST DB INTERFACE
+Plug 'lymslive/dbext' "THE BEST DB INTERFACE
 Plug 'easymotion/vim-easymotion' "Space+vim-motion - quick jumps
 Plug 'bling/vim-bufferline'
 Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine' "Marks indentation levels with a character
-" Plug 'vorillaz/devicons' "Next level bling
+Plug 'vorillaz/devicons' "Next level bling
 Plug 'shime/vim-livedown' "markdown server
 
 " [[ ICEBOX ]]
-"Plug 'szymonmaszke/vimpyter' "abandoned
 "Plug 'hrj/vim-DrawIt' "VERY useful for diagramming
 "Plug 'xsunsmile/showmarks'
 "Plug 'bling/vim-bufferline' " Show the buffers (and number) in status bar
 "Plug 'chrisbra/Recover.vim' " allow diff from existing .swp files - doesn't work well with nvim
-"Plug 'easymotion/vim-easymotion' " Need to learn more, but it's like vimium's link following
 "Plug 'altercation/vim-colors-solarized' " soloraized color scheme
 "Plug 'dag/vim-fish' " Add fish syntax support
 "Plug 'kana/vim-textobj-entire' " used for vim-expand-region config
@@ -78,7 +78,7 @@ Plug 'shime/vim-livedown' "markdown server
 " [[ MOMO NOT SIX ]]
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " lots of go helpers
 " Plug 'zchee/deoplete-go', { 'do': 'make' } " async go completion
-
+"
 call plug#end()
 
 " Source plugin config files
@@ -117,7 +117,8 @@ set shiftwidth=4 " Number of characters/spaces a tab appears as
 " set textwidth=120 " Start new lines at 120 characters automatically or re-wrap to 120 with gq
 set undofile " Store change history between file sessions
 set visualbell " don't beep, ex when hitting escape in command mode
-set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+" set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 
 autocmd bufread *.md setlocal conceallevel=0 " Don't hide syntax symbols like _
 autocmd bufread *.py setlocal textwidth=88 " Match Black config
@@ -276,7 +277,8 @@ hi SpellBad cterm=underline
 hi SpellLocal cterm=underline
 hi SpellCap cterm=underline
 hi SpellRare cterm=underline
-setlocal spell spelllang=en_us "uncomment this to allow spell-checking
+" setlocal spell spelllang=en_us "uncomment this to allow spell-checking
+set spell spelllang=en_us "uncomment this to allow spell-checking
 
 noremap <leader>n :nohl<CR>
 

@@ -122,3 +122,6 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 export KEYTIMEOUT=1
 source ~/.bin/tmuxinator.zsh
+
+# Created by `pipx` on 2023-05-23 23:52:54
+export PATH="$PATH:/Users/six/.local/bin"
