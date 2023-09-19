@@ -13,10 +13,8 @@ echo "Installing brew and cask packages"
 brew bundle --file=requirements/Brewfile
 
 echo "Updating pip"
-pip2 install --upgrade pip setuptools
 pip3 install --upgrade pip setuptools
 echo "Installing python packages"
-pip2 install --upgrade -r ./requirements/python-requirements.txt
 pip3 install --upgrade -r ./requirements/python-requirements.txt
 
 
