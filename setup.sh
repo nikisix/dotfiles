@@ -22,7 +22,8 @@ pip3 install --upgrade -r ./requirements/python-requirements.txt
 
 
 echo "Linking dotfiles to ~/"
-# Using the gnu version of cp from brew coreutils b/c it has the -s flag for symbolic links and works with directories
+# Using the gnu version of cp from brew coreutils (in gnubin) b/c it has the -s flag for symbolic links and works with directories
+PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 cp -srf "${PWD}"/dotfiles/.[^.]* ~/ # SOURCE must resolve to an absolute path to work
 # ln -s "${PWD}"/dotfiles/.[^.]* ~/
 

@@ -9,6 +9,8 @@ pipenv
 pycodestyle
 pyflakes
 pylint
+radian
 requests
 rich
 pipx
+tmuxp

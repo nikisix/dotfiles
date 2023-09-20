@@ -1,3 +1,13 @@
+#bug fixes, can remove in the future
+export ZSH_CACHE_DIR=~/.zsh_cache
+export KONSOLE_VERSION=0
+# export ZSH_THEME_GIT_PROMPT_AHEAD=true
+# export ZSH_THEME_GIT_PROMPT_BEHIND=false
+# export ZSH_THEME_GIT_PROMPT_DIVERGED=false
+# export ZSH_THEME_GIT_PROMPT_STASHED=false
+export DISABLE_UPDATE_PROMPT=false
+# ZSH_DISABLE_COMPFIX=false
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -15,7 +25,7 @@ ZSH_THEME="random"
 # looking in ~/.oh-my-zsh/themes/
 # An empty array have no effect
 ZSH_THEME_RANDOM_CANDIDATES=(
-    "amuse" "arrow" "crunch" "daveverwer" "emotty" "evan"
+    "amuse" "arrow" "crunch" "daveverwer" "evan"
     "fishy" "fletcherm" "gallifrey" "kardan" "lukerandall"
     "miloshadzic" "nebirhos" "peepcode" "sunaku"
 )
@@ -67,12 +77,8 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git colored-man-pages) # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/kubectl
-plugins=(git vi-mode)
+plugins=(vi-mode)
 
-# source $ZSH/oh-my-zsh.sh
-source ~/.bashrc
-set -o vi
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # User configuration
 
@@ -102,22 +108,34 @@ set -o vi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-eval "$(direnv hook zsh)"
+# eval "$(direnv hook zsh)"
 #if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
 # VIM mode
 bindkey -v
 
-# vim-mode highlighting on command prompt!
+# vim-mode
+#
+PROMPT="$PROMPT\$(vi_mode_prompt_info)"
+# RPROMPT="\$(vi_mode_prompt_info)$RPROMPT"
+VI_MODE_SET_CURSOR=true
+MODE_INDICATOR="%F{white}+%f"
+INSERT_MODE_INDICATOR="%F{yellow}+%f"
+#
 # works but too slow (recursive function max)
 # function zle-line-init zle-keymap-select {
-#     VIM_PROMPT="%{$fg_bold[green]%} [% NORMAL]%  %{$reset_color%}"
-#     # RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$(git) $EPS1"
-#     RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
-#     zle reset-prompt
+    # VIM_PROMPT="%{$fg_bold[green]%} [% NORMAL]%  %{$reset_color%}"
+    # # RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$(git) $EPS1"
+    # RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+    # zle reset-prompt
 # }
-# 
+
 # zle -N zle-line-init
 # zle -N zle-keymap-select
 # source ~/.bin/tmuxinator.zsh
 export KEYTIMEOUT=1
+
+source $ZSH/oh-my-zsh.sh
+source ~/.bashrc
+# set -o vi
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

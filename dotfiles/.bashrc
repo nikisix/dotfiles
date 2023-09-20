@@ -3,7 +3,11 @@ set -o vi
 
 if [[ `uname` == 'Darwin' ]]; then
     if [[ $HOST=='sierranevada' ]]; then
-        export PATH="/opt/homebrew/bin:$PATH"
+        export PATH="/opt/homebrew/bin:$PATH" # homebrew
+        export PATH="/Users/nickt/.local/bin:$PATH" # pipx
+        export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH" # gnu-commands (ls, cp, ...etc)
+        export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH" # gnu-command man-path
+
     elif [[ $HOST=='goldencoast' ]]; then
         export PATH="/Users/zen/bin:~/code/scripts:/usr/local/lib/ruby/gems/2.6.0/gems/tmuxinator-1.1.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
         # Add gnu coreutils to path
@@ -65,7 +69,7 @@ alias less='less -Sr'
 alias date='date --iso-8601'
 alias gits='git status'
 alias env-pipenv='source $(pipenv --venv)/bin/activate; [[ -f .env ]] && source .env'
-alias debug='vim +UnstackFromClipboard'
+alias debug='vi +UnstackFromClipboard'
 # alias weather='ansiweather -l "kansas city, mo" -F -u imperial'
 alias weather='ansiweather -l 4393217 -d -u imperial;ansiweather -l 4393217 -F -u imperial'
 alias amorgosssh='ssh zen@192.168.1.109'
