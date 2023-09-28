@@ -20,6 +20,7 @@ brew "gnu-sed" #, args: ["with-default-names"]
 brew "gnu-tar" #, args: ["with-default-names"]
 brew "gnu-time" #, args: ["with-default-names"]
 brew "go"
+brew "graphviz"
 brew "grep" #, args: ["with-default-names"]
 brew "gzip"
 brew "hub"
@@ -33,7 +34,6 @@ brew "openssl"
 brew "pianobar"
 brew "postgresql"
 brew "python"
-# brew "python@2"
 brew "readline"
 brew "reattach-to-user-namespace"
 brew "recode"
@@ -41,10 +41,11 @@ brew "shellcheck"
 brew "the_silver_searcher"
 brew "tmux"
 brew "tree"
+brew "ranger"
 brew "rename"
 brew "watch"
 brew "mpv"
-# brew "mps-youtube"
+brew "mps-youtube"
 brew "tldr"
 
 # cask "alfred"

@@ -31,17 +31,21 @@ export HISTTIMEFORMAT='%F %T '
 # TODO
 export HOMEBREW_GITHUB_API_TOKEN=6cb508ae27ff3c3ae60f8e5e3855aa08e973d5ba
 
-# export IPYTHONPATH=$PYTHONPATH
-alias ipython="python -m IPython"
-alias python="python3"
-alias pip="pip3"
-# Instruct Python to execute a start up script
-# export PYTHONSTARTUP=$HOME/.python_startup.py
+#PYTHON
 # Speed up program execution time maybe turn off
 export PYTHONDONTWRITEBYTECODE=1
 # Ensure that the startup script will be able to access COLUMNS
 export COLUMNS
-
+export WORKON_HOME=~/envs
+function activate() {
+    if [[ -z $@ ]]; then
+        echo $(ls $WORKON_HOME) $(ls | grep env)
+    elif [[ $@=='env' ]]; then
+        source ./env/bin/activate
+    else
+        source $WORKON_HOME/$1/bin/activate
+    fi
+}
 export datadir=/Volumes/oasis/ntomasino/data/swlabs/model/
 
 # PATHS
@@ -61,6 +65,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias ls='ls -GF'
 alias sl='ls -GF'
+#print File Path
 function fp() { for i in "$@"; do echo $(pwd)/"$i"; done; }
 # alias date='date --iso-8601'
 alias ag='ag --color'
@@ -80,7 +85,7 @@ alias lint='pylint --rcfile=~/code/data_analytics_f20180410/pylintrc'
 alias matrix='cmatrix -sabu2'
 function google () { w3m "http://www.google.com/search?q=$*"; }
 alias news='newsbeuter'
-alias sed='/usr/local/bin/gsed'
+alias sed='/opt/homebrew/bin/gsed'
 alias sp='emacsclient -t $*'
 alias spc='emacsclient -t $*'
 alias vi='nvim'
@@ -108,37 +113,27 @@ function mute () {   osascript -e 'set volume output muted true';
     #for dir in $directory_stack;do pushd -n $dir; done;# > /dev/null; done; #-n suppress dir change on push
     #dirs -v; #display
  #}
-#function cd () { cd $1; dirs -v; }
+# function cd () { /usr/bin/cd $@; dirs -v; }
 alias dv='dirs -v'
 
 export PGPASSFILE=~/.pgpass
 
 export PAGER="/usr/bin/less -Si" #dont wrap long lines. ignore case on searches
 # alias ff='. ~/code/scripts/ff/ff.sh'
+alias ff='. /Users/six/.ff/ff.sh'
 # alias pianobar='pianobar 2>/dev/null'
 alias pandora='pianobar'
 alias bounce_pandora='killps pianobar;pianobar 2>/dev/null'
 alias watchdir='watch -n1 -dc ls -alh'
 alias docker-compost='docker-compose'
-alias vimrc='vi ~/.vimrc'
-alias env='source ~/.emacs.d/.python-environments/default/bin/activate'
+alias vimrc='vi ~/.config/nvim/init.vim'
+alias bashrc='vi ~/.bashrc'
+# alias env='source ~/.emacs.d/.python-environments/default/bin/activate'
 alias psqllocal='psql -hlocalhost -Upostgres' #stay off of model's db-tunnel
 #set up ssh tunnel. psql into db. kill tunnel on exit
 alias sotdb="ssh -NL 6666:127.0.0.1:5432 -i ~/.ssh/google_compute_engine ntomasino@sot & sleep 1; psql -p6666 -Upostgres -hlocalhost -dmetadata; pkill -6 -f '6666:127.0.0.1:5432'"
 alias floppy="ssh zen@192.168.4.32"
 alias floppydb="psql -Upostgres -dpropdata -h 192.168.4.32"
-
-# man() {
-    # env \
-    # LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-    # LESS_TERMCAP_md=$(printf "\e[1;31m") \
-    # LESS_TERMCAP_me=$(printf "\e[0m") \
-    # LESS_TERMCAP_se=$(printf "\e[0m") \
-    # LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-    # LESS_TERMCAP_ue=$(printf "\e[0m") \
-    # LESS_TERMCAP_us=$(printf "\e[1;32m") \
-    # man "$@"
-# }
 
 # source ~/.bash_color
 # alias dark="set_profile dark"
@@ -154,14 +149,6 @@ function notify () {
     fi
 }
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc' ];
-then source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc' ];
-then source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'; fi
-
 #Kubernetes config
 alias prod-kube='kubectl -n prod'
 
@@ -169,4 +156,3 @@ alias prod-kube='kubectl -n prod'
 export AIRFLOW_HOME=~/airflow
 
 #source ~/.alias_docker
-alias ff='. /Users/six/.ff/ff.sh'

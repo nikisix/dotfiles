@@ -19,12 +19,12 @@ set -o nounset
 set -o pipefail
 
 # Install fonts
-# curl -L https://github.com/powerline/fonts/blob/master/RobotoMono/Roboto%20Mono%20Bold%20for%20Powerline.ttf\?raw\=true --output ./fonts/roboto/"Roboto Mono Bold for Powerline.ttf"
-# curl -L https://github.com/powerline/fonts/blob/master/RobotoMono/Roboto%20Mono%20Bold%20for%20Powerline.ttf\?raw\=true --output ./fonts/roboto/"Roboto Mono Bold for Powerline.ttf"
-# curl -L https://github.com/powerline/fonts/blob/master/RobotoMono/Roboto%20Mono%20Italic%20for%20Powerline.ttf\?raw\=true > --output ./fonts/roboto/"Roboto Mono Italic for Powerline.ttf"
-# open ./fonts/roboto/"Roboto Mono for Powerline.ttf"
-# open ./fonts/roboto/"Roboto Mono Bold for Powerline.ttf"
-# open ./fonts/roboto/"Roboto Mono Italic for Powerline.ttf"
+curl -L https://github.com/powerline/fonts/blob/master/RobotoMono/Roboto%20Mono%20Bold%20for%20Powerline.ttf\?raw\=true --output ./fonts/roboto/"Roboto Mono Bold for Powerline.ttf"
+curl -L https://github.com/powerline/fonts/blob/master/RobotoMono/Roboto%20Mono%20Bold%20for%20Powerline.ttf\?raw\=true --output ./fonts/roboto/"Roboto Mono Bold for Powerline.ttf"
+curl -L https://github.com/powerline/fonts/blob/master/RobotoMono/Roboto%20Mono%20Italic%20for%20Powerline.ttf\?raw\=true > --output ./fonts/roboto/"Roboto Mono Italic for Powerline.ttf"
+open ./fonts/roboto/"Roboto Mono for Powerline.ttf"
+open ./fonts/roboto/"Roboto Mono Bold for Powerline.ttf"
+open ./fonts/roboto/"Roboto Mono Italic for Powerline.ttf"
 
 # Setup apps
 for app in $(ls ./apps); do

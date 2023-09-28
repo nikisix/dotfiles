@@ -2,11 +2,11 @@
 export ZSH_CACHE_DIR=~/.zsh_cache
 export KONSOLE_VERSION=0
 # export ZSH_THEME_GIT_PROMPT_AHEAD=true
-# export ZSH_THEME_GIT_PROMPT_BEHIND=false
-# export ZSH_THEME_GIT_PROMPT_DIVERGED=false
-# export ZSH_THEME_GIT_PROMPT_STASHED=false
-export DISABLE_UPDATE_PROMPT=false
-# ZSH_DISABLE_COMPFIX=false
+# export ZSH_THEME_GIT_PROMPT_BEHIND="false"
+# export ZSH_THEME_GIT_PROMPT_DIVERGED="false"
+# export ZSH_THEME_GIT_PROMPT_STASHED="false"
+export DISABLE_UPDATE_PROMPT="false"
+export ZSH_DISABLE_COMPFIX="false"
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -26,9 +26,9 @@ ZSH_THEME="random"
 # An empty array have no effect
 ZSH_THEME_RANDOM_CANDIDATES=(
     "amuse" "arrow" "crunch" "daveverwer" "evan"
-    "fishy" "fletcherm" "gallifrey" "kardan" "lukerandall"
-    "miloshadzic" "nebirhos" "peepcode" "sunaku"
-)
+    "fishy" "fletcherm" "gallifrey" "kardan"
+    "miloshadzic" "nebirhos" "peepcode"
+) # "sunaku" "emotty" "lukerandall"
 # Nice but broken themes
     # "zhann" - creates memory leak
     # "sunrise"
@@ -42,7 +42,7 @@ ZSH_THEME_RANDOM_CANDIDATES=(
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="false"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -139,3 +139,6 @@ source $ZSH/oh-my-zsh.sh
 source ~/.bashrc
 # set -o vi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+

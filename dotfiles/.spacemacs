@@ -389,7 +389,7 @@ you should place your code here."
   (setq python-environment-directory "~/envs")
   (setq jedi:complete-on-dot t)
   ;; (setq jedi:environment-root "~/code/farmers-fridge/venv")
-  (setq jedi:environment-root "~/envs/d2l")
+  (setq jedi:environment-root "~/envs/env1")
 
   (setq bookmark-default-file "~/.emacs.d/bookmarks"
         bookmark-save-flag 1
