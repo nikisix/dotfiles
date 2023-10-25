@@ -17,5 +17,5 @@ function! SQLtoUPPER()
     execute ":%s/\\v([^A-z0-9]+)not(\\s+|$)/\\1NOT\\2/g"
     execute ":%s/\\v([^A-z0-9]+)on(\\s+|$)/\\1ON\\2/g"
 endfunction
-"todo change this to a sql-file-only command
-nnoremap <leader>u :call SQLtoUPPER()<CR>
+" todo change this to a sql-file-only command
+autocmd bufread *.sql nnoremap <leader>u :call SQLtoUPPER()<CR>

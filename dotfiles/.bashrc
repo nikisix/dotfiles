@@ -1,7 +1,10 @@
-set -o nounset
-set -o vi
+# set -o nounset
+# set -o vi
 
 if [[ `uname` == 'Darwin' ]]; then
+    # kinesis keyboard remap non-us key (next to `/~ to left-alt)
+    # https://developer.apple.com/library/archive/technotes/tn2450/_index.htmlhttps://developer.apple.com/library/archive/technotes/tn2450/_index.html
+    hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x7000000E2}]}' > /dev/null
     if [[ $HOST=='sierranevada' ]]; then
         export PATH="/opt/homebrew/bin:$PATH" # homebrew
         export PATH="/Users/nickt/.local/bin:$PATH" # pipx
@@ -30,17 +33,24 @@ export EDITOR=nvim
 export HISTTIMEFORMAT='%F %T '
 # TODO
 export HOMEBREW_GITHUB_API_TOKEN=6cb508ae27ff3c3ae60f8e5e3855aa08e973d5ba
+# export OPENAI_API_KEY=$(gpg --decrypt openai-api-key.asc)
 
 #PYTHON
+alias python=ptipython # TODO get the following line working and remove this
+# export PYTHONSTARTUP=~/.pythonrc.py
+# jupyter terminal
+# alias jukit_kitty="kitty --listen-on=unix:/tmp/mykitty:"$(gdate +%s%N)" -o allow_remote_control=yes"
 # Speed up program execution time maybe turn off
 export PYTHONDONTWRITEBYTECODE=1
-# Ensure that the startup script will be able to access COLUMNS
-export COLUMNS
+
+## Virtualenv Management
+# create symlinks from ~/envs to repos' virtualenv folders to make sure this
+# command can view all possible envs
 export WORKON_HOME=~/envs
 function activate() {
     if [[ -z $@ ]]; then
         echo $(ls $WORKON_HOME) $(ls | grep env)
-    elif [[ $@=='env' ]]; then
+    elif [[ $@ == 'env' ]]; then
         source ./env/bin/activate
     else
         source $WORKON_HOME/$1/bin/activate
@@ -55,6 +65,8 @@ alias aa='cd ~/code/data_analytics_f20180410/'
 alias unicorn='cd ~/code/unicorn'
 alias upgrade_path='cd ~/code/data_analytics_f20180410/analytics/upgrade_path'
 alias model='/Users/six/code/model/preprocessing/public_transit/chicago'
+alias mmm='~/code/ror/mmm'
+alias pylibs='/Users/nickt/code/ror/mmm/env/lib/python3.11/site-packages'
 
 #SERVERS
 alias emr='ssh -i ~/.ssh/dev-vpc-emr-yotabites.pem hadoop@172.23.11.97'
@@ -67,11 +79,10 @@ alias ls='ls -GF'
 alias sl='ls -GF'
 #print File Path
 function fp() { for i in "$@"; do echo $(pwd)/"$i"; done; }
-# alias date='date --iso-8601'
 alias ag='ag --color'
 alias pstree='pstree -g3 -s $1'
 alias less='less -Sr'
-alias date='date --iso-8601'
+# alias date='date --iso-8601'
 alias gits='git status'
 alias env-pipenv='source $(pipenv --venv)/bin/activate; [[ -f .env ]] && source .env'
 alias debug='vi +UnstackFromClipboard'
@@ -156,3 +167,6 @@ alias prod-kube='kubectl -n prod'
 export AIRFLOW_HOME=~/airflow
 
 #source ~/.alias_docker
+
+# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_TMUX_OPTS='-p80%,60%' # fzf opens up a sweet tmux pane

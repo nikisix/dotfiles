@@ -7,6 +7,7 @@ export KONSOLE_VERSION=0
 # export ZSH_THEME_GIT_PROMPT_STASHED="false"
 export DISABLE_UPDATE_PROMPT="false"
 export ZSH_DISABLE_COMPFIX="false"
+# export INSIDE_EMACS="false" # warp needs this for some reason
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -77,7 +78,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git colored-man-pages) # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/kubectl
-plugins=(vi-mode)
+plugins=(vi-mode fzf)
 
 
 # User configuration
@@ -138,7 +139,10 @@ export KEYTIMEOUT=1
 source $ZSH/oh-my-zsh.sh
 source ~/.bashrc
 # set -o vi
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+    test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+fi

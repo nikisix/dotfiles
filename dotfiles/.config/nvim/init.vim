@@ -1,14 +1,10 @@
 " Must set it before referenced since it gets expanded at use
 let mapleader = "\<Space>"
 
-"" fish isn't posix compliant
-"if &shell =~# 'fish$'
-  "set shell=sh
-"endif
-
 "#############"
 "## Plugins ##"
 "#############"
+" :messages and :checkhealth are your friend for plugin debugs
 
 " Automatically install vim-plug and all plugins
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
@@ -21,16 +17,12 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
 
 " [[ Six and MOMO ]]
-Plug '/usr/local/opt/fzf' " Use the brew installed fzf
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-Plug 'davidhalter/jedi-vim' " python highlighting, goto, etc. Using zchee/deoplete-jedi for completion though
-Plug 'zchee/deoplete-jedi' " async python completion
-" Plug 'Shougo/neosnippet-snippets' " actual snippets
-" Plug 'Shougo/neosnippet.vim' " allows snippet completion
+Plug 'davidhalter/jedi-vim' " , {'for': 'python'} python highlighting, goto, etc. Using zchee/deoplete-jedi for completion though
+Plug 'zchee/deoplete-jedi' " , {'for': 'python'} async python completion
 Plug 'bfredl/nvim-miniyank' " Fix block paste in neovim when clipboard=unnamed
 Plug 'bling/vim-airline' " minimal status line
-" Plug 'chr4/nginx.vim' " Nginx conf file syntax highlighting
 Plug 'chrisbra/csv.vim' " Fancy CSV viewing
 Plug 'christoomey/vim-tmux-navigator' " use ctrl-(h/j/k/l) to seamlessly navigate vim splits or tmux panes
 " Plug 'elzr/vim-json' " adds json specific highlighting (instead of just js)
@@ -38,20 +30,27 @@ Plug 'vim-scripts/Tagbar' " Shows ctags (ex for go-to definition)
 Plug 'ntpeters/vim-better-whitespace' " Highlight trailing whitespace
 Plug 'scrooloose/nerdtree' " file explorer
 Plug 'tmux-plugins/vim-tmux' " tmux syntax highlighting and a few others
-Plug 'tpope/vim-repeat' " allows plugin actions to be repeated as a whole with '.' instad of last native action
+Plug 'tpope/vim-repeat' " allows plugin actions to be repeated as a whole with '.' instead of last native action
 Plug 'vim-airline/vim-airline-themes' " Use Solarized Light theme for statusline
-" Plug 'w0rp/ale' " async linting, etc
 Plug 'terryma/vim-expand-region' " expand visual selection by repeating key hit
 
 " [[ Six not MOMO ]]
-Plug 'luk400/vim-jukit'
+Plug 'luk400/vim-jukit', {'for': ['python', 'notebook']}
+
+Plug 'BurntSushi/ripgrep'
+" Plug '/opt/homebrew/bin/fzf' " Use the brew installed fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'sharkdp/fd'
+Plug 'nvim-lua/plenary.nvim' " dep for telescope
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
+
 Plug 'ervandew/supertab'
 Plug 'rafi/awesome-vim-colorschemes' "colorthemes
 Plug 'tpope/vim-surround' "Surround text v(highlight)S<character>
 Plug 'tpope/vim-fugitive' "Vim git plugin
 Plug 'tpope/vim-rhubarb' "Vim github plugin
 Plug 'mattboehm/vim-unstack' "Unfold a stacktrace into vim-splits
-" Plug 'vim-scripts/dbext.vim' "THE BEST DB INTERFACE
 Plug 'lymslive/dbext' "THE BEST DB INTERFACE
 Plug 'easymotion/vim-easymotion' "Space+vim-motion - quick jumps
 Plug 'bling/vim-bufferline'
@@ -59,6 +58,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine' "Marks indentation levels with a character
 Plug 'vorillaz/devicons' "Next level bling
 Plug 'shime/vim-livedown' "markdown server
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-orgmode/orgmode' " , {'for': 'org'}
 
 " [[ ICEBOX ]]
 "Plug 'hrj/vim-DrawIt' "VERY useful for diagramming
@@ -114,17 +116,17 @@ set showmatch " Jump to the corresponding enclosing char when inserting new ones
 set smartcase " Ignores search case except when you use a caps
 set tabstop=4 " Number of characters/spaces a tab appears as
 set shiftwidth=4 " Number of characters/spaces a tab appears as
-" set textwidth=120 " Start new lines at 120 characters automatically or re-wrap to 120 with gq
+set textwidth=120 " Start new lines at 120 characters automatically or re-wrap to 120 with gq
 set undofile " Store change history between file sessions
 set visualbell " don't beep, ex when hitting escape in command mode
 " set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 
 autocmd bufread *.md setlocal conceallevel=0 " Don't hide syntax symbols like _
-autocmd bufread *.py setlocal textwidth=88 " Match Black config
+autocmd bufread *.py setlocal textwidth=120 " 88 to Match Black config.
 autocmd bufread *.tsx set syntax=javascript
 autocmd bufread *.sql.tmpl set syntax=sql
-autocmd bufread *.org set syntax=sql
+" autocmd bufread *.org set syntax=sql
 
 "" faster quit, write, and exit
 "nnoremap <Leader>q :q<CR>
@@ -139,11 +141,11 @@ nnoremap N Nzzzv
 nmap j gj
 nmap k gk
 " Shortcut for :s///g
-nmap S :%s//g<LEFT><LEFT>
-xmap S :s//g<LEFT><LEFT>
+" nmap S :%s//g<LEFT><LEFT> " nice but interferes with tpope/vim-surround
+" xmap S :s//g<LEFT><LEFT>
 " Shortcut for :s/<last match>//g
-nmap <expr> M ':%s/' . @/ . '//g<LEFT><LEFT>'
-xmap <expr> M ':s/' . @/ . '//g<LEFT><LEFT>'
+" nmap <expr> M ':%s/' . @/ . '//g<LEFT><LEFT>'
+" xmap <expr> M ':s/' . @/ . '//g<LEFT><LEFT>'
 
 " choose the highlighted match without inserting newline - not required for an auto-selected match
 function! s:select_without_newline()
@@ -157,6 +159,7 @@ inoremap <silent> <CR> <C-r>=<SID>select_without_newline()<CR>
 "
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
+autocmd! bufwritepost init.vim source %
 
 "[[ SETTINGS ]]
 set path+=** " Recursive search for files with vims native 'gf' (goto file)
@@ -186,13 +189,15 @@ noremap H <home>
 vnoremap H <home>
 noremap L <end>
 vnoremap L <end>
-noremap <leader>k <pageup>
-noremap <leader>j <pagedown>
+noremap <c-k> {
+vnoremap <c-k> {
+noremap <c-j> }
+vnoremap <c-j> }
 
 "[[ SPLITS ]]
 "SPLIT SWITCH
-noremap <c-j> <c-w>j
-noremap <c-k> <c-w>k
+" noremap <c-j> <c-w>j
+" noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
 noremap <c-h> <c-w>h
 
@@ -204,7 +209,7 @@ nmap <S-Right> <C-w>>
 
 "[[ BUFFERS ]]
 " Change between files more quickly when editing multiple files
-nnoremap <c-n> <esc>:bprevious<CR>
+" nnoremap <c-n> <esc>:bprevious<CR>
 nnoremap <c-b> <esc>:buffer #<CR>
 nnoremap <c-m> <esc>:bnext<CR>
 nnoremap B :buffers<CR>:buffer<SPACE>
@@ -245,7 +250,6 @@ nnoremap <C-u> <C-]>
 nnoremap <C-i> :tn<CR>
 nnoremap <C-y> <C-t>
 
-
 let g:sql_type_default = 'pgsql'
 
 "[[ TMUX NAVIGATION ]]
@@ -285,6 +289,6 @@ noremap <leader>n :nohl<CR>
 " [[ PYTHON IDE ]]
 " autocmd FileType py noremap <buffer> <C-CR> :!python %<CR>
 " noremap <C-CR> :!python %<CR>
-noremap <F12> :!python %<CR>
+autocmd bufread *.py noremap <F12> :!python %<CR>
 " map <Leader>b obreakpoint()  # TODO BREAKPOINT<C-c>
-map <Leader>b oimport ipdb; ipdb.set_trace()  # TODO BREAKPOINT<C-c>
+autocmd bufread *.py map <Leader>b oimport ipdb; ipdb.set_trace()  # TODO BREAKPOINT<C-c>

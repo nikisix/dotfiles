@@ -1,1 +1,1 @@
-noremap <C-f> :FZF<CR>
+" noremap <C-f> :FZF<CR> " passing this one on to telescope

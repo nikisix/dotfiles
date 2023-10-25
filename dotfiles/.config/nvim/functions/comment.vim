@@ -10,6 +10,7 @@ autocmd FileType tex                let b:comment_leader = '% '
 autocmd FileType mail               let b:comment_leader = '> '
 autocmd FileType vim                let b:comment_leader = '" '
 autocmd FileType sql                let b:comment_leader = '-- '
+
 noremap <silent> <leader>c :<C-B>silent <C-E>s/\v([^ \t])/<C-R>=escape(b:comment_leader,'\/')<CR>\1/<CR>:nohlsearch<CR>
 noremap <silent> <leader>C :<C-B>silent <C-E>s/\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 

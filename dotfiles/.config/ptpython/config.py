@@ -113,8 +113,8 @@ def configure(repl):
     # Set color depth (keep in mind that not all terminals support true color).
 
     # repl.color_depth = "DEPTH_1_BIT"  # Monochrome.
-    # repl.color_depth = "DEPTH_4_BIT"  # ANSI colors only.
-    repl.color_depth = "DEPTH_8_BIT"  # The default, 256 colors.
+    repl.color_depth = "DEPTH_4_BIT"  # ANSI colors only.
+    # repl.color_depth = "DEPTH_8_BIT"  # The default, 256 colors.
     # repl.color_depth = "DEPTH_24_BIT"  # True color.
 
     # Min/max brightness

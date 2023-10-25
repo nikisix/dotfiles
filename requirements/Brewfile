@@ -4,13 +4,14 @@ tap "homebrew/core"
 
 # brew "aria2"
 brew "bash"
+brew "cargo" # req: lvim
 brew "coreutils"
 brew "ctags"
 brew "curl"
 brew "diffutils"
 brew "findutils" #, args: ["with-default-names"]
 brew "zsh"
-# brew "fish"
+brew "fd"
 brew "fzf"
 brew "gawk"
 brew "gh"
@@ -25,18 +26,23 @@ brew "grep" #, args: ["with-default-names"]
 brew "gzip"
 brew "hub"
 brew "jq"
+brew "lazygit"
 brew "less"
 brew "luajit"
 brew "make" #, args: ["with-default-names"]
 brew "neovim"
+brew "npm" # req lvim
+brew "node" # req lvim
 brew "openssh"
 brew "openssl"
+brew "pandoc" # markdown viewer
 brew "pianobar"
 brew "postgresql"
 brew "python"
 brew "readline"
 brew "reattach-to-user-namespace"
 brew "recode"
+brew "rg"
 brew "shellcheck"
 brew "the_silver_searcher"
 brew "tmux"
@@ -57,3 +63,7 @@ cask "postico"
 cask "spectacle"
 # cask "spotify"
 # cask "vlc"
+cask "warp"
+
+tap "d12frosted/emacs-plus"
+brew "emacs-plus", args: ["with-spacemacs-icon","with-native-comp"]
