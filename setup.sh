@@ -42,6 +42,8 @@ if hash gcloud 2>/dev/null; then
     echo 'y' | gcloud components install docker-credential-gcr
 fi
 
+# install lunarvim
+bash ./apps/lunarvim/install.sh
 ./macos_settings.sh
 
 echo "Done!"

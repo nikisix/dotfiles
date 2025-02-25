@@ -1,27 +1,31 @@
 " IF KITTY OR TMUX IS USED:
+let g:jukit_shell_command = 'ipython'
 let g:jukit_terminal = 'tmux'
+"
 "   - Terminal to use. Can be one of '', 'kitty', 'vimterm', 'nvimterm' or 'tmux'. If '' is given then will try to detect terminal (though this might fail, in which case it simply defaults to 'vimterm' or 'nvimterm' - depending on the output of `has("nvim")`)
 "
-" let g:jukit_output_new_os_window = 1 " - If set to 1,
-let g:jukit_inline_plotting = 0
+" let g:jukit_inline_plotting = 1
 "    - Enable in-terminal-plotting. Only supported for kitty or tmux+iTerm2 -> BE SURE TO SPECIFY THE TERMINAL VIA `g:jukit_terminal`! (see variables in section 'Basic jukit options')
 "    - Not working yet.
+" - must run: pip install imgcat
+" plotting code here: ~/.local/share/nvim/plugged/vim-jukit/autoload/jukit/
+" and here: ~/.local/share/nvim/plugged/vim-jukit/helpers/imgcat/imgcat.py
 "
 " KITTY SETTINGS
 " let g:jukit_terminal = 'kitty'
-" let g:jukit_inline_plotting = 1
+let g:jukit_inline_plotting = 1
 "
 " ###### Split layout
 " ```vim
 " You can define a custom split layout as a dictionary, the default is:
 let g:jukit_layout = {
     \'split': 'horizontal',
-    \'p1': 0.4,
+    \'p1': 0.5,
     \'val': [
         \'file_content',
         \{
             \'split': 'vertical',
-            \'p1': 0.4,
+            \'p1': 0.5,
             \'val': ['output', 'output_history']
         \}
     \]

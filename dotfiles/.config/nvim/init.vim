@@ -16,26 +16,9 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-" [[ Six and MOMO ]]
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-Plug 'davidhalter/jedi-vim' " , {'for': 'python'} python highlighting, goto, etc. Using zchee/deoplete-jedi for completion though
-Plug 'zchee/deoplete-jedi' " , {'for': 'python'} async python completion
-Plug 'bfredl/nvim-miniyank' " Fix block paste in neovim when clipboard=unnamed
-Plug 'bling/vim-airline' " minimal status line
-Plug 'chrisbra/csv.vim' " Fancy CSV viewing
-Plug 'christoomey/vim-tmux-navigator' " use ctrl-(h/j/k/l) to seamlessly navigate vim splits or tmux panes
-" Plug 'elzr/vim-json' " adds json specific highlighting (instead of just js)
-Plug 'vim-scripts/Tagbar' " Shows ctags (ex for go-to definition)
-Plug 'ntpeters/vim-better-whitespace' " Highlight trailing whitespace
-Plug 'scrooloose/nerdtree' " file explorer
-Plug 'tmux-plugins/vim-tmux' " tmux syntax highlighting and a few others
-Plug 'tpope/vim-repeat' " allows plugin actions to be repeated as a whole with '.' instead of last native action
-Plug 'vim-airline/vim-airline-themes' " Use Solarized Light theme for statusline
-Plug 'terryma/vim-expand-region' " expand visual selection by repeating key hit
-
 " [[ Six not MOMO ]]
-Plug 'luk400/vim-jukit', {'for': ['python', 'notebook']}
+Plug 'folke/which-key.nvim'
+Plug 'luk400/vim-jukit' " , {'for': ['python', 'notebook']}
 
 Plug 'BurntSushi/ripgrep'
 " Plug '/opt/homebrew/bin/fzf' " Use the brew installed fzf
@@ -60,7 +43,25 @@ Plug 'vorillaz/devicons' "Next level bling
 Plug 'shime/vim-livedown' "markdown server
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-orgmode/orgmode' " , {'for': 'org'}
+Plug 'nvim-orgmode/orgmode' , {'for': 'org'}
+
+" [[ Six and MOMO ]]
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+Plug 'davidhalter/jedi-vim' " , {'for': 'python'} python highlighting, goto, etc. Using zchee/deoplete-jedi for completion though
+Plug 'zchee/deoplete-jedi' " , {'for': 'python'} async python completion
+Plug 'bfredl/nvim-miniyank' " Fix block paste in neovim when clipboard=unnamed
+Plug 'bling/vim-airline' " minimal status line
+Plug 'chrisbra/csv.vim' " Fancy CSV viewing
+Plug 'christoomey/vim-tmux-navigator' " use ctrl-(h/j/k/l) to seamlessly navigate vim splits or tmux panes
+" Plug 'elzr/vim-json' " adds json specific highlighting (instead of just js)
+Plug 'vim-scripts/Tagbar' " Shows ctags (ex for go-to definition)
+Plug 'ntpeters/vim-better-whitespace' " Highlight trailing whitespace
+Plug 'scrooloose/nerdtree' " file explorer
+Plug 'tmux-plugins/vim-tmux' " tmux syntax highlighting and a few others
+Plug 'tpope/vim-repeat' " allows plugin actions to be repeated as a whole with '.' instead of last native action
+Plug 'vim-airline/vim-airline-themes' " Use Solarized Light theme for statusline
+Plug 'terryma/vim-expand-region' " expand visual selection by repeating key hit
 
 " [[ ICEBOX ]]
 "Plug 'hrj/vim-DrawIt' "VERY useful for diagramming
@@ -189,15 +190,15 @@ noremap H <home>
 vnoremap H <home>
 noremap L <end>
 vnoremap L <end>
-noremap <c-k> {
-vnoremap <c-k> {
-noremap <c-j> }
-vnoremap <c-j> }
+noremap K {
+vnoremap K {
+noremap J }
+vnoremap J }
 
 "[[ SPLITS ]]
 "SPLIT SWITCH
-" noremap <c-j> <c-w>j
-" noremap <c-k> <c-w>k
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
 noremap <c-h> <c-w>h
 

@@ -34,12 +34,14 @@ export HISTTIMEFORMAT='%F %T '
 # TODO
 export HOMEBREW_GITHUB_API_TOKEN=6cb508ae27ff3c3ae60f8e5e3855aa08e973d5ba
 # export OPENAI_API_KEY=$(gpg --decrypt openai-api-key.asc)
+export ANTHROPIC_API_KEY=$(cat ~/.gnupg/keys/anthropic-key)
 
 #PYTHON
 alias python=ptipython # TODO get the following line working and remove this
 # export PYTHONSTARTUP=~/.pythonrc.py
 # jupyter terminal
-# alias jukit_kitty="kitty --listen-on=unix:/tmp/mykitty:"$(gdate +%s%N)" -o allow_remote_control=yes"
+alias jukit_kitty="kitty --listen-on=unix:/tmp/mykitty:"$(gdate +%s%N)" -o allow_remote_control=yes"
+# alias jukit_kitty="kitty --listen-on=unix:@"$(date +%s%N)" -o allow_remote_control=yes"
 # Speed up program execution time maybe turn off
 export PYTHONDONTWRITEBYTECODE=1
 
@@ -47,7 +49,7 @@ export PYTHONDONTWRITEBYTECODE=1
 # create symlinks from ~/envs to repos' virtualenv folders to make sure this
 # command can view all possible envs
 export WORKON_HOME=~/envs
-function activate() {
+function venv() {
     if [[ -z $@ ]]; then
         echo $(ls $WORKON_HOME) $(ls | grep env)
     elif [[ $@ == 'env' ]]; then
@@ -59,18 +61,24 @@ function activate() {
 export datadir=/Volumes/oasis/ntomasino/data/swlabs/model/
 
 # PATHS
+alias code='cd ~/code'
 alias warehouse='cd /Users/six/code/unicorn/warehouse/src/warehouse/'
 alias metrics='cd /Users/six/code/unicorn/warehouse/src/warehouse/bigquery/templates/metrics'
 alias aa='cd ~/code/data_analytics_f20180410/'
 alias unicorn='cd ~/code/unicorn'
 alias upgrade_path='cd ~/code/data_analytics_f20180410/analytics/upgrade_path'
 alias model='/Users/six/code/model/preprocessing/public_transit/chicago'
-alias mmm='~/code/ror/mmm'
+alias mmm='~/code/ror/mmm/featherweight'
+alias dn='~/code/decision_nets'
+alias pgm='~/code/decision_nets/'
 alias pylibs='/Users/nickt/code/ror/mmm/env/lib/python3.11/site-packages'
 
 #SERVERS
 alias emr='ssh -i ~/.ssh/dev-vpc-emr-yotabites.pem hadoop@172.23.11.97'
 
+# ALIASES
+alias lgit='lazygit'
+alias gits='git status'
 #some more ls aliases
 alias ll='ls -alhF'
 alias la='ls -A'
@@ -83,7 +91,6 @@ alias ag='ag --color'
 alias pstree='pstree -g3 -s $1'
 alias less='less -Sr'
 # alias date='date --iso-8601'
-alias gits='git status'
 alias env-pipenv='source $(pipenv --venv)/bin/activate; [[ -f .env ]] && source .env'
 alias debug='vi +UnstackFromClipboard'
 # alias weather='ansiweather -l "kansas city, mo" -F -u imperial'
@@ -99,7 +106,7 @@ alias news='newsbeuter'
 alias sed='/opt/homebrew/bin/gsed'
 alias sp='emacsclient -t $*'
 alias spc='emacsclient -t $*'
-alias vi='nvim'
+alias vi='lvim'
 alias viconfig='vi ~/.config/nvim/init.vim'
 #function __csv { cat $1 | column -s, -t | less -S; }
 function csv () { csvlook $1 | less -S; }
@@ -107,7 +114,8 @@ function csvsample () { head -n100 $1 | csvlook | less -S;}
 alias clock='watch -n1 "date '+%D%n%T'|figlet -k"'
 function difffiles () { diff <(sort $1) <(sort $2) | less -S; }
 function cols () { head -n1 $1 | gsed 's/,/\n/g'; }
-function cols1 () { python -c "import pandas as pd; df = pd.read_csv('$1', nrows=1); print(df.head(1).transpose());" }
+function cols1 () { ipython -c "import pandas as pd; df = pd.read_csv('$1', nrows=1, sep='$2'); print(df.head(1).transpose());" }
+function cols2 () { ipython -c "import pandas as pd; df = pd.read_csv('$1', nrows=2, sep='$2'); print(df.head(2).transpose());" }
 function killps () { kill -9 `ps | grep $1 | sed 's/^[ ]*//' | cut -f1 -d ' '`; }
 function gather () { sed -n -e "/$1/,/},/p" ~/code/dex/allcards.json; }
 function mute () {   osascript -e 'set volume output muted true';
@@ -155,8 +163,10 @@ alias floppydb="psql -Upostgres -dpropdata -h 192.168.4.32"
 function notify () {
     if eval "${@}"; then
         osascript -e "display notification \"Complete!\" with title \"${*}\""
+        osascript -e 'tell application "Messages" to send "Job Complete!" to buddy "4022068559"'
     else
         osascript -e "display notification \"Failed! 😞\" with title \"${*}\""
+        osascript -e 'tell application "Messages" to send "Job Failed!" to buddy "4022068559"'
     fi
 }
 
@@ -170,3 +180,13 @@ export AIRFLOW_HOME=~/airflow
 
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_TMUX_OPTS='-p80%,60%' # fzf opens up a sweet tmux pane
+
+export PYTHONBREAKPOINT="ipdb.set_trace"
+
+alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
+export SNOWSQL_PRIVATE_KEY_PASSPHRASE=aoror
+
+
+# for ao work bitbucket repo access
+# eval $(ssh-agent)
+# ssh-add ~/.ssh/bitbucket-work

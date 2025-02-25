@@ -5,6 +5,7 @@ export KONSOLE_VERSION=0
 # export ZSH_THEME_GIT_PROMPT_BEHIND="false"
 # export ZSH_THEME_GIT_PROMPT_DIVERGED="false"
 # export ZSH_THEME_GIT_PROMPT_STASHED="false"
+export DISABLE_AUTO_TITLE='true'
 export DISABLE_UPDATE_PROMPT="false"
 export ZSH_DISABLE_COMPFIX="false"
 # export INSIDE_EMACS="false" # warp needs this for some reason
@@ -79,6 +80,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git colored-man-pages) # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/kubectl
 plugins=(vi-mode fzf)
+source <(fzf --zsh)
 
 
 # User configuration
@@ -141,8 +143,30 @@ source ~/.bashrc
 # set -o vi
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# zsh-completions
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
     test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 fi
+
+PATH="/Users/nickt/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/nickt/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/nickt/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/nickt/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/nickt/perl5"; export PERL_MM_OPT;
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+# function precmd() { clear }
+export POETRY_HTTP_BASIC_ARTIFACT_USERNAME=aws
+export POETRY_HTTP_BASIC_ARTIFACT_PASSWORD=
+export CODEARTIFACT_AUTH_TOKEN=

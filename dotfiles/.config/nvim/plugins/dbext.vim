@@ -7,7 +7,7 @@
 "autocmd VimEnter * DBCompleteTables
 "autocmd filetype sql :DBCompleteTables  "this causes result window not to display on .sql files
 let g:dbext_default_profile_warehouse_local='type=PGSQL:host=localhost:port=5432:dbname=warehouse:user=postgres'
-let g:dbext_default_profile_warehouse_prod='type=PGSQL:host=35.232.183.196:port=5432:dbname=warehouse:user=postgres'
+let g:dbext_default_profile_warehouse_prod='type=PGSQL:host=xx.xxx.xxx.xxx:port=5432:dbname=warehouse:user=postgres'
 let g:dbext_default_prompt_for_variables=0
 let g:dbext_default_DBI_commit_on_disconnect = 0
 "let g:dbext_default_window_use_horiz = 0  " Use vertical split

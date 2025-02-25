@@ -739,12 +739,12 @@ function! FoldMethod(lnum)
   "get string of current line
   let crLine=getline(a:lnum)
 
-  " check if empty line 
-  if empty(crLine) "Empty line or end comment 
-    return -1 " so same indent level as line before 
-  endif 
+  " check if empty line
+  if empty(crLine) "Empty line or end comment
+    return -1 " so same indent level as line before
+  endif
 
-  " check if comment 
+  " check if comment
   let a:data=join( map(synstack(a:lnum, 1), 'synIDattr(v:val, "name")') )
   if a:data =~ ".*omment.*"
     return '='
