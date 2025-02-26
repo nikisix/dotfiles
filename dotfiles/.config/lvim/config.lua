@@ -90,6 +90,7 @@ lvim.plugins = {
   },
 }
 -- -- Extra plugin config
+--
 -- COPILOT
 vim.g.copilot_workspace_folders = "~/code/decision_nets"
 vim.g.copilot_no_tab_map = true
@@ -97,29 +98,6 @@ vim.keymap.set('i', '<RIGHT>', 'copilot#Accept("\\<CR>")', {
   expr = true,
   replace_keycodes = false
 })
--- TODO make a mapping for :Copilot panel<CR>
--- lvim.builtin.which_key.mappings["c"] = nil
--- vim.keymap.set('i', '<SHIFT-TAB>', 'copilot#Accept("\\<CR>")', {
---   expr = true,
---   replace_keycodes = false
--- })
---
--- local has_words_before = function()
---   if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
---   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
---   return col ~= 0 and vim.api.nvim_buf_get_text(0, line-1, 0, line-1, col, {})[1]:match("^%s*$") == nil
--- end
--- cmp.setup({
---   mapping = {
---     ["<Tab>"] = vim.schedule_wrap(function(fallback)
---       if cmp.visible() and has_words_before() then
---         cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
---       else
---         fallback()
---       end
---     end),
---   },
--- })
 
 -- Builtins
 -- lvim.builtin.copilot = { active = true }
@@ -162,7 +140,6 @@ lvim.lsp.buffer_mappings.normal_mode['<Space>os'] = { ":JukitOut source ~/code/d
 -- lvim.lsp.buffer_mappings.normal_mode['<Space>os'] = { ":JukitOut source ~/code/ror/mmm/env/bin/activate<CR>" }
 -- lvim.keys.normal_mode['os'] = { ":JukitOut source ~/code/ror/mmm/env/bin/activate<CR>" }
 
-
 -- [[Six Vim]]
 
 -- Saving
@@ -196,20 +173,12 @@ lvim.keys.normal_mode["<CR>"] = ":bn<cr>"
 lvim.keys.normal_mode["M"] = ":marks<cr>"
 
 -- Splits
--- lvim.keys.normal_mode["t"] = "<c-w>w"
+lvim.keys.normal_mode["t"] = "<c-w>w"
 -- TODO get these working with tmux somehow
--- lvim.keys.normal_mode["<c-K>"] = "<c-w>k"
--- lvim.keys.normal_mode["<c-J>"] = "<c-w>j"
--- lvim.keys.normal_mode["<c-H>"] = "<c-w>h"
--- lvim.keys.normal_mode["<c-L>"] = "<c-w>l"
--- messes up all keymappings
-lvim.keys.normal_mode = {
-  -- Better window movement
-  ["<C-h>"] = "<C-w>h",
-  ["<C-j>"] = "<C-w>j",
-  ["<C-k>"] = "<C-w>k",
-  ["<C-l>"] = "<C-w>l",
-}
+lvim.keys.normal_mode["<c-K>"] = "<c-w>k"
+lvim.keys.normal_mode["<c-J>"] = "<c-w>j"
+lvim.keys.normal_mode["<c-H>"] = "<c-w>h"
+lvim.keys.normal_mode["<c-L>"] = "<c-w>l"
 
 -- Tags
 lvim.keys.normal_mode["T"] = ":TagbarToggle<CR>"
