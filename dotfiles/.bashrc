@@ -72,11 +72,13 @@ alias mmm='~/code/ror/mmm/featherweight'
 alias dn='~/code/decision_nets'
 alias pgm='~/code/decision_nets/'
 alias pylibs='/Users/nickt/code/ror/mmm/env/lib/python3.11/site-packages'
+alias openscad='cd ~/code/openscad'
 
 #SERVERS
 alias emr='ssh -i ~/.ssh/dev-vpc-emr-yotabites.pem hadoop@172.23.11.97'
 
 # ALIASES
+alias g='git'
 alias lgit='lazygit'
 alias gits='git status'
 #some more ls aliases
