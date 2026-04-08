@@ -1,2 +1,4 @@
 .oh-my-zsh
 .jukit
+credentials.db
+application_default_credentials.json
