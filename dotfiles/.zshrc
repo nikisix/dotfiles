@@ -170,3 +170,9 @@ export SDKMAN_DIR="$HOME/.sdkman"
 export POETRY_HTTP_BASIC_ARTIFACT_USERNAME=aws
 export POETRY_HTTP_BASIC_ARTIFACT_PASSWORD=
 export CODEARTIFACT_AUTH_TOKEN=
+
+
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+zstyle ':completion:*' menu select

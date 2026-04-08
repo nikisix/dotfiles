@@ -26,6 +26,8 @@ elif [[ "$unamestr" == 'Linux' ]]; then
     source ~/.bash-windows  # TODO and uname == six
 fi
 
+# export TERM=xterm-kitty
+
 #source ~/.git-prompt.sh #export PS1="\w\$(__git_ps1)=☆= "
 #=✪=
 #(♂)
@@ -34,7 +36,8 @@ export HISTTIMEFORMAT='%F %T '
 # TODO
 export HOMEBREW_GITHUB_API_TOKEN=6cb508ae27ff3c3ae60f8e5e3855aa08e973d5ba
 # export OPENAI_API_KEY=$(gpg --decrypt openai-api-key.asc)
-export ANTHROPIC_API_KEY=$(cat ~/.gnupg/keys/anthropic-key)
+export ANTHROPIC_API_KEY=$(cat ~/.keys/anthropic-api-key)
+# export AVANTE_ANTHROPIC_API_KEY=$(cat ~/.keys/anthropic-api-key)
 
 #PYTHON
 alias python=ptipython # TODO get the following line working and remove this
@@ -72,7 +75,6 @@ alias mmm='~/code/ror/mmm/featherweight'
 alias dn='~/code/decision_nets'
 alias pgm='~/code/decision_nets/'
 alias pylibs='/Users/nickt/code/ror/mmm/env/lib/python3.11/site-packages'
-alias openscad='cd ~/code/openscad'
 
 #SERVERS
 alias emr='ssh -i ~/.ssh/dev-vpc-emr-yotabites.pem hadoop@172.23.11.97'
@@ -104,16 +106,16 @@ alias redshift='psql -U aa_yotabites_dev -h dev-vpc-redshiftdev100.cqxlseythtmd.
 alias lint='pylint --rcfile=~/code/data_analytics_f20180410/pylintrc'
 alias matrix='cmatrix -sabu2'
 function google () { w3m "http://www.google.com/search?q=$*"; }
-alias news='newsbeuter'
+alias news='newsboat'
 alias sed='/opt/homebrew/bin/gsed'
 alias sp='emacsclient -t $*'
 alias spc='emacsclient -t $*'
-alias vi='lvim'
+alias vi='nvim'
 alias viconfig='vi ~/.config/nvim/init.vim'
 #function __csv { cat $1 | column -s, -t | less -S; }
 function csv () { csvlook $1 | less -S; }
 function csvsample () { head -n100 $1 | csvlook | less -S;}
-alias clock='watch -n1 "date '+%D%n%T'|figlet -k"'
+alias clock='watch -n1 "date '+%D%n%T'|figlet -k -f big"'
 function difffiles () { diff <(sort $1) <(sort $2) | less -S; }
 function cols () { head -n1 $1 | gsed 's/,/\n/g'; }
 function cols1 () { ipython -c "import pandas as pd; df = pd.read_csv('$1', nrows=1, sep='$2'); print(df.head(1).transpose());" }
