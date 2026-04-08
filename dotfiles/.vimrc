@@ -113,8 +113,11 @@ autocmd! CursorMovedI
 let g:indentLine_char = '.'
 
 "TMUX-NAVIGATOR
-"
-"
+nnoremap <M-h> {Left-mapping} :TmuxNavigateLeft<cr>
+nnoremap <M-j> {Down-Mapping} :TmuxNavigateDown<cr>
+nnoremap <M-k> {Up-Mapping} :TmuxNavigateUp<cr>
+nnoremap <M-l> {Right-Mapping} :TmuxNavigateRight<cr>
+
 """"""""""""" CSCOPE-VIM key mappings
     "
     " The following maps all invoke one of the following cscope search types:
@@ -255,7 +258,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 ""autocmd vimenter * NERDTree
 
 ""autoload nerdtree, even if no files were specified
-autocmd vimenter * if !argc() | NERDTree | endif
+"autocmd vimenter * if !argc() | NERDTree | endif
 "autocmd vimenter * if !argc() | Lexplore | endif
 
 "autoload Tagbar
@@ -331,11 +334,6 @@ inoremap <expr><silent><buffer> <s-tab>
 "VirtualEnv
 "let g:virtualenv_directory = '/Users/ntomasino/miniconda/'
 let g:virtualenv_auto_activate = 1
-
-nnoremap <M-h> {Left-mapping} :TmuxNavigateLeft<cr>
-nnoremap <M-j> {Down-Mapping} :TmuxNavigateDown<cr>
-nnoremap <M-k> {Up-Mapping} :TmuxNavigateUp<cr>
-nnoremap <M-l> {Right-Mapping} :TmuxNavigateRight<cr>
 
 "SUPERTAB
 "au FileType python set omnifunc=pythoncomplete#Complete
