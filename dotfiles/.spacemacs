@@ -34,50 +34,50 @@ values."
    (javascript
     vimscript
     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
-     ;; html
-     ;; better-defaults
-     ;; lsp
-     auto-completion
-     csv
-     emacs-lisp
-     ess
-     git
-     helm
-     html
-     markdown
-     org
-     osx
-     python
-     ;; pyvenv
-     sql
-     themes-megapack
-     yaml
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     ;; spell-checking
-     ;; syntax-checking
-     ;; version-control
-     )
+    ;; Example of useful layers you may want to use right away.
+    ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
+    ;; <M-m f e R> (Emacs style) to install them.
+    ;; ----------------------------------------------------------------
+    ;; html
+    ;; better-defaults
+    ;; lsp
+    auto-completion
+    csv
+    emacs-lisp
+    ess
+    git
+    helm
+    html
+    markdown
+    org
+    osx
+    python
+    ;; pyvenv
+    sql
+    themes-megapack
+    yaml
+    ;; (shell :variables
+    ;;        shell-default-height 30
+    ;;        shell-default-position 'bottom)
+    ;; spell-checking
+    ;; syntax-checking
+    ;; version-control
+    )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
-      epc
-      ctable
-      concurrent
-      ;; differed
-      ;; python-environment
-      jedi-core
-      jedi
-      direx
-      jedi-direx
-   )
+                                      epc
+                                      ctable
+                                      concurrent
+                                      ;; differed
+                                      ;; python-environment
+                                      jedi-core
+                                      jedi
+                                      direx
+                                      jedi-direx
+                                      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -324,7 +324,7 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   (setq dotspacemacs-themes '(cyberpunk))
-)
+  )
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -335,7 +335,7 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (let ((default-directory  "~/.emacs.d/lisp/"))
     (normal-top-level-add-subdirs-to-load-path)
-  )
+    )
 
   (setq org-startup-with-inline-images t)
   ;; TODO nick's attempt at installing tsv-mode
@@ -412,7 +412,7 @@ you should place your code here."
        ("w" . ,(* 60 8 5))
        ("m" . ,(* 60 8 5 4))
        ("y" . ,(* 60 8 5 4 11)))))
-)
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -455,26 +455,121 @@ you should place your code here."
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("9b65cf71fd6b27a5362afeff062c6abd1c5d8a7c4d444c942f3da36bf0a151b1" "f04122bbc305a202967fa1838e20ff741455307c2ae80a26035fbf5d637e325f" "51ec7bfa54adf5fff5d466248ea6431097f5a18224788d0bd7eb1257a4f7b773" "6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" "f366d4bc6d14dcac2963d45df51956b2409a15b770ec2f6d730e73ce0ca5c8a7" "d74183b099f4e91052941ef3131c76697caae3fcf581f4c140216a7c6e6d71e2" "58c6711a3b568437bab07a30385d34aacf64156cc5137ea20e799984f4227265" "b3775ba758e7d31f3bb849e7c9e48ff60929a792961a2d536edec8f68c671ca5" "801a567c87755fe65d0484cb2bded31a4c5bb24fd1fe0ed11e6c02254017acb2" "2b3f1e6abe0f02ff73d95dca04901bdbc2ecebe80fa453eded34fa39c8b050cb" "032d5dc72a31ebde5fae25a8c1ef48bac6ba223588a1563d10dbf3a344423879" "6313eeb08a54045a6d3945c28ab5a97916334e189cebd9c67c8b72beed0de265" "3cc2385c39257fed66238921602d8104d8fd6266ad88a006d0a4325336f5ee02" "e9a1226ffed627ec58294d77c62aa9561ec5f42309a1f7a2423c6227e34e3581" "987b709680284a5858d5fe7e4e428463a20dfabe0a6f2a6146b3b8c7c529f08b" "66132890ee1f884b4f8e901f0c61c5ed078809626a547dbefbb201f900d03fd8" "72a81c54c97b9e5efcc3ea214382615649ebb539cb4f2fe3a46cd12af72c7607" "3fec737266204a5422e5acc776ea55e1a2fcd3a8104fd8c70ee0a300e56ece3c" "e0d42a58c84161a0744ceab595370cbe290949968ab62273aed6212df0ea94b4" "9b59e147dbbde5e638ea1cde5ec0a358d5f269d27bd2b893a0947c4a867e14c1" "5e1d1564b6a2435a2054aa345e81c89539a72c4cad8536cfe02583e0b7d5e2fa" "13a15b35b4b50fd3e948f7445e15b286155bbfede5468df83426734840c0fba7" "ea5a840bd2f9616a36890c27fd5e97528cb9fcfafa0e6739315bb12786d6c4ee" default))
- '(org-duration-units
-   '(("min" . 1)
-     ("h" . 60)
-     ("d" . 480)
-     ("w" . 10080)
-     ("m" . 43200)
-     ("y" . 525960.0)))
- '(package-selected-packages
-   '(add-node-modules-path counsel-gtags counsel swiper ivy dap-mode lsp-docker lsp-treemacs bui lsp-mode ggtags import-js grizzl js-doc js2-refactor multiple-cursors livid-mode nodejs-repl npm-mode skewer-mode js2-mode tern define-word zenburn-theme zen-and-art-theme yapfify yaml-mode ws-butler winum white-sand-theme which-key web-mode volatile-highlights vi-tilde-fringe uuidgen use-package underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit sunny-day-theme sublime-themes subatomic256-theme subatomic-theme sql-indent spaceline spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle slim-mode seti-theme scss-mode sass-mode reverse-theme reveal-in-osx-finder restart-emacs rebecca-theme rainbow-delimiters railscasts-theme pyvenv pytest pyenv-mode py-isort purple-haze-theme pug-mode professional-theme popwin planet-theme pip-requirements phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el pbcopy paradox osx-trash osx-dictionary orgit organic-green-theme org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme neotree naquadah-theme mustang-theme move-text monokai-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme material-theme markdown-toc majapahit-theme magit-gitflow madhat2r-theme macrostep lush-theme lorem-ipsum live-py-mode linum-relative link-hint light-soap-theme launchctl jedi-direx jbeans-theme jazz-theme ir-black-theme inkpot-theme indent-guide hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md gandalf-theme fuzzy flx-ido flatui-theme flatland-theme fill-column-indicator farmhouse-theme fancy-battery eyebrowse expand-region exotica-theme exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu ess-smart-equals ess-R-data-view espresso-theme emmet-mode elisp-slime-nav dumb-jump dracula-theme django-theme diminish darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme cython-mode cyberpunk-theme csv-mode company-web company-statistics company-anaconda column-enforce-mode color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme clean-aindent-mode cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol auto-compile apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:background nil)))))
-)
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(custom-safe-themes
+     '("9b65cf71fd6b27a5362afeff062c6abd1c5d8a7c4d444c942f3da36bf0a151b1"
+       "f04122bbc305a202967fa1838e20ff741455307c2ae80a26035fbf5d637e325f"
+       "51ec7bfa54adf5fff5d466248ea6431097f5a18224788d0bd7eb1257a4f7b773"
+       "6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d"
+       "f366d4bc6d14dcac2963d45df51956b2409a15b770ec2f6d730e73ce0ca5c8a7"
+       "d74183b099f4e91052941ef3131c76697caae3fcf581f4c140216a7c6e6d71e2"
+       "58c6711a3b568437bab07a30385d34aacf64156cc5137ea20e799984f4227265"
+       "b3775ba758e7d31f3bb849e7c9e48ff60929a792961a2d536edec8f68c671ca5"
+       "801a567c87755fe65d0484cb2bded31a4c5bb24fd1fe0ed11e6c02254017acb2"
+       "2b3f1e6abe0f02ff73d95dca04901bdbc2ecebe80fa453eded34fa39c8b050cb"
+       "032d5dc72a31ebde5fae25a8c1ef48bac6ba223588a1563d10dbf3a344423879"
+       "6313eeb08a54045a6d3945c28ab5a97916334e189cebd9c67c8b72beed0de265"
+       "3cc2385c39257fed66238921602d8104d8fd6266ad88a006d0a4325336f5ee02"
+       "e9a1226ffed627ec58294d77c62aa9561ec5f42309a1f7a2423c6227e34e3581"
+       "987b709680284a5858d5fe7e4e428463a20dfabe0a6f2a6146b3b8c7c529f08b"
+       "66132890ee1f884b4f8e901f0c61c5ed078809626a547dbefbb201f900d03fd8"
+       "72a81c54c97b9e5efcc3ea214382615649ebb539cb4f2fe3a46cd12af72c7607"
+       "3fec737266204a5422e5acc776ea55e1a2fcd3a8104fd8c70ee0a300e56ece3c"
+       "e0d42a58c84161a0744ceab595370cbe290949968ab62273aed6212df0ea94b4"
+       "9b59e147dbbde5e638ea1cde5ec0a358d5f269d27bd2b893a0947c4a867e14c1"
+       "5e1d1564b6a2435a2054aa345e81c89539a72c4cad8536cfe02583e0b7d5e2fa"
+       "13a15b35b4b50fd3e948f7445e15b286155bbfede5468df83426734840c0fba7"
+       "ea5a840bd2f9616a36890c27fd5e97528cb9fcfafa0e6739315bb12786d6c4ee" default))
+   '(org-ascii-headline-spacing '(0 . 1))
+   '(org-ascii-text-width 120)
+   '(org-duration-units
+     '(("min" . 1) ("h" . 60) ("d" . 480) ("w" . 10080) ("m" . 43200)
+       ("y" . 525960.0)))
+   '(org-html-style-default
+     "<style type=\"text/css\">\12  #content { max-width: 60em; margin: 0; }\12  .title  { text-align: center;\12             margin-bottom: 0; }\12  .subtitle { text-align: center;\12              font-size: medium;\12              font-weight: bold;\12              margin-top:0; }\12  .todo   { font-family: monospace; color: red; }\12  .done   { font-family: monospace; color: green; }\12  .priority { font-family: monospace; color: orange; }\12  .tag    { background-color: #eee; font-family: monospace;\12            padding: 2px; font-size: 80%; font-weight: normal; }\12  .timestamp { color: #bebebe; }\12  .timestamp-kwd { color: #5f9ea0; }\12  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }\12  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }\12  .org-center { margin-left: auto; margin-right: auto; text-align: center; }\12  .underline { text-decoration: underline; }\12  #postamble p, #preamble p { font-size: 90%; margin: 0em; }\12  p.verse { margin-left: 3%; }\12  pre {\12    border: 1px solid #e6e6e6;\12    border-radius: 0px;\12    background-color: #f2f2f2;\12    padding: 0pt;\12    font-family: monospace;\12    overflow: auto;\12    margin: 0;\12  }\12  pre.src {\12    position: relative;\12    overflow: auto;\12  }\12  pre.src:before {\12    display: none;\12    position: absolute;\12    top: -8px;\12    right: 12px;\12    padding: 3px;\12    color: #555;\12    background-color: #f2f2f299;\12  }\12  pre.src:hover:before { display: inline; margin-top: 0px;}\12  /* Languages per Org manual */\12  pre.src-asymptote:before { content: 'Asymptote'; }\12  pre.src-awk:before { content: 'Awk'; }\12  pre.src-authinfo::before { content: 'Authinfo'; }\12  pre.src-C:before { content: 'C'; }\12  /* pre.src-C++ doesn't work in CSS */\12  pre.src-clojure:before { content: 'Clojure'; }\12  pre.src-css:before { content: 'CSS'; }\12  pre.src-D:before { content: 'D'; }\12  pre.src-ditaa:before { content: 'ditaa'; }\12  pre.src-dot:before { content: 'Graphviz'; }\12  pre.src-calc:before { content: 'Emacs Calc'; }\12  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }\12  pre.src-fortran:before { content: 'Fortran'; }\12  pre.src-gnuplot:before { content: 'gnuplot'; }\12  pre.src-haskell:before { content: 'Haskell'; }\12  pre.src-hledger:before { content: 'hledger'; }\12  pre.src-java:before { content: 'Java'; }\12  pre.src-js:before { content: 'Javascript'; }\12  pre.src-latex:before { content: 'LaTeX'; }\12  pre.src-ledger:before { content: 'Ledger'; }\12  pre.src-lisp:before { content: 'Lisp'; }\12  pre.src-lilypond:before { content: 'Lilypond'; }\12  pre.src-lua:before { content: 'Lua'; }\12  pre.src-matlab:before { content: 'MATLAB'; }\12  pre.src-mscgen:before { content: 'Mscgen'; }\12  pre.src-ocaml:before { content: 'Objective Caml'; }\12  pre.src-octave:before { content: 'Octave'; }\12  pre.src-org:before { content: 'Org mode'; }\12  pre.src-oz:before { content: 'OZ'; }\12  pre.src-plantuml:before { content: 'Plantuml'; }\12  pre.src-processing:before { content: 'Processing.js'; }\12  pre.src-python:before { content: 'Python'; }\12  pre.src-R:before { content: 'R'; }\12  pre.src-ruby:before { content: 'Ruby'; }\12  pre.src-sass:before { content: 'Sass'; }\12  pre.src-scheme:before { content: 'Scheme'; }\12  pre.src-screen:before { content: 'Gnu Screen'; }\12  pre.src-sed:before { content: 'Sed'; }\12  pre.src-sh:before { content: 'shell'; }\12  pre.src-sql:before { content: 'SQL'; }\12  pre.src-sqlite:before { content: 'SQLite'; }\12  /* additional languages in org.el's org-babel-load-languages alist */\12  pre.src-forth:before { content: 'Forth'; }\12  pre.src-io:before { content: 'IO'; }\12  pre.src-J:before { content: 'J'; }\12  pre.src-makefile:before { content: 'Makefile'; }\12  pre.src-maxima:before { content: 'Maxima'; }\12  pre.src-perl:before { content: 'Perl'; }\12  pre.src-picolisp:before { content: 'Pico Lisp'; }\12  pre.src-scala:before { content: 'Scala'; }\12  pre.src-shell:before { content: 'Shell Script'; }\12  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }\12  /* additional language identifiers per \"defun org-babel-execute\"\12       in ob-*.el */\12  pre.src-cpp:before  { content: 'C++'; }\12  pre.src-abc:before  { content: 'ABC'; }\12  pre.src-coq:before  { content: 'Coq'; }\12  pre.src-groovy:before  { content: 'Groovy'; }\12  /* additional language identifiers from org-babel-shell-names in\12     ob-shell.el: ob-shell is the only babel language using a lambda to put\12     the execution function name together. */\12  pre.src-bash:before  { content: 'bash'; }\12  pre.src-csh:before  { content: 'csh'; }\12  pre.src-ash:before  { content: 'ash'; }\12  pre.src-dash:before  { content: 'dash'; }\12  pre.src-ksh:before  { content: 'ksh'; }\12  pre.src-mksh:before  { content: 'mksh'; }\12  pre.src-posh:before  { content: 'posh'; }\12  /* Additional Emacs modes also supported by the LaTeX listings package */\12  pre.src-ada:before { content: 'Ada'; }\12  pre.src-asm:before { content: 'Assembler'; }\12  pre.src-caml:before { content: 'Caml'; }\12  pre.src-delphi:before { content: 'Delphi'; }\12  pre.src-html:before { content: 'HTML'; }\12  pre.src-idl:before { content: 'IDL'; }\12  pre.src-mercury:before { content: 'Mercury'; }\12  pre.src-metapost:before { content: 'MetaPost'; }\12  pre.src-modula-2:before { content: 'Modula-2'; }\12  pre.src-pascal:before { content: 'Pascal'; }\12  pre.src-ps:before { content: 'PostScript'; }\12  pre.src-prolog:before { content: 'Prolog'; }\12  pre.src-simula:before { content: 'Simula'; }\12  pre.src-tcl:before { content: 'tcl'; }\12  pre.src-tex:before { content: 'TeX'; }\12  pre.src-plain-tex:before { content: 'Plain TeX'; }\12  pre.src-verilog:before { content: 'Verilog'; }\12  pre.src-vhdl:before { content: 'VHDL'; }\12  pre.src-xml:before { content: 'XML'; }\12  pre.src-nxml:before { content: 'XML'; }\12  /* add a generic configuration mode; LaTeX export needs an additional\12     (add-to-list 'org-latex-listings-langs '(conf \" \")) in .emacs */\12  pre.src-conf:before { content: 'Configuration File'; }\12\12  table { margin-top: 0; margin-bottom: 0; border-collapse:collapse; }\12  caption.t-above { caption-side: top; }\12  caption.t-bottom { caption-side: bottom; }\12  td, th { vertical-align:top;  }\12  th.org-right  { text-align: center;  }\12  th.org-left   { text-align: center;   }\12  th.org-center { text-align: center; }\12  td.org-right  { text-align: right;  }\12  td.org-left   { text-align: left;   }\12  td.org-center { text-align: center; }\12  dt { font-weight: bold; }\12  .footpara { display: inline; }\12  .footdef  { margin-bottom: 0em; }\12  .figure { padding: 1em; }\12  .figure p { text-align: center; }\12  .equation-container {\12    display: table;\12    text-align: center;\12    width: 100%;\12  }\12  .equation {\12    vertical-align: middle;\12  }\12  .equation-label {\12    display: table-cell;\12    text-align: right;\12    vertical-align: middle;\12  }\12  .inlinetask {\12    padding: 10px;\12    border: 2px solid gray;\12    margin: 0px;\12    background: #ffffcc;\12  }\12  #org-div-home-and-up\12   { text-align: right; font-size: 70%; white-space: nowrap; }\12  textarea { overflow-x: auto; }\12  .linenr { font-size: smaller }\12  .code-highlighted { background-color: #ffff00; }\12  .org-info-js_info-navigation { border-style: none; }\12  #org-info-js_console-label\12    { font-size: 10px; font-weight: bold; white-space: nowrap; }\12  .org-info-js_search-highlight\12    { background-color: #ffff00; color: #000000; font-weight: bold; }\12  .org-svg { }\12</style>")
+   '(org-html-table-default-attributes
+     '(:border "1" :cellspacing "4" :cellpadding "4" :rules "groups" :frame "hsides"))
+   '(package-selected-packages
+     '(add-node-modules-path counsel-gtags counsel swiper ivy dap-mode lsp-docker
+                             lsp-treemacs bui lsp-mode ggtags import-js grizzl
+                             js-doc js2-refactor multiple-cursors livid-mode
+                             nodejs-repl npm-mode skewer-mode js2-mode tern
+                             define-word zenburn-theme zen-and-art-theme yapfify
+                             yaml-mode ws-butler winum white-sand-theme which-key
+                             web-mode volatile-highlights vi-tilde-fringe uuidgen
+                             use-package underwater-theme ujelly-theme
+                             twilight-theme twilight-bright-theme
+                             twilight-anti-bright-theme toxi-theme toc-org
+                             tao-theme tangotango-theme tango-plus-theme
+                             tango-2-theme tagedit sunny-day-theme sublime-themes
+                             subatomic256-theme subatomic-theme sql-indent
+                             spaceline spacegray-theme soothe-theme
+                             solarized-theme soft-stone-theme soft-morning-theme
+                             soft-charcoal-theme smyx-theme smeargle slim-mode
+                             seti-theme scss-mode sass-mode reverse-theme
+                             reveal-in-osx-finder restart-emacs rebecca-theme
+                             rainbow-delimiters railscasts-theme pyvenv pytest
+                             pyenv-mode py-isort purple-haze-theme pug-mode
+                             professional-theme popwin planet-theme
+                             pip-requirements phoenix-dark-pink-theme
+                             phoenix-dark-mono-theme persp-mode pcre2el pbcopy
+                             paradox osx-trash osx-dictionary orgit
+                             organic-green-theme org-projectile org-present
+                             org-pomodoro org-mime org-download org-bullets
+                             open-junk-file omtose-phellack-theme oldlace-theme
+                             occidental-theme obsidian-theme noctilux-theme
+                             neotree naquadah-theme mustang-theme move-text
+                             monokai-theme monochrome-theme molokai-theme
+                             moe-theme mmm-mode minimal-theme material-theme
+                             markdown-toc majapahit-theme magit-gitflow
+                             madhat2r-theme macrostep lush-theme lorem-ipsum
+                             live-py-mode linum-relative link-hint
+                             light-soap-theme launchctl jedi-direx jbeans-theme
+                             jazz-theme ir-black-theme inkpot-theme indent-guide
+                             hy-mode hungry-delete htmlize hl-todo
+                             highlight-parentheses highlight-numbers
+                             highlight-indentation heroku-theme hemisu-theme
+                             helm-themes helm-swoop helm-pydoc helm-projectile
+                             helm-mode-manager helm-make helm-gitignore helm-flx
+                             helm-descbinds helm-css-scss helm-company
+                             helm-c-yasnippet helm-ag hc-zenburn-theme
+                             gruvbox-theme gruber-darker-theme grandshell-theme
+                             gotham-theme google-translate golden-ratio gnuplot
+                             gitconfig-mode gitattributes-mode git-timemachine
+                             git-messenger git-link gh-md gandalf-theme fuzzy
+                             flx-ido flatui-theme flatland-theme
+                             fill-column-indicator farmhouse-theme fancy-battery
+                             eyebrowse expand-region exotica-theme
+                             exec-path-from-shell evil-visualstar
+                             evil-visual-mark-mode evil-unimpaired evil-tutor
+                             evil-surround evil-search-highlight-persist
+                             evil-numbers evil-nerd-commenter evil-mc evil-matchit
+                             evil-magit evil-lisp-state evil-indent-plus
+                             evil-iedit-state evil-exchange evil-escape evil-ediff
+                             evil-args evil-anzu eval-sexp-fu ess-smart-equals
+                             ess-R-data-view espresso-theme emmet-mode
+                             elisp-slime-nav dumb-jump dracula-theme django-theme
+                             diminish darktooth-theme darkokai-theme
+                             darkmine-theme darkburn-theme dakrone-theme
+                             cython-mode cyberpunk-theme csv-mode company-web
+                             company-statistics company-anaconda
+                             column-enforce-mode color-theme-sanityinc-tomorrow
+                             color-theme-sanityinc-solarized clues-theme
+                             clean-aindent-mode cherry-blossom-theme busybee-theme
+                             bubbleberry-theme birds-of-paradise-plus-theme
+                             badwolf-theme auto-yasnippet auto-highlight-symbol
+                             auto-compile apropospriate-theme anti-zenburn-theme
+                             ample-zen-theme ample-theme alect-themes
+                             aggressive-indent afternoon-theme adaptive-wrap
+                             ace-window ace-link ace-jump-helm-line ac-ispell)))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(default ((t (:background nil)))))
+  )

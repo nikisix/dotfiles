@@ -26,7 +26,7 @@ elif [[ "$unamestr" == 'Linux' ]]; then
     source ~/.bash-windows  # TODO and uname == six
 fi
 
-# export TERM=xterm-kitty
+export TERM=xterm-kitty
 
 #source ~/.git-prompt.sh #export PS1="\w\$(__git_ps1)=☆= "
 #=✪=
