@@ -1,11 +1,14 @@
 [core]
-account = nicolai.tesela@gmail.com
-project = six-analytics
+project = open-mtg-project
 disable_usage_reporting = False
+account = nick.w.tomasino@gmail.com
 
 [ai]
 region = us-central1
 
 [ai_platform]
 region = us-central1
+
+[compute]
+region = us-west4
 
