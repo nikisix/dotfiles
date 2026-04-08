@@ -6,11 +6,40 @@
 lvim.keys.normal_mode['<LEADER>c'] = nil -- disable the default <LEADER>c close-window mapping
 
 lvim.plugins = {
+
   -- { "ggml-org/llama.vim"},
+  {
+    "RRethy/vim-illuminate",
+    config = function()
+      require('illuminate').configure({
+        providers = {
+          'lsp',
+          'regex',
+        },
+        delay = 100,
+        under_cursor = true,
+        min_count_to_highlight = 2
+      })
+    end,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+  },
   { "Leathong/openscad-LSP" },
   { "ryanoasis/vim-devicons" },
   { "dhruvasagar/vim-table-mode" },
   { "lunarvim/colorschemes" },
+  -- Python LSP
+  -- require("mason").setup()
+  -- require("mason-lspconfig").setup()
+  -- require("mason-lspconfig").setup_handlers {
+  --     -- The first entry (without a key) will be the default handler
+  --     -- and will be called for each installed server that doesn't have
+  --     -- a dedicated handler.
+  --     function (server_name) -- default handler (optional)
+  --         require("lspconfig")[server_name].setup {}
+  --     end
+  -- },
   { "tpope/vim-surround" },
   { "vim-scripts/Tagbar" },
   { "mattboehm/vim-unstack" },
@@ -37,11 +66,12 @@ lvim.plugins = {
     -- Should return a list of tables with a `name` and a `path` entry each.
     -- Gets the argu"ment `venvs_path` set below.
     -- By default just lists the entries in `venvs_path`.
-    get_venvs = function(venvs_path)
-      return require('swenv.api').get_venvs(venvs_path)
-    end,
-    -- Path passed to `get_venvs`.
-    venvs_path = vim.fn.expand('~/envs'),
+    -- get_venvs = function(venvs_path)
+    --   return require('swenv.api').get_venvs(venvs_path)
+    -- end,
+    -- -- Path passed to `get_venvs`.
+    -- venvs_path = vim.fn.expand('~/envs'),
+    require('swenv.api').auto_venv()
     -- Something to do after setting an environment, for example call vim.cmd.LspRestart
     -- post_set_venv = nil,
   },
@@ -64,11 +94,7 @@ lvim.plugins = {
     'luk400/vim-jukit',
     ft = {"python", "ipynb", "notebook"},
     config = function()
-      -- vim.g.jukit_shell_command = 'source ./env/bin/activate && ipython'
-      -- vim.g.jukit_shell_command = 'source ~/code/ror/mmm/env/bin/activate && ipython'
       vim.g.jukit_shell_command = 'source $VIRTUAL_ENV/activate && ipython'
-      -- vim.g.jukit_shell_command = '~/code/ror/mmm/env/bin/ipython'
-      -- vim.g.jukit_shell_command = 'ipython'
       vim.g.jukit_terminal = 'tmux'
       -- vim.g.jukit_terminal = ''
       vim.g.jukit_inline_plotting = 0
@@ -141,6 +167,7 @@ lvim.builtin.project.active = false -- will disable the project.nvim plugin
 local wk = require("which-key")
 
 lvim.keys.normal_mode['<LEADER>C'] = nil
+lvim.keys.normal_mode['<CR>'] = nil
 -- lvim.lsp.buffer_mappings.normal_mode['<LEADER>c'] = nil
 wk.register({
   ["<leader>C"] = {
@@ -277,5 +304,3 @@ vim.cmd([[
   " nnoremap <leader>os :call jukit#splits#output()<cr>
   " nnoremap <leader>os :JukitOut source ./env/bin/activate<cr>
 ]])
-
-

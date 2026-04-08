@@ -71,7 +71,7 @@ def configure(repl):
     repl.vi_mode = True
 
     # Paste mode. (When True, don't insert whitespace after new line.)
-    repl.paste_mode = False
+    repl.paste_mode = True
 
     # Use the classic prompt. (Display '>>>' instead of 'In [1]'.)
     repl.prompt_style = "classic"  # 'classic' or 'ipython'
@@ -125,10 +125,10 @@ def configure(repl):
     repl.enable_syntax_highlighting = True
 
     # Get into Vi navigation mode at startup
-    repl.vi_start_in_navigation_mode = False
+    repl.vi_start_in_navigation_mode = True
 
     # Preserve last used Vi input mode between main loop iterations
-    repl.vi_keep_last_used_mode = False
+    repl.vi_keep_last_used_mode = True
 
     # Install custom colorscheme named 'my-colorscheme' and use it.
     """
