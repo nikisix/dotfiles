@@ -47,7 +47,7 @@ defaults write -g AppleLocale -string 'en_US'
 defaults write -g AppleMeasurementUnits -string 'Centimeters'
 defaults write -g AppleMetricUnits -bool true
 defaults write -g ApplePressAndHoldEnabled -bool false # Allow key repeat
-defaults write -g AppleShowScrollBars -string 'WhenScrolling'
+# defaults write -g AppleShowScrollBars -string 'WhenScrolling'
 defaults write -g AppleTemperatureUnit -string 'Celsius'
 defaults write -g InitialKeyRepeat -int 15
 defaults write -g KeyRepeat -int 2

@@ -1,10 +1,7 @@
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/core"
 
 # brew "aria2"
 brew "bash"
-brew "cargo" # req: lvim
+# brew "cargo" # req: lvim
 brew "coreutils"
 brew "ctags"
 brew "curl"
@@ -30,13 +27,14 @@ brew "lazygit"
 brew "less"
 brew "luajit"
 brew "make" #, args: ["with-default-names"]
-brew "neovim"
+brew "neovim" # req lvim
 brew "npm" # req lvim
 brew "node" # req lvim
 brew "openssh"
 brew "openssl"
 brew "pandoc" # markdown viewer
 brew "pianobar"
+brew "pipx"
 brew "postgresql"
 brew "python"
 brew "readline"
@@ -55,15 +53,15 @@ brew "mps-youtube"
 brew "tldr"
 
 # cask "alfred"
-cask "docker"
-cask "google-chrome"
-cask "google-cloud-sdk"
-cask "iterm2"
-cask "postico"
-cask "spectacle"
+# cask "docker"
+# cask "google-chrome"
+# cask "google-cloud-sdk"
+# cask "iterm2"
+# cask "postico"
+# cask "spectacle"
 # cask "spotify"
-# cask "vlc"
-cask "warp"
+cask "vlc"
+# cask "warp"
 
-tap "d12frosted/emacs-plus"
-brew "emacs-plus", args: ["with-spacemacs-icon","with-native-comp"]
+# tap "d12frosted/emacs-plus"
+# brew "emacs-plus", args: ["with-spacemacs-icon","with-native-comp"]

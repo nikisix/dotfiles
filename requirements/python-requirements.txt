@@ -1,16 +1,19 @@
-astroid
-black ; python_version >= '3'
-flake8
-isort
-jedi
-mccabe
-neovim
-pipenv
-pycodestyle
-pyflakes
-pylint
-radian
+# astroid
+# black ; python_version >= '3'
+# flake8
+# isort
+# jedi
+# mccabe
+# neovim
+# pipenv
+# pycodestyle
+# pyflakes
+# pylint
+# radian
+tmuxp
+
+# PYRADIO  Install
+# pipx # installed via brew
 requests
 rich
-pipx
-tmuxp
+pyradio
