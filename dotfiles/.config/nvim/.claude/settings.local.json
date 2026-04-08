@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/six/.local/state/nvim/sessions/**)",
+      "Read(//Users/six/.local/share/nvim/**)"
+    ]
+  }
+}
