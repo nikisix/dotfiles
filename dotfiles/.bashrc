@@ -26,7 +26,7 @@ elif [[ "$unamestr" == 'Linux' ]]; then
     source ~/.bash-windows  # TODO and uname == six
 fi
 
-export TERM=xterm-kitty
+# export TERM=xterm-kitty
 
 #source ~/.git-prompt.sh #export PS1="\w\$(__git_ps1)=☆= "
 #=✪=
@@ -40,8 +40,9 @@ export ANTHROPIC_API_KEY=$(cat ~/.keys/anthropic-api-key)
 # export AVANTE_ANTHROPIC_API_KEY=$(cat ~/.keys/anthropic-api-key)
 
 #PYTHON
-alias python=ptipython # TODO get the following line working and remove this
+# alias python=ptipython # TODO get the following line working and remove this
 # export PYTHONSTARTUP=~/.pythonrc.py
+export PTPYTHON_CONFIG_HOME=~/.config/ptpython/
 # jupyter terminal
 alias jukit_kitty="kitty --listen-on=unix:/tmp/mykitty:"$(gdate +%s%N)" -o allow_remote_control=yes"
 # alias jukit_kitty="kitty --listen-on=unix:@"$(date +%s%N)" -o allow_remote_control=yes"
