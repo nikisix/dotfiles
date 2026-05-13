@@ -15,7 +15,7 @@ return {
             "<leader>as",
             "<cmd>ClaudeCodeTreeAdd<cr>",
             desc = "Add file",
-            ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw", "snacks-explorer" },
+            ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
         },
         -- Diff management
         { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
