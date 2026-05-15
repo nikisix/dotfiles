@@ -14,17 +14,11 @@ set -o pipefail
 # https://gist.github.com/ryanpcmcquen/b2e608311f286a4ab3e1
 # http://www.nyx.net/~mlu/pages/computing/installing_and_configuring/installing_and_configuring_command-line_utilities/#.XDPrMfxMEWo
 
-set -o errexit
-set -o nounset
-set -o pipefail
-
 # Install fonts
-curl -L https://github.com/powerline/fonts/blob/master/RobotoMono/Roboto%20Mono%20Bold%20for%20Powerline.ttf\?raw\=true --output ./fonts/roboto/"Roboto Mono Bold for Powerline.ttf"
-curl -L https://github.com/powerline/fonts/blob/master/RobotoMono/Roboto%20Mono%20Bold%20for%20Powerline.ttf\?raw\=true --output ./fonts/roboto/"Roboto Mono Bold for Powerline.ttf"
-curl -L https://github.com/powerline/fonts/blob/master/RobotoMono/Roboto%20Mono%20Italic%20for%20Powerline.ttf\?raw\=true > --output ./fonts/roboto/"Roboto Mono Italic for Powerline.ttf"
-open ./fonts/roboto/"Roboto Mono for Powerline.ttf"
-open ./fonts/roboto/"Roboto Mono Bold for Powerline.ttf"
-open ./fonts/roboto/"Roboto Mono Italic for Powerline.ttf"
+mkdir -p ./fonts/space
+curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/SpaceMono.zip --output ~/Library/Fonts/SpaceMono.zip
+unzip ~/Library/Fonts/SpaceMono.zip -d ~/Library/Fonts/space
+rm ~/Libary/Fonts/SpaceMono.zip
 
 # Setup apps
 for app in $(ls ./apps); do
@@ -34,9 +28,9 @@ done
 # drop them here.
 #
 # Set network name
-sudo scutil --set HostName sierranevada
-sudo scutil --set LocalHostName sierranevada
-sudo scutil --set ComputerName sierranevada
+sudo scutil --set HostName $(cat hostname)
+sudo scutil --set LocalHostName $(cat hostname)
+sudo scutil --set ComputerName $(cat hostname)
 # '-g' is short for the 'NSGlobalDomain' domain
 defaults delete -g NSUserDictionaryReplacementItems
 defaults write -g AppleActionOnDoubleClick -string 'Maximize'
