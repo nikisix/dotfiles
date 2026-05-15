@@ -14,6 +14,6 @@ tmuxp
 
 # PYRADIO  Install
 # pipx # installed via brew
-requests
-rich
+# requests
+# rich
 pyradio

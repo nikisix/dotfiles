@@ -1,4 +1,4 @@
-
+brew "uv"
 # brew "aria2"
 brew "bash"
 # brew "cargo" # req: lvim
@@ -7,7 +7,7 @@ brew "ctags"
 brew "curl"
 brew "diffutils"
 brew "findutils" #, args: ["with-default-names"]
-brew "zsh"
+# brew "zsh"
 brew "fd"
 brew "fzf"
 brew "gawk"
@@ -51,6 +51,7 @@ brew "watch"
 brew "mpv"
 brew "mps-youtube"
 brew "tldr"
+brew "yazi"
 
 # cask "alfred"
 # cask "docker"
