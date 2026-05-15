@@ -1,11 +1,11 @@
-# set -o nounset
-# set -o vi
+# set -o nounset # oh-my-zsh does not like this
+set -o vi
 
 if [[ `uname` == 'Darwin' ]]; then
     # kinesis keyboard remap non-us key (next to `/~ to left-alt)
     # https://developer.apple.com/library/archive/technotes/tn2450/_index.htmlhttps://developer.apple.com/library/archive/technotes/tn2450/_index.html
     hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x7000000E2}]}' > /dev/null
-    if [[ $HOST=='sierranevada' ]]; then
+    if [[ $HOST=='sierranevada' || 'kansas.local' ]]; then
         export PATH="/opt/homebrew/bin:$PATH" # homebrew
         export PATH="/Users/nickt/.local/bin:$PATH" # pipx
         export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH" # gnu-commands (ls, cp, ...etc)
@@ -28,15 +28,16 @@ fi
 
 # export TERM=xterm-kitty
 
-#source ~/.git-prompt.sh #export PS1="\w\$(__git_ps1)=☆= "
-#=✪=
+#source ~/.git-prompt.sh #export PS1="\w\$(__git_ps1)=✪= "
+export PS1="=✪= "
+#=☆=
 #(♂)
 export EDITOR=nvim
 export HISTTIMEFORMAT='%F %T '
 # TODO
 export HOMEBREW_GITHUB_API_TOKEN=6cb508ae27ff3c3ae60f8e5e3855aa08e973d5ba
 # export OPENAI_API_KEY=$(gpg --decrypt openai-api-key.asc)
-export ANTHROPIC_API_KEY=$(cat ~/.keys/anthropic-api-key)
+export ANTHROPIC_API_KEY=$([ -f "~/.keys/anthropic-api-key" ] && cat "~/.keys/anthropic-api-key")
 # export AVANTE_ANTHROPIC_API_KEY=$(cat ~/.keys/anthropic-api-key)
 
 #PYTHON

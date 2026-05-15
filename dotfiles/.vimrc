@@ -1,4 +1,4 @@
- " nickyVI
+" nickyVI
 " Inspirations are listed throughout via links including the following:
 " Martin Brochhaus
 "
