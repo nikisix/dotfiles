@@ -63,7 +63,24 @@ function venv() {
         source $WORKON_HOME/$1/bin/activate
     fi
 }
-export datadir=/Volumes/oasis/ntomasino/data/swlabs/model/
+
+# TMUX config
+## Paste from system clipboard 
+# 1. Ensure Vi Mode is explicitly active
+bindkey -v
+
+# 2. Define a custom widget to grab the macOS clipboard stream
+function macos-paste-widget() {
+    # Fetch content using macOS native pbpaste utility
+    LBUFFER+=$(pbpaste)
+}
+
+# 3. Register the widget with the Zsh Line Editor (ZLE)
+zle -N macos-paste-widget
+
+# 4. Map 'p' in Vi Command mode
+bindkey -M vicmd 'p' macos-paste-widget
+
 
 # PATHS
 alias code='cd ~/code'
@@ -98,7 +115,7 @@ alias pstree='pstree -g3 -s $1'
 alias less='less -Sr'
 # alias date='date --iso-8601'
 alias env-pipenv='source $(pipenv --venv)/bin/activate; [[ -f .env ]] && source .env'
-alias debug='vi +UnstackFromClipboard'
+alias debug='vim +UnstackFromClipboard'
 # alias weather='ansiweather -l "kansas city, mo" -F -u imperial'
 alias weather='ansiweather -l 4393217 -d -u imperial;ansiweather -l 4393217 -F -u imperial'
 alias amorgosssh='ssh zen@192.168.1.109'
