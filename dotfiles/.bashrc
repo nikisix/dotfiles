@@ -29,7 +29,8 @@ fi
 # export TERM=xterm-kitty
 
 #source ~/.git-prompt.sh #export PS1="\w\$(__git_ps1)=✪= "
-export PS1="=✪= "
+# export PS1="$(echo $PWD | sed -e 's/\/Users\/six/~/')=✪= "
+export PS1="%~ =✪= "
 #=☆=
 #(♂)
 export EDITOR=nvim
