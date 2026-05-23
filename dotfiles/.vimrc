@@ -26,7 +26,7 @@ autocmd! CursorMovedI
  Plugin 'gmarik/Vundle.vim'
 
  "CODE COMPLETION
- Plugin 'davidhalter/jedi-vim'
+ " Plugin 'davidhalter/jedi-vim'
 
  "ORGMODE
  Plugin 'jceb/vim-orgmode'
@@ -356,10 +356,10 @@ set hidden
  vnoremap H <home>
  noremap L <end>
  vnoremap L <end>
- noremap <leader>k <pageup>
- "vnoremap K <pageup>
- noremap <leader>j <pagedown>
- "vnoremap J <pagedown>
+ noremap K {
+ vnoremap K {
+ noremap J }
+ vnoremap J }
 
  nnoremap Q :qall!<CR>
 

@@ -84,7 +84,9 @@ bindkey -M vicmd 'p' macos-paste-widget
 
 
 # PATHS
+alias vimrc='cd ~/.config/nvim/lua'
 alias code='cd ~/code'
+alias tron='cd ~/code/ringlinq-tron'
 alias warehouse='cd /Users/six/code/unicorn/warehouse/src/warehouse/'
 alias metrics='cd /Users/six/code/unicorn/warehouse/src/warehouse/bigquery/templates/metrics'
 alias aa='cd ~/code/data_analytics_f20180410/'
@@ -169,7 +171,7 @@ alias pandora='pianobar'
 alias bounce_pandora='killps pianobar;pianobar 2>/dev/null'
 alias watchdir='watch -n1 -dc ls -alh'
 alias docker-compost='docker-compose'
-alias vimrc='vi ~/.config/nvim/init.vim'
+# alias vimrc='vi ~/.config/nvim/init.vim'
 alias bashrc='vi ~/.bashrc'
 # alias env='source ~/.emacs.d/.python-environments/default/bin/activate'
 alias psqllocal='psql -hlocalhost -Upostgres' #stay off of model's db-tunnel
@@ -184,6 +186,7 @@ alias floppydb="psql -Upostgres -dpropdata -h 192.168.4.32"
 
 #source ~/.docker-composerc
 
+# function to create a notification after long running commands
 function notify () {
     if eval "${@}"; then
         osascript -e "display notification \"Complete!\" with title \"${*}\""
@@ -192,6 +195,18 @@ function notify () {
         osascript -e "display notification \"Failed! 😞\" with title \"${*}\""
         osascript -e 'tell application "Messages" to send "Job Failed!" to buddy "4022068559"'
     fi
+}
+
+
+# Toggle lid sleep safety script
+function nosleep() {
+    echo "Disabling MacBook sleep... Keep the lid ventilated!"
+    sudo pmset -a disablesleep 1
+    
+    # Wait for user to press Ctrl+C
+    echo "Press [CTRL+C] to re-enable normal sleep behavior."
+    trap "echo '\nRestoring normal sleep...'; sudo pmset -a disablesleep 0" EXIT
+    while true; do sleep 1; done
 }
 
 #Kubernetes config
@@ -203,6 +218,8 @@ export AIRFLOW_HOME=~/airflow
 #source ~/.alias_docker
 
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+## Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 export FZF_TMUX_OPTS='-p80%,60%' # fzf opens up a sweet tmux pane
 
 export PYTHONBREAKPOINT="ipdb.set_trace"
