@@ -6,7 +6,13 @@ opt.filetype = "on"
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true
+opt.foldmethod = "indent"
+opt.foldlevel = 1
+opt.foldlevelstart = 1
+-- opt.foldignore = "#"
 vim.g.autoformat = false
+
+
 -- opt.filetype.plugin = "on"
 -- vim.api.nvim_create_autocmd("FileType", {
 --     pattern = "python",
