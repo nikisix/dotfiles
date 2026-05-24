@@ -87,16 +87,10 @@ bindkey -M vicmd 'p' macos-paste-widget
 alias vimrc='cd ~/.config/nvim/lua'
 alias code='cd ~/code'
 alias tron='cd ~/code/ringlinq-tron'
-alias warehouse='cd /Users/six/code/unicorn/warehouse/src/warehouse/'
-alias metrics='cd /Users/six/code/unicorn/warehouse/src/warehouse/bigquery/templates/metrics'
-alias aa='cd ~/code/data_analytics_f20180410/'
-alias unicorn='cd ~/code/unicorn'
-alias upgrade_path='cd ~/code/data_analytics_f20180410/analytics/upgrade_path'
-alias model='/Users/six/code/model/preprocessing/public_transit/chicago'
+alias nvim-conf='cd ~/.config/nvim/lua/plugins'
 alias mmm='~/code/ror/mmm/featherweight'
 alias dn='~/code/decision_nets'
 alias pgm='~/code/decision_nets/'
-alias pylibs='/Users/nickt/code/ror/mmm/env/lib/python3.11/site-packages'
 
 #SERVERS
 alias emr='ssh -i ~/.ssh/dev-vpc-emr-yotabites.pem hadoop@172.23.11.97'
