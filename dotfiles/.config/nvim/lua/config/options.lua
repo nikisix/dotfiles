@@ -6,10 +6,16 @@ opt.filetype = "on"
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true
-opt.foldmethod = "indent"
+
+-- Folds
+-- These settings are often set automatically by nvim-orgmode via Tree-sitter
+vim.opt_local.foldmethod = 'expr'
+vim.opt_local.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+-- opt.foldmethod = "indent"
 opt.foldlevel = 1
 opt.foldlevelstart = 1
 -- opt.foldignore = "#"
+--
 vim.g.autoformat = false
 
 
