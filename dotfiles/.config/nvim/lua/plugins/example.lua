@@ -117,6 +117,7 @@ return {
     { import = "lazyvim.plugins.extras.lang.typescript" },
 
     -- add more treesitter parsers
+    -- org installed by orgmode plugin
     {
         "nvim-treesitter/nvim-treesitter",
         opts = {
