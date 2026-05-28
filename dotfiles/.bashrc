@@ -84,10 +84,9 @@ bindkey -M vicmd 'p' macos-paste-widget
 
 
 # PATHS
-alias vimrc='cd ~/.config/nvim/lua'
 alias code='cd ~/code'
 alias tron='cd ~/code/ringlinq-tron'
-alias nvim-conf='cd ~/.config/nvim/lua/plugins'
+alias nvim-conf='cd ~/dotfiles/dotfiles/.config/nvim/lua'
 alias mmm='~/code/ror/mmm/featherweight'
 alias dn='~/code/decision_nets'
 alias pgm='~/code/decision_nets/'
@@ -165,7 +164,7 @@ alias pandora='pianobar'
 alias bounce_pandora='killps pianobar;pianobar 2>/dev/null'
 alias watchdir='watch -n1 -dc ls -alh'
 alias docker-compost='docker-compose'
-alias vimrc='vi ~/dotfiles/dotfiles/.config/nvim/lua'
+alias vimrc='cd ~/dotfiles/dotfiles/.config/nvim/lua && vi'
 alias bashrc='vi ~/.bashrc'
 # alias env='source ~/.emacs.d/.python-environments/default/bin/activate'
 alias psqllocal='psql -hlocalhost -Upostgres' #stay off of model's db-tunnel
