@@ -34,9 +34,10 @@
   user = nikisix
 [push]
   default = simple
+  autoSetupRemote = true
 [user]
   name = Nick Tomasino
-  email = nick.w.tomasino@gmail.com
+  email = nicolai.tesela@gmail.com # was nick.w.tomasino@gmail.com
 [url "ssh://git@github.com:"]
   pushInsteadOf = https://github.com/ # Use ssh keys, even if cloned with http
 [url "ssh://git@gitlab.com/"]
@@ -44,7 +45,7 @@
 [url "ssh://git@bitbucket.org/"]
   insteadOf = https://bitbucket.org/
 [diff]
-  tool = vimdiff
+  tool = nvimdiff
 [difftool]
   prompt = off
 [difftool "vimdiff"]

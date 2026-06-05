@@ -95,6 +95,7 @@ alias pgm='~/code/decision_nets/'
 alias emr='ssh -i ~/.ssh/dev-vpc-emr-yotabites.pem hadoop@172.23.11.97'
 
 # ALIASES
+alias activate='source ./venv/bin/activate'
 alias g='git'
 alias lgit='lazygit'
 alias gits='git status'
@@ -128,15 +129,17 @@ alias spc='emacsclient -t $*'
 alias vi='nvim'
 alias viconfig='vi ~/.config/nvim/init.vim'
 #function __csv { cat $1 | column -s, -t | less -S; }
-function csv () { csvlook $1 | less -S; }
-function csvsample () { head -n100 $1 | csvlook | less -S;}
+function csv () { csvlook "$1" | less -S; }
+function csvsample () { head -n100 "$1" | csvlook | less -S;}
 alias clock='watch -n1 "date '+%D%n%T'|figlet -k -f big"'
-function difffiles () { diff <(sort $1) <(sort $2) | less -S; }
-function cols () { head -n1 $1 | gsed 's/,/\n/g'; }
-function cols1 () { ipython -c "import pandas as pd; df = pd.read_csv('$1', nrows=1, sep='$2'); print(df.head(1).transpose());" }
-function cols2 () { ipython -c "import pandas as pd; df = pd.read_csv('$1', nrows=2, sep='$2'); print(df.head(2).transpose());" }
-function killps () { kill -9 `ps | grep $1 | sed 's/^[ ]*//' | cut -f1 -d ' '`; }
-function gather () { sed -n -e "/$1/,/},/p" ~/code/dex/allcards.json; }
+function difffiles () { diff <(sort "$1") <(sort "$2") | less -S; }
+function cols () { head -n1 "$1" | gsed 's/,/\n/g'; }
+function cols1 () { python -c "import pandas as pd;
+    df = pd.read_csv('$1', nrows=1, sep='$2');
+    print(df.head(1).transpose());"; }
+function cols2 () { python -c "import pandas as pd; df = pd.read_csv('$1', nrows=2, sep='$2'); print(df.head(2).transpose());"; }
+function killps () { kill -9 `ps | grep $1 | sed "s/^[ ]*//" | cut -f1 -d " "`; }
+# function gather () { sed -n -e "/$1/,/},/p" ~/code/dex/allcards.json; }
 function mute () {   osascript -e 'set volume output muted true';
                     sleep 30;
                     osascript -e 'set volume output muted false';
@@ -202,24 +205,20 @@ function nosleep() {
     while true; do sleep 1; done
 }
 
-#Kubernetes config
-alias prod-kube='kubectl -n prod'
-
-#Airflow
-export AIRFLOW_HOME=~/airflow
-
-#source ~/.alias_docker
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	command rm -f -- "$tmp"
+}
 
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 ## Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 export FZF_TMUX_OPTS='-p80%,60%' # fzf opens up a sweet tmux pane
 
-export PYTHONBREAKPOINT="ipdb.set_trace"
-
-alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
-export SNOWSQL_PRIVATE_KEY_PASSPHRASE=aoror
-
+# export PYTHONBREAKPOINT="ipdb.set_trace"
 
 # for ao work bitbucket repo access
 # eval $(ssh-agent)
