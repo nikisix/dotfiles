@@ -50,9 +50,11 @@
   prompt = off
 [difftool "vimdiff"]
   cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
-  # path =
-[mergetool "vimdiff"]
-  cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
+# path =
+# [mergetool "vimdiff"]
+#   cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
+[mergetool "ec"]
+  cmd = ec \"$LOCAL\" \"$REMOTE\"
   trustExitCode = true
 [commit]
   template = /Users/six/.stCommitMsg
