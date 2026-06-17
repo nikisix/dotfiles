@@ -50,6 +50,7 @@ alias jukit_kitty="kitty --listen-on=unix:/tmp/mykitty:"$(gdate +%s%N)" -o allow
 # alias jukit_kitty="kitty --listen-on=unix:@"$(date +%s%N)" -o allow_remote_control=yes"
 # Speed up program execution time maybe turn off
 export PYTHONDONTWRITEBYTECODE=1
+export PYTHONBREAKPOINT=ipdb.set_trace
 
 ## Virtualenv Management
 # create symlinks from ~/envs to repos' virtualenv folders to make sure this
