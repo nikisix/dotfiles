@@ -33,6 +33,14 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  desc = "map Tab to toggle folds in json files",
+  pattern = { "json" },
+  callback = function()
+    vim.keymap.set("n", "<Tab>", "za", { buffer = true, desc = "Toggle fold" })
+  end,
+})
+
 -- Automatically resize-splits upon terminal resize and focusing a window
 vim.api.nvim_create_autocmd("VimResized", {
   desc = "Automatically resize splits when terminal window is resized",
@@ -41,6 +49,7 @@ vim.api.nvim_create_autocmd("VimResized", {
     vim.cmd("wincmd =")
   end,
 })
+
 vim.api.nvim_create_autocmd("WinEnter", {
   desc = "Automatically expand the focused split window",
   group = vim.api.nvim_create_augroup("auto-expand-splits", { clear = true }),

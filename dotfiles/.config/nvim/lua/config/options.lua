@@ -14,6 +14,7 @@ vim.opt_local.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 -- opt.foldmethod = "indent"
 opt.foldlevel = 1
 opt.foldlevelstart = 1
+opt.foldtext = "foldtext()"
 -- opt.foldignore = "#"
 --
 vim.g.autoformat = false

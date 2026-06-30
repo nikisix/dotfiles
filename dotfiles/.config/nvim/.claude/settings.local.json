@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Read(//Users/six/.local/state/nvim/sessions/**)",
-      "Read(//Users/six/.local/share/nvim/**)"
+      "Read(//Users/six/.local/share/nvim/**)",
+      "Bash(python3 /Users/six/.claude/skills/sessions/scripts/sessions.py flush)",
+      "Bash(python3 /Users/six/.claude/skills/sessions/scripts/sessions.py resume \"vim/1\")",
+      "Bash(python3 *)",
+      "Read(//Users/six/code/sessions/**)"
     ]
   }
 }
