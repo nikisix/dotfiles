@@ -1,17 +1,18 @@
 # set -o nounset # oh-my-zsh does not like this
 set -o vi
 
-if [[ `uname` == 'Darwin' ]]; then
+if [[ $(uname) == 'Darwin' ]]; then
     # kinesis keyboard remap non-us key (next to `/~ to left-alt)
     # https://developer.apple.com/library/archive/technotes/tn2450/_index.htmlhttps://developer.apple.com/library/archive/technotes/tn2450/_index.html
     hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x7000000E2}]}' > /dev/null
-    if [[ $HOST=='sierranevada' || 'kansas.local' ]]; then
+    if [[ $HOST == 'sierranevada' || $HOST == 'LYF0GT22QD.local' ]]; then # LYF0GT22QD.local is ringmaster_tech
         export PATH="/opt/homebrew/bin:$PATH" # homebrew
-        export PATH="/Users/nickt/.local/bin:$PATH" # pipx
+        export PATH="$HOME/.local/bin:$PATH" # pipx
         export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH" # gnu-commands (ls, cp, ...etc)
         export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH" # gnu-command man-path
+        export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 
-    elif [[ $HOST=='goldencoast' ]]; then
+    elif [[ $HOST == 'goldencoast' ]]; then
         export PATH="/Users/zen/bin:~/code/scripts:/usr/local/lib/ruby/gems/2.6.0/gems/tmuxinator-1.1.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
         # Add gnu coreutils to path
         export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
@@ -21,9 +22,9 @@ if [[ `uname` == 'Darwin' ]]; then
     #for pylint
     LC_CTYPE=en_US.UTF-8
     export LC_CTYPE
-elif [[ "$unamestr" == 'Linux' ]]; then
+elif [[ "$(unamestr)" == 'Linux' ]]; then # WSL
     echo 'penguin time!'
-    source ~/.bash-windows  # TODO and uname == six
+    source "$HOME"/.bash-windows  # TODO and uname == six
 fi
 
 # export TERM=xterm-kitty
@@ -35,11 +36,13 @@ export PS1="%~ =✪= "
 #(♂)
 export EDITOR=nvim
 export HISTTIMEFORMAT='%F %T '
-# TODO
+
+# TOKENS
 export HOMEBREW_GITHUB_API_TOKEN=6cb508ae27ff3c3ae60f8e5e3855aa08e973d5ba
 # export OPENAI_API_KEY=$(gpg --decrypt openai-api-key.asc)
 export ANTHROPIC_API_KEY=$([ -f "~/.keys/anthropic-api-key" ] && cat "~/.keys/anthropic-api-key")
 # export AVANTE_ANTHROPIC_API_KEY=$(cat ~/.keys/anthropic-api-key)
+export JIRA_API_TOKEN=$(cat ~/.keys/jira-api-token)
 
 #PYTHON
 # alias python=ptipython # TODO get the following line working and remove this
