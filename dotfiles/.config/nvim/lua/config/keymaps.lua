@@ -37,3 +37,4 @@ map("n", "T", ":TagbarToggle<CR>")
 -- Folds
 map("n", "f", "zm")
 map("n", "F", "zr")
+-- map("n", "<TAB>", "za")

@@ -1,27 +1,3 @@
-return {
-    -- install without yarn or npm
-    -- markdown-preview.nvim
-    -- A markdown preview plugin for Neovim that uses the built-in webview.
-    -- This plugin allows you to preview markdown files in a webview within Neovim.
-    -- It supports live preview, custom CSS, and more.
-    -- Note: This plugin requires Neovim 0.5 or higher.
-    -- install without yarn or npm
-    -- "iamcco/markdown-preview.nvim",
-    -- cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    -- ft = { "markdown" },
-    -- build = function() vim.fn["mkdp#util#install"]() end,
-
--- install with yarn or npm
--- if this doesn't work then manually run:
-    -- cd ~/.local/share/nvim/lazy/markdown-preview.nvim
-    -- npm install
-{
-  "iamcco/markdown-preview.nvim",
-  cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-  build = "npm install",
-  init = function()
-    vim.g.mkdp_filetypes = { "markdown" }
-  end,
-  ft = { "markdown" },
-},
-}
+-- vim.g.mkdp_filetypes is set in init.lua before packadd
+-- Build step (run once after install):
+--   cd ~/.local/share/nvim/site/pack/core/opt/markdown-preview.nvim && npm install

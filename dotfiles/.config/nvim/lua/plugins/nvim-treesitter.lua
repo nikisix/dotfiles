@@ -1,5 +1,8 @@
-require('nvim-treesitter.configs').setup({
-  highlight = {
-    enable = true, -- THIS MUST BE TRUE
-  },
+-- nvim-treesitter v1 dropped configs.lua; highlighting is built into Neovim 0.10+
+require("nvim-treesitter").setup()
+
+vim.api.nvim_create_autocmd("FileType", {
+    callback = function(ev)
+        pcall(vim.treesitter.start, ev.buf)
+    end,
 })

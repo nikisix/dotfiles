@@ -1,15 +1,14 @@
-return {
-  "folke/snacks.nvim",
-  opts = {
+require("snacks").setup({
     picker = {
-        hidden = true,  -- affects most pickers
-        ignored = true, -- try moving these to files
-    }
-    -- files = {
-    --   -- This shows hidden files (dotfiles) by default
-    --   hidden = true,
-    --   -- This also shows files ignored by git (optional)
-    --   ignored = true,
-    -- },
-  },
-}
+        hidden = true,
+        ignored = true,
+        on_show = function(picker)
+            -- layout:update() calls nvim_win_set_config on each floating window,
+            -- which rebuilds the window grid — the same path VimResized takes.
+            -- redraw! alone cannot rebuild an undrawn grid; only nvim_win_set_config can.
+            vim.schedule(function()
+                picker.layout:update()
+            end)
+        end,
+    },
+})

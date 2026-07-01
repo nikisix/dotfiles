@@ -1,0 +1,5 @@
+require("mason-nvim-dap").setup({ automatic_installation = true })
+require("nvim-dap-virtual-text").setup()
+local dapui = require("dapui")
+dapui.setup()
+require("dap-python").setup("/Users/six/code/dataframe/venv/bin/python")
