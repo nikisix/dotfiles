@@ -1,0 +1,134 @@
+# ~/.config/herdr/config.toml
+# Ported from ~/.tmux.conf for side-by-side trial against tmux.
+# Generate the full default set anytime with:  herdr --default-config
+#
+# ─────────────────────────────────────────────────────────────────────────
+# PANE NAVIGATION — read this first
+# ─────────────────────────────────────────────────────────────────────────
+# Your tmux used vim-tmux-navigator: C-h/j/k/l seamlessly moved between tmux
+# panes OR vim splits via an is_vim process check. herdr's keybindings are
+# STATIC — any prefix-free chord it binds is consumed globally, including
+# inside vim, so seamless forwarding is impossible here.
+#
+# Working model instead (two explicit levels):
+#   ctrl+h/j/k/l  -> ALWAYS crosses herdr panes (herdr eats these globally,
+#                    even from inside vim)
+#   ctrl+w h/j/k/l -> vim's own window motions for vim splits (native; herdr
+#                    does not bind ctrl+w, so it reaches vim normally)
+# Load the companion nvim snippet so vim-tmux-navigator is disabled under
+# herdr (its ctrl+hjkl maps would be dead anyway — herdr eats those keys).
+#
+# ⚠️  COST OF ctrl+h/j/k/l  — you asked for these, so here's the honest bill.
+# herdr consumes them in EVERY pane, so shell/readline panes LOSE:
+#     ctrl+h  = backspace / delete-char-backward
+#     ctrl+j  = accept-line (newline/enter)
+#     ctrl+k  = kill-to-end-of-line
+#     ctrl+l  = clear screen        <- the one most people miss
+# If you actually use any of those (ctrl+l is common), drop it back to
+# prefix-only: e.g. set focus_pane_up = "prefix+k" to free ctrl+k. Enter,
+# Return, and vim itself are unaffected. The prefix+hjkl fallback below
+# always works regardless.
+# ─────────────────────────────────────────────────────────────────────────
+
+# Skip first-run onboarding once you've set up.
+onboarding = false
+
+# ── Terminal / shell ──────────────────────────────────────────────────────
+# Replaces your `reattach-to-user-namespace -l zsh` default-command.
+# shell_mode="auto" runs a login shell on macOS so PATH/Homebrew init works;
+# clipboard access is native in herdr (no reattach-to-user-namespace needed).
+[terminal]
+shell_mode = "auto"
+# default_shell = "zsh"   # leave unset to inherit $SHELL
+new_cwd = "follow"        # new panes/tabs inherit cwd, like your `-c "#{pane_current_path}"`
+
+# ── Keybindings ─────────────────────────────────────────────────────────────
+[keys]
+# Your tmux prefix was the backtick.
+# prefix = "backtick"
+prefix = ";"
+
+# Copy mode: your `prefix+[` default plus your `bind Space copy-mode` alias.
+# NOTE: herdr copy mode is vi-flavored (h/j/k/l w/b/e, v/Space select,
+# y/Enter copy, q/Esc cancel) but its INTERNAL keys are not remappable, and
+# there is NO rectangle/block select (your copy-mode `C-v` has no equivalent).
+copy_mode = ["prefix+[", "prefix+space"]
+
+# Pane focus: prefix+hjkl (herdr default) + prefix-free ctrl+hjkl (see header).
+focus_pane_left  = ["prefix+h", "ctrl+h"]
+focus_pane_down  = ["prefix+j", "ctrl+j"]
+focus_pane_up    = ["prefix+k", "ctrl+k"]
+focus_pane_right = ["prefix+l", "ctrl+l"]
+
+# Swap panes (herdr default shift variants).
+swap_pane_left  = "prefix+shift+h"
+swap_pane_down  = "prefix+shift+j"
+swap_pane_up    = "prefix+shift+k"
+swap_pane_right = "prefix+shift+l"
+
+# Splits. Your tmux: `-` = split down (-v), `|`/`\` = split right (-h).
+# herdr: split_horizontal = down split, split_vertical = right split.
+# `minus` is a supported name; `backslash`/pipe names are NOT documented as
+# accepted, so right-split stays on the safe prefix+v. Try adding
+# "prefix+backslash" and reload — if `prefix+?` shows it, keep it.
+split_horizontal = "prefix+minus"          # matches your `-`
+split_vertical   = ["prefix+v", "prefix+_"]              # your `|`/`\` -> herdr's prefix+v
+
+# Zoom. Your tmux used prefix+j for zoom, but prefix+j is pane-down here,
+# so zoom stays on herdr's prefix+z.
+zoom = "prefix+z"
+
+# Close pane / tab.
+close_pane = "prefix+x"
+
+# Tabs (herdr "tabs" ≈ tmux windows). `bind c new-window` == prefix+c here.
+new_tab      = "prefix+c"
+next_tab     = "prefix+n"
+previous_tab = "prefix+p"
+switch_tab   = "prefix+1..9"
+rename_tab   = ["prefix+shift+t", "prefix+,"]
+close_tab    = "prefix+shift+x"
+
+# Detach: herdr default prefix+q, plus your `bind d detach` and C-Q habits.
+detach = ["prefix+q", "prefix+d"]
+
+# Session/workspace navigation. Your `bind k choose-tree` ≈ these pickers.
+workspace_picker = "prefix+w"
+goto             = "prefix+g"
+toggle_sidebar   = "prefix+b"
+
+# Resize. Your vim-aware S-arrow resize can't be replicated (same static-
+# forwarding limit as navigation); herdr uses a resize MODE instead.
+resize_mode = "prefix+r"
+
+# Optional: run lazygit in a throwaway pane (example of custom commands).
+# [[keys.command]]
+# key = "prefix+alt+g"
+# type = "pane"
+# command = "lazygit"
+# description = "run lazygit"
+
+# ── Appearance ───────────────────────────────────────────────────────────
+# `terminal` makes herdr follow your host terminal's ANSI palette (closest to
+# your themepack setup); accent cyan matches your powerline/block/cyan theme.
+[theme]
+name = "terminal"
+
+[ui]
+accent = "cyan"
+mouse_capture = true          # your `set -g mouse on`
+mouse_scroll_lines = 3        # wheel scrolls scrollback on the primary screen;
+                              # vim/htop (alt-screen) get wheel events directly
+
+# ── Session restore ────────────────────────────────────────────────────────
+# Replaces tmux-resurrect/continuum for structure + agents. herdr always
+# restores workspaces/tabs/panes/cwd/layout, and resumes native agent
+# sessions (Claude Code, Codex, ...). It does NOT restore vim :mksession —
+# keep using vim + :Obsession for that (your @resurrect-strategy-vim habit).
+[session]
+resume_agents_on_restore = true
+
+# Optional: persist recent pane contents across full server restarts.
+# Off by default because pane output can contain secrets/tokens.
+# [experimental]
+# pane_history = true
