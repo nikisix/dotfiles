@@ -123,8 +123,8 @@ vim.pack.add({
     "https://github.com/adimit/prolog.vim",
     -- OpenSCAD language server
     "https://github.com/Leathong/openscad-LSP",
-    -- Navigate stack traces — open file at line from error output
-    "https://github.com/mattboehm/vim-unstack",
+    -- -- Navigate stack traces — open file at line from error output
+    -- "https://github.com/mattboehm/vim-unstack",
     -- Misc
     -- Saves and restores session per directory
     "https://github.com/folke/persistence.nvim",
@@ -197,7 +197,7 @@ p("markdown-preview.nvim")
 p("vim-table-mode")
 p("prolog.vim")
 p("openscad-LSP")
-p("vim-unstack")
+-- p("vim-unstack")
 -- Misc
 p("persistence.nvim")
 p("venv-selector.nvim")

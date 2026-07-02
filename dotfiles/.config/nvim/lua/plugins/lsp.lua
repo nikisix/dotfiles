@@ -2,12 +2,21 @@
 require("mason").setup()
 require("mason-lspconfig").setup()
 
-vim.lsp.config("pylsp", {
-    settings = { pylsp = { plugins = {
-        pycodestyle = { enabled = false },
-        mccabe      = { enabled = false },
-        pyflakes    = { enabled = false },
-        flake8      = { enabled = false },
+-- pyright: type checking, warnings, and errors
+vim.lsp.config("pyright", {
+    settings = { python = { analysis = {
+        typeCheckingMode = "basic",
+        diagnosticMode   = "openFilesOnly",
     }}},
 })
-vim.lsp.enable("pylsp")
+vim.lsp.enable("pyright")
+
+-- Display diagnostics inline (virtual text) plus signs, underline, and hover floats
+vim.diagnostic.config({
+    virtual_text = { source = "if_many", spacing = 2 },
+    signs        = true,
+    underline    = true,
+    update_in_insert = false,
+    severity_sort    = true,
+    float = { border = "rounded", source = true },
+})

@@ -1,4 +1,5 @@
 require("snacks").setup({
+    explorer = { enabled = true },
     picker = {
         hidden = true,
         ignored = true,

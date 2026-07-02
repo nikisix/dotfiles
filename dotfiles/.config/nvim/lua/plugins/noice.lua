@@ -1,4 +1,8 @@
 require("noice").setup({
+    -- Let :! and other command output use Neovim's native (Vim-like) pager
+    -- instead of noice's transient overlay. Cmdline popup + popupmenu below
+    -- are still handled by noice.
+    messages = { enabled = false },
     views = {
         cmdline_popup = {
             position = { row = "95%", col = "50%" },

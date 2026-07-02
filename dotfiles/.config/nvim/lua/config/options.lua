@@ -7,6 +7,24 @@ opt.tabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true
 
+-- Clipboard: sync yanks/pastes with the macOS system clipboard.
+-- pbcopy/pbpaste work directly inside modern tmux (3.x) on macOS — no
+-- reattach-to-user-namespace wrapper needed. unnamedplus makes plain
+-- y/p/d use the + register so they hit the system clipboard.
+opt.clipboard = "unnamedplus"
+vim.g.clipboard = {
+  name = 'pbcopy',
+  copy = {
+    ['+'] = 'pbcopy',
+    ['*'] = 'pbcopy',
+  },
+  paste = {
+    ['+'] = 'pbpaste',
+    ['*'] = 'pbpaste',
+  },
+  cache_enabled = 0,
+}
+
 -- Folds
 -- These settings are often set automatically by nvim-orgmode via Tree-sitter
 vim.opt_local.foldmethod = 'expr'
