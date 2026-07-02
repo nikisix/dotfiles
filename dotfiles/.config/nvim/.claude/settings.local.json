@@ -6,7 +6,10 @@
       "Bash(python3 /Users/six/.claude/skills/sessions/scripts/sessions.py flush)",
       "Bash(python3 /Users/six/.claude/skills/sessions/scripts/sessions.py resume \"vim/1\")",
       "Bash(python3 *)",
-      "Read(//Users/six/code/sessions/**)"
+      "Read(//Users/six/code/sessions/**)",
+      "Bash(nvim --clean -c 'luafile /private/tmp/claude-501/-Users-six-dotfiles-dotfiles--config-nvim/74ea1ac0-2f8d-4e1f-9fce-5b8d80e2364a/scratchpad/check_queries.lua' -c 'qa!')",
+      "Bash(nvim --headless -c \"edit links.org\" -c \"set conceallevel?\" -c \"lua print\\('Treesitter active:', vim.treesitter.highlighter.active[vim.fn.bufnr\\(\\)]\\)\" -c \"qa!\")",
+      "Bash(nvim *)"
     ]
   }
 }

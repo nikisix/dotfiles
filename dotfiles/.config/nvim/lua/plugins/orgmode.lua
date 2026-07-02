@@ -6,3 +6,12 @@ require("orgmode").setup({
         org_toggle_checkbox = "C-x",
     },
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "org",
+    callback = function()
+        vim.opt_local.conceallevel = 2
+        vim.opt_local.concealcursor = "nc"
+        vim.treesitter.start()
+    end,
+})
