@@ -145,8 +145,8 @@ delivery = "herdr"
 # so a [[keys.command]] placed *above* the bare [keys] entries (rename_tab,
 # zoom, split_*, etc.) silently swallows them into keys.command[0] and herdr
 # then falls back to its built-in defaults for those actions.
-[experimental]
-switch_ascii_input_source_in_prefix = true
+# [experimental]
+# switch_ascii_input_source_in_prefix = true
 
 # Move Pane: fzf picker (workspace -> tab) that vertical-splits the current
 # pane onto the chosen tab. type="pane" gives fzf a TTY.
