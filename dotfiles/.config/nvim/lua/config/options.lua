@@ -6,6 +6,7 @@ opt.filetype = "on"
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true
+opt.ignorecase = true
 
 -- Clipboard: sync yanks/pastes with the macOS system clipboard.
 -- pbcopy/pbpaste work directly inside modern tmux (3.x) on macOS — no

@@ -1,8 +1,8 @@
 # PyRadio User Configuration File
 # To get a full list of options execute: pyradio -pc
-# or examine the file: /Users/six/.local/pipx/venvs/pyradio/lib/python3.13/site-packages/pyradio/config
+# or examine the file: /Users/six/programs/pyradio/pyradio/config
 #
 open_last_playlist = True
 auto_save_playlist = True
 enable_notifications = 0
-theme = blue-by-boxer
+use_transparency = True

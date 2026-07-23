@@ -7,6 +7,8 @@
   d    = diff
   dt   = difftool
   l    = log
+  lol  = log --oneline
+  lg   = log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   m    = merge
   pl   = pull
   pr   = pull-request
@@ -18,8 +20,8 @@
   st   = stash
   down = pull --rebase --autostash
   wt   = worktree
-  lg   = log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   date = log --follow --diff-filter=A --find-renames=40%
+
 [color]
   ui = auto
 [config]
@@ -37,7 +39,7 @@
   autoSetupRemote = true
 [user]
   name = Nick Tomasino
-  email = nicolai.tesela@gmail.com # was nick.w.tomasino@gmail.com
+  email = ntomasino@ringmastertech.com
 [url "ssh://git@github.com:"]
   pushInsteadOf = https://github.com/ # Use ssh keys, even if cloned with http
 [url "ssh://git@gitlab.com/"]

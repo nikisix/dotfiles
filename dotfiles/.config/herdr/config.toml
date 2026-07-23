@@ -48,6 +48,8 @@ new_cwd = "follow"        # new panes/tabs inherit cwd, like your `-c "#{pane_cu
 # prefix = "backtick"
 prefix = ";"
 
+next_agent = "prefix+a"
+
 # Copy mode: your `prefix+[` default plus your `bind Space copy-mode` alias.
 # NOTE: herdr copy mode is vi-flavored (h/j/k/l w/b/e, v/Space select,
 # y/Enter copy, q/Esc cancel) but its INTERNAL keys are not remappable, and
@@ -72,25 +74,25 @@ swap_pane_right = "prefix+shift+l"
 # accepted, so right-split stays on the safe prefix+v. Try adding
 # "prefix+backslash" and reload — if `prefix+?` shows it, keep it.
 split_horizontal = "prefix+minus"          # matches your `-`
-split_vertical   = ["prefix+v", "prefix+_"]              # your `|`/`\` -> herdr's prefix+v
+split_vertical   = ["prefix+v", "prefix+_", "prefix+=", "prefix+|"] # your `|`/`\` -> herdr's prefix+v
 
 # Zoom. Your tmux used prefix+j for zoom, but prefix+j is pane-down here,
 # so zoom stays on herdr's prefix+z.
 zoom = "prefix+z"
 
 # Close pane / tab.
-close_pane = "prefix+x"
+# close_pane = "prefix+x"
 
 # Tabs (herdr "tabs" ≈ tmux windows). `bind c new-window` == prefix+c here.
 new_tab      = "prefix+c"
 next_tab     = "prefix+n"
 previous_tab = "prefix+p"
 switch_tab   = "prefix+1..9"
-rename_tab   = ["prefix+shift+t", "prefix+,"]
+rename_tab   = ["prefix+shift+t", "prefix+comma"]
 close_tab    = "prefix+shift+x"
 
-# Detach: herdr default prefix+q, plus your `bind d detach` and C-Q habits.
-detach = ["prefix+q", "prefix+d"]
+# Detach: herdr default prefix+q and C-Q habits.
+detach = ["prefix+q"]
 
 # Session/workspace navigation. Your `bind k choose-tree` ≈ these pickers.
 workspace_picker = "prefix+w"
@@ -112,8 +114,9 @@ resize_mode = "prefix+r"
 # `terminal` makes herdr follow your host terminal's ANSI palette (closest to
 # your themepack setup); accent cyan matches your powerline/block/cyan theme.
 [theme]
-name = "terminal"
+name = "kanagawa"
 
+auto_switch = false
 [ui]
 accent = "cyan"
 mouse_capture = true          # your `set -g mouse on`
@@ -132,3 +135,26 @@ resume_agents_on_restore = true
 # Off by default because pane output can contain secrets/tokens.
 # [experimental]
 # pane_history = true
+
+[ui.toast]
+delivery = "herdr"
+
+# ── Custom commands & experimental ─────────────────────────────────────────
+# IMPORTANT: keep [[keys.command]] and other [table] blocks at the END of this
+# file. TOML attaches every bare `key = value` to the most recent table header,
+# so a [[keys.command]] placed *above* the bare [keys] entries (rename_tab,
+# zoom, split_*, etc.) silently swallows them into keys.command[0] and herdr
+# then falls back to its built-in defaults for those actions.
+[experimental]
+switch_ascii_input_source_in_prefix = true
+
+# Move Pane: fzf picker (workspace -> tab) that vertical-splits the current
+# pane onto the chosen tab. type="pane" gives fzf a TTY.
+# The tab picker prepends a synthetic "new" entry: choosing it (field 1 =
+# "new") creates a NEW tab in the chosen workspace instead of splitting onto
+# an existing one. The --new-tab variant has no target-tab zoom guard, so it
+# skips the target-pane unzoom that the --tab path needs.
+[[keys.command]]
+key = "prefix+m"
+type = "pane"
+command = "snap=$(herdr api snapshot); target_ws=$(echo \"$snap\" | jq -r '.result.snapshot.workspaces[] | (.workspace_id) + \" \" + (.label)' | fzf --prompt=\"workspace> \" | awk '{print $1}'); [ -z \"$target_ws\" ] && exit 0; target_tab=$( { echo \"new [+ create new tab]\"; echo \"$snap\" | jq -r --arg ws \"$target_ws\" '.result.snapshot.tabs[] | select(.workspace_id == $ws) | (.tab_id) + \" \" + (.label)'; } | fzf --prompt=\"tab> \" | awk '{print $1}'); [ -z \"$target_tab\" ] && exit 0; herdr pane zoom --off >/dev/null 2>&1; if [ \"$target_tab\" = \"new\" ]; then herdr pane move \"$HERDR_ACTIVE_PANE_ID\" --new-tab --workspace \"$target_ws\"; else target_pane=$(echo \"$snap\" | jq -r --arg tab \"$target_tab\" '.result.snapshot.layouts[] | select(.tab_id == $tab) | .focused_pane_id'); [ -n \"$target_pane\" ] && herdr pane zoom \"$target_pane\" --off >/dev/null 2>&1; herdr pane move \"$HERDR_ACTIVE_PANE_ID\" --tab \"$target_tab\" --split right; fi"
