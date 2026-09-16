@@ -1,6 +1,7 @@
 # set -o nounset # oh-my-zsh does not like this
 set -o vi
 
+### OS Selector ###
 if [[ $(uname) == 'Darwin' ]]; then
     # kinesis keyboard remap non-us key (next to `/~ to left-alt)
     # https://developer.apple.com/library/archive/technotes/tn2450/_index.htmlhttps://developer.apple.com/library/archive/technotes/tn2450/_index.html
@@ -27,6 +28,7 @@ elif [[ "$(unamestr)" == 'Linux' ]]; then # WSL
     source "$HOME"/.bash-windows  # TODO and uname == six
 fi
 
+### ENV_VARS ###
 # export TERM=xterm-kitty
 
 #source ~/.git-prompt.sh #export PS1="\w\$(__git_ps1)=✪= "
@@ -37,14 +39,26 @@ export PS1="%~ =✪= "
 export EDITOR=nvim
 export HISTTIMEFORMAT='%F %T '
 
-# TOKENS
+### AWS ###
+export AWS_PROFILE='dev'
+function aws_switch_profile() {
+    if [[ $AWS_PROFILE == 'dev' ]]; then
+        echo "AWS_PROFILE ->uat"
+        AWS_PROFILE='uat'
+    else
+        echo "AWS_PROFILE ->dev"
+        AWS_PROFILE='dev'
+    fi
+}
+
+### TOKENS ###
 export HOMEBREW_GITHUB_API_TOKEN=6cb508ae27ff3c3ae60f8e5e3855aa08e973d5ba
 # export OPENAI_API_KEY=$(gpg --decrypt openai-api-key.asc)
 export ANTHROPIC_API_KEY=$([ -f "~/.keys/anthropic-api-key" ] && cat "~/.keys/anthropic-api-key")
 # export AVANTE_ANTHROPIC_API_KEY=$(cat ~/.keys/anthropic-api-key)
 export JIRA_API_TOKEN=$(cat ~/.keys/jira-api-token)
 
-#PYTHON
+### PYTHON ###
 # alias python=ptipython # TODO get the following line working and remove this
 # export PYTHONSTARTUP=~/.pythonrc.py
 export PTPYTHON_CONFIG_HOME=~/.config/ptpython/
@@ -69,7 +83,7 @@ function venv() {
     fi
 }
 
-# TMUX config
+### TMUX ###
 ## Paste from system clipboard 
 # 1. Ensure Vi Mode is explicitly active
 bindkey -v
@@ -87,18 +101,29 @@ zle -N macos-paste-widget
 bindkey -M vicmd 'p' macos-paste-widget
 
 
-# PATHS
+### PATHS ###
 alias code='cd ~/code'
-alias tron='cd ~/code/ringlinq-tron'
+alias tron='cd ~/code/tron'
 alias nvim-conf='cd ~/dotfiles/dotfiles/.config/nvim/lua'
 alias mmm='~/code/ror/mmm/featherweight'
 alias dn='~/code/decision_nets'
 alias pgm='~/code/decision_nets/'
 
-#SERVERS
+### SERVERS ###
 alias emr='ssh -i ~/.ssh/dev-vpc-emr-yotabites.pem hadoop@172.23.11.97'
 
-# ALIASES
+### DBs ###
+alias amorgosssh='ssh zen@192.168.1.109'
+alias propdata='psql -h 192.168.1.109 -Upostgres -dpropdata'
+alias warehousedb='psql -h localhost -Upostgres -dwarehouse'
+alias redshift='psql -U aa_yotabites_dev -h dev-vpc-redshiftdev100.cqxlseythtmd.us-east-1.redshift.amazonaws.com -p 5439 -d yotabites'
+function db_uat() {
+    bash ~/db/uat/tunnel.sh &
+    pgcli -h localhost -U 2VuvwalqaucNVToD_tomasino -d quotelinq_uat -p55432
+}
+
+
+### ALIASES ###
 alias activate='source ./venv/bin/activate'
 alias g='git'
 alias lgit='lazygit'
@@ -119,10 +144,7 @@ alias env-pipenv='source $(pipenv --venv)/bin/activate; [[ -f .env ]] && source 
 alias debug='vim +UnstackFromClipboard'
 # alias weather='ansiweather -l "kansas city, mo" -F -u imperial'
 alias weather='ansiweather -l 4393217 -d -u imperial;ansiweather -l 4393217 -F -u imperial'
-alias amorgosssh='ssh zen@192.168.1.109'
-alias propdata='psql -h 192.168.1.109 -Upostgres -dpropdata'
-alias warehousedb='psql -h localhost -Upostgres -dwarehouse'
-alias redshift='psql -U aa_yotabites_dev -h dev-vpc-redshiftdev100.cqxlseythtmd.us-east-1.redshift.amazonaws.com -p 5439 -d yotabites'
+
 alias lint='pylint --rcfile=~/code/data_analytics_f20180410/pylintrc'
 alias matrix='cmatrix -sabu2'
 function google () { w3m "http://www.google.com/search?q=$*"; }

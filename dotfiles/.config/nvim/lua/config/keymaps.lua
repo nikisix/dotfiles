@@ -32,7 +32,7 @@ map("n", "M", ":marks<cr>")
 map("n", "t", "<c-w>w")
 
 -- Tags
-map("n", "T", ":TagbarToggle<CR>")
+map("n", "T", ":TagbarToggle<CR>", {noremap = true})
 
 -- Folds
 map("n", "f", "zm")

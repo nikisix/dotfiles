@@ -48,7 +48,8 @@ new_cwd = "follow"        # new panes/tabs inherit cwd, like your `-c "#{pane_cu
 # prefix = "backtick"
 prefix = ";"
 
-next_agent = "prefix+a"
+next_agent = "prefix+A"
+previous_agent = "prefix+a"
 
 # Copy mode: your `prefix+[` default plus your `bind Space copy-mode` alias.
 # NOTE: herdr copy mode is vi-flavored (h/j/k/l w/b/e, v/Space select,
