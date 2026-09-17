@@ -11,7 +11,6 @@ vim.api.nvim_set_hl(0, "@org.headline.level4", { fg = "#b0c8f0", bold = true }) 
 vim.api.nvim_set_hl(0, "@org.headline.level5", { fg = "#d0d0f0", bold = true }) -- *****
 
 vim.api.nvim_set_hl(0, "@org.keyword.done"   , { fg = "#A3D0F0", bold = true }) -- *****
--- vim.api.nvim_set_hl(0, "@org.keyword.inprogress"   , { fg = "#A060F0", bold = true }) -- *****
 
 -- cyberdream transparent=true sets NormalFloat.bg=NONE; restore a solid background
 -- so floating windows don't bleed through to the terminal background.
