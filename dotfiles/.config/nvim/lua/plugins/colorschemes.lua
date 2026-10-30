@@ -2,6 +2,18 @@ require("cyberdream").setup({ transparent = true })
 vim.cmd.colorscheme("cyberdream")
 vim.api.nvim_set_hl(0, "Folded", { fg = "#5ea1ff", bg = "#1e2030" }) -- fold colors
 
+-- Snacks explorer/picker: default links to NonText (dark grey) were unreadable on a
+-- transparent dark background. Folders stay blue, hidden (dot) entries are amber,
+-- ignored (gitignored, e.g. venv) entries are violet.
+vim.api.nvim_set_hl(0, "SnacksPickerDirectory",   { fg = "#7cb7ff", bold = true }) -- folders
+vim.api.nvim_set_hl(0, "SnacksPickerPathHidden",  { fg = "#ffc66d" })              -- dotfiles/dotfolders
+vim.api.nvim_set_hl(0, "SnacksPickerPathIgnored", { fg = "#c3a6ff" })              -- gitignored
+
+-- Untracked entries (git status "?") also link to NonText and take priority over
+-- the hidden color, so untracked dotfiles/folders stayed grey.
+vim.api.nvim_set_hl(0, "SnacksPickerGitStatusUntracked", { fg = "#7ee0c3" }) -- untracked (mint)
+vim.api.nvim_set_hl(0, "SnacksPickerGitStatusIgnored",   { fg = "#c3a6ff" }) -- same violet as PathIgnored
+
 -- orgmode headline levels (explicit, non-default so they survive orgmode's
 -- own ColorScheme-triggered default-link refresh, same as Folded above)
 vim.api.nvim_set_hl(0, "@org.headline.level1", { fg = "#ffffff", bold = true }) -- *
