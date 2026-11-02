@@ -15,7 +15,7 @@ vim.lsp.enable("pyright")
 -- Setting `ignore` replaces pycodestyle's default ignore list, so restate it alongside E501.
 vim.lsp.config("pylsp", {
     settings = { pylsp = { plugins = { pycodestyle = {
-        ignore = { "E121", "E123", "E126", "E226", "E24", "E704", "W503", "W504", "E501" },
+        ignore = { "E121", "E123", "E126", "E221", "E226", "E24", "E704", "W503", "W504", "E501" },
     }}}},
 })
 
