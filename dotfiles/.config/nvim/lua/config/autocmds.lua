@@ -42,21 +42,21 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Automatically resize-splits upon terminal resize and focusing a window
-vim.api.nvim_create_autocmd("VimResized", {
-  desc = "Automatically resize splits when terminal window is resized",
-  group = vim.api.nvim_create_augroup("resize-splits", { clear = true }),
-  callback = function()
-    vim.cmd("wincmd =")
-  end,
-})
+-- vim.api.nvim_create_autocmd("VimResized", {
+--   desc = "Automatically resize splits when terminal window is resized",
+--   group = vim.api.nvim_create_augroup("resize-splits", { clear = true }),
+--   callback = function()
+--     vim.cmd("wincmd =")
+--   end,
+-- })
 
-vim.api.nvim_create_autocmd("WinEnter", {
-  desc = "Automatically expand the focused split window",
-  group = vim.api.nvim_create_augroup("auto-expand-splits", { clear = true }),
-  callback = function()
-    -- Set the width and height of the active window
-    -- You can adjust these numbers to your liking
-    vim.opt_local.winwidth = 100
-    vim.opt_local.winheight = 30
-  end,
-})
+-- vim.api.nvim_create_autocmd("WinEnter", {
+--   desc = "Automatically expand the focused split window",
+--   group = vim.api.nvim_create_augroup("auto-expand-splits", { clear = true }),
+--   callback = function()
+--     -- Set the width and height of the active window
+--     -- You can adjust these numbers to your liking
+--     vim.opt_local.winwidth = 100
+--     vim.opt_local.winheight = 30
+--   end,
+-- })
