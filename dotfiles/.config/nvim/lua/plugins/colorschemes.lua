@@ -2,6 +2,12 @@ require("cyberdream").setup({ transparent = true })
 vim.cmd.colorscheme("cyberdream")
 vim.api.nvim_set_hl(0, "Folded", { fg = "#5ea1ff", bg = "#1e2030" }) -- fold colors
 
+-- Comments: olive green instead of cyberdream's grey. Set the treesitter and LSP
+-- semantic-token groups too, since they otherwise resolve to the theme's grey.
+vim.api.nvim_set_hl(0, "Comment",              { fg = "#9aa84a", italic = true })
+vim.api.nvim_set_hl(0, "@comment",             { link = "Comment" })
+vim.api.nvim_set_hl(0, "@lsp.type.comment",    { link = "Comment" })
+
 -- Snacks explorer/picker: default links to NonText (dark grey) were unreadable on a
 -- transparent dark background. Folders stay blue, hidden (dot) entries are amber,
 -- ignored (gitignored, e.g. venv) entries are violet.
