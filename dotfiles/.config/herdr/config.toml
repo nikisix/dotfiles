@@ -149,6 +149,7 @@ delivery = "herdr"
 # [experimental]
 # switch_ascii_input_source_in_prefix = true
 
+
 # Move Pane: fzf picker (workspace -> tab) that vertical-splits the current
 # pane onto the chosen tab. type="pane" gives fzf a TTY.
 # The tab picker prepends a synthetic "new" entry: choosing it (field 1 =
@@ -156,6 +157,22 @@ delivery = "herdr"
 # an existing one. The --new-tab variant has no target-tab zoom guard, so it
 # skips the target-pane unzoom that the --tab path needs.
 [[keys.command]]
-key = "prefix+m"
+key = "prefix+f"
 type = "pane"
 command = "snap=$(herdr api snapshot); target_ws=$(echo \"$snap\" | jq -r '.result.snapshot.workspaces[] | (.workspace_id) + \" \" + (.label)' | fzf --prompt=\"workspace> \" | awk '{print $1}'); [ -z \"$target_ws\" ] && exit 0; target_tab=$( { echo \"new [+ create new tab]\"; echo \"$snap\" | jq -r --arg ws \"$target_ws\" '.result.snapshot.tabs[] | select(.workspace_id == $ws) | (.tab_id) + \" \" + (.label)'; } | fzf --prompt=\"tab> \" | awk '{print $1}'); [ -z \"$target_tab\" ] && exit 0; herdr pane zoom --off >/dev/null 2>&1; if [ \"$target_tab\" = \"new\" ]; then herdr pane move \"$HERDR_ACTIVE_PANE_ID\" --new-tab --workspace \"$target_ws\"; else target_pane=$(echo \"$snap\" | jq -r --arg tab \"$target_tab\" '.result.snapshot.layouts[] | select(.tab_id == $tab) | .focused_pane_id'); [ -n \"$target_pane\" ] && herdr pane zoom \"$target_pane\" --off >/dev/null 2>&1; herdr pane move \"$HERDR_ACTIVE_PANE_ID\" --tab \"$target_tab\" --split right; fi"
+
+
+# MARKS
+## Set Mark
+[[keys.command]]
+key = ["prefix+m", "ctrl+alt+m"]
+type = "plugin_action"
+command = "local.line-marks.prompt-set"
+description = "Set scrollback mark (a-z)"
+
+## Jump to Mark
+[[keys.command]]
+key = ["prefix+'", "ctrl+alt+'"]
+type = "plugin_action"
+command = "local.line-marks.prompt-jump"
+description = "Jump to scrollback mark (a-z or ')"

@@ -1,0 +1,26 @@
+id = "local.line-marks"
+name = "Vi Line Marks"
+version = "0.3.0"
+min_herdr_version = "0.9.0"
+description = "Vi-style ma-mz line marks with '' jump-back"
+platforms = ["linux", "macos", "windows"]
+
+[[actions]]
+id = "prompt-set"
+title = "Set mark (a-z)"
+contexts = ["pane"]
+command = ["python3", "marks.py", "prompt", "set"]
+
+[[actions]]
+id = "prompt-jump"
+title = "Jump to mark (a-z or ')"
+contexts = ["pane"]
+command = ["python3", "marks.py", "prompt", "jump"]
+
+[[panes]]
+id = "key-reader"
+title = "Mark"
+placement = "popup"
+width = "30%"
+height = "10%"
+command = ["python3", "marks.py", "read-key"]
