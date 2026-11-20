@@ -122,6 +122,11 @@ function db_uat() {
     pgcli -h localhost -U 2VuvwalqaucNVToD_tomasino -d quotelinq_uat -p55432
 }
 
+function db_prod() {
+    # bash ~/db/prod/tunnel.sh &
+    pgcli -h localhost -U cLtbnPuqjekLE6Am_ntomasino -d d76nfcvv689vor -p55432
+}
+
 
 ### ALIASES ###
 alias activate='source ./venv/bin/activate'
@@ -170,6 +175,11 @@ function mute () {   osascript -e 'set volume output muted true';
                     sleep 30;
                     osascript -e 'set volume output muted false';
                 }
+
+function recursive-replace () {
+    echo "replacing $1 with $2 recursively";
+    ag --no-color --files-with-matches "$1" | xargs gsed -i -E "s/$1/$2/Ig"
+}
 
 #function __cd {
     ##cd ${1/~/$HOME} #TODO not working b/c ~ doesn't get expanded
@@ -243,6 +253,7 @@ function y() {
 ## Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 export FZF_TMUX_OPTS='-p80%,60%' # fzf opens up a sweet tmux pane
+
 
 # export PYTHONBREAKPOINT="ipdb.set_trace"
 
