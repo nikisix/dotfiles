@@ -167,12 +167,12 @@ command = "snap=$(herdr api snapshot); target_ws=$(echo \"$snap\" | jq -r '.resu
 [[keys.command]]
 key = ["prefix+m", "ctrl+alt+m"]
 type = "plugin_action"
-command = "local.line-marks.prompt-set"
+command = "local.vi-marks.prompt-set"
 description = "Set scrollback mark (a-z)"
 
 ## Jump to Mark
 [[keys.command]]
 key = ["prefix+'", "ctrl+alt+'"]
 type = "plugin_action"
-command = "local.line-marks.prompt-jump"
+command = "local.vi-marks.prompt-jump"
 description = "Jump to scrollback mark (a-z or ')"

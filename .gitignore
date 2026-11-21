@@ -4,3 +4,4 @@ credentials.db
 application_default_credentials.json
 lazy-lock.json
 *.bak
+.ssh/

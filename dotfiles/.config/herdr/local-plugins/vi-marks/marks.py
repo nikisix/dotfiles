@@ -54,7 +54,7 @@ def call_api(method, params):
     # pane.scroll has no CLI subcommand, so talk to the socket API directly
     with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
         sock.connect(os.environ["HERDR_SOCKET_PATH"])
-        sock.sendall((json.dumps({"id": "line-marks", "method": method, "params": params}) + "\n").encode())
+        sock.sendall((json.dumps({"id": "vi-marks", "method": method, "params": params}) + "\n").encode())
         buf = b""
         while not buf.endswith(b"\n"):
             chunk = sock.recv(65536)
@@ -138,7 +138,7 @@ if cmd == "prompt":
     res = subprocess.run(
         [
             herdr, "plugin", "pane", "open",
-            "--plugin", "local.line-marks",
+            "--plugin", "local.vi-marks",
             "--entrypoint", "key-reader",
             "--placement", "popup",
             "--env", f"MARK_MODE={mode}",

@@ -1,5 +1,5 @@
-id = "local.line-marks"
-name = "Vi Line Marks"
+id = "local.vi-marks"
+name = "Vi Marks"
 version = "0.3.0"
 min_herdr_version = "0.9.0"
 description = "Vi-style ma-mz line marks with '' jump-back"
