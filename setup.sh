@@ -28,6 +28,12 @@ PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 cp -srf "${PWD}"/dotfiles/.[^.]* ~/ # SOURCE must resolve to an absolute path to work
 # ln -s "${PWD}"/dotfiles/.[^.]* ~/
 
+# herdr plugins aren't covered by the dotfiles link; config.toml already has their keybindings
+echo "Installing herdr plugins"
+if hash herdr 2>/dev/null; then
+    herdr plugin install nikisix/herdr-vi-marks --yes
+fi
+
 echo "Installing TmuxPluginManager"
 test -d ~/.tmux/plugins/tpm || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "Start tmux and run 'prefix-I' to install tmux plugins... Press enter when done..."
